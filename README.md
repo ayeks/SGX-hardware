@@ -1,5 +1,5 @@
-# SGX-hardware
-This is a list of Hardware which is supports Intel SGX - Software Guarded Extensions. 
+# SGX-hardware list
+This is a list of hardware which supports Intel SGX - Software Guard Extensions. 
 
 ## Desktop
 
@@ -46,6 +46,24 @@ No desktop BIOS with SGX support known.
 | Dell | Inspiron 7559 | BIOS | 1.0.3 | Windows/DOS | [dell.com](http://www.dell.com/support/home/us/en/19/Drivers/DriversDetails?driverId=3FWTM) |
 | HP | ENVY 15 Notebook PC | Chipset | 1.0.26805.1389 REV: A PASS: 4 | Windows 10 64bit, Windows 7 Prof. | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72491.html) |
 
+
+## Test SGX
+
+You can check if SGX is enabled on you system with the test_sgx.c. Just compile and run it.
+If the output is something like:
+```
+Extended feature bits (EAX=07H, ECX=0H)
+eax: 0 ebx: 29c6fbf ecx: 0 edx: 0
+sgx available: 1
+
+CPUID Leaf 12H, Sub-Leaf 0 of Intel SGX Capabilities (EAX=12H,ECX=0)
+eax: 0 ebx: 0 ecx: 0 edx: 0
+sgx 1 supported: 0
+sgx 2 supported: 0
+MaxEnclaveSize_Not64: 0
+MaxEnclaveSize_64: 0
+```
+SGX is available for your CPU but not enabled in BIOS.
 
 ## Contribution
 
