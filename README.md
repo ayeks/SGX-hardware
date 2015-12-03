@@ -37,8 +37,12 @@ According to the [Product Change Notification](http://qdms.intel.com/dm/i.aspx/5
 
 No desktop BIOS with SGX support known.
 
+| Vendor | Model | Driver Type | Version | Supported OS | Source | Release Date |
+|--------------|-------|-------------|---------|--------------|--------|----|
 
-## Notebooks
+## Notebooks 
+
+The following devices should support SGX according to available drivers. Check the detailed information about the supported models on the individual driver sites.
 
 | Vendor | Model | Driver Type | Version | Supported OS | Source | Release Date |
 |--------------|-------|-------------|---------|--------------|--------|----|
@@ -49,6 +53,15 @@ No desktop BIOS with SGX support known.
 | HP | ENVY 15 Notebook PC | Chipset | 1.0.26805. 1389 REV: A PASS: 4 | Windows 10 64bit, Windows 7 Prof. | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72491.html) | 17 Aug 2015 |
 | HP | HP ENVY x360 Convertible | Chipset | 1.0.26805.1389 REV: A PASS: 5 | Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72316.html) | 04 Sep 2015 |
 | HP | HP Spectre x2 Detachable Ultrabook PC | Chipset | 1.0.26805. 1389 REV: A PASS: 9 | Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72501-73000/sp72989.html) | 02 Oct 2015 |
+
+## SGX Hardware without available drivers yet
+
+There are currently no SGX drivers known to the following devices but SGX is mentioned in its documentation. If drivers are available the devices will be added the other lists. 
+
+| Device | Vendor | Model | Mentioned in | Source | Date |
+|--------|--------|-------|--------------|--------|------|
+| Desktop PC | Dell  | Optiplex 5040 | Spec Sheet | [dell.com](http://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/ecemea-optiplex-5040-technical-spec-sheet.pdf) | 3 Dez 2015 |
+| Motherboard | Asus | Q170M-C Q170M-C/CSM | Manual | [asus.com](http://dlcdnet.asus.com/pub/ASUS/mb/LGA1151/Q170M-C/E10374_Q170M-C_Guide_web_only.pdf) | 3 Dez 2015 |
 
 ## Test SGX
 
