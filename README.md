@@ -66,8 +66,10 @@ There are currently no SGX drivers known to the following devices but SGX is men
 ## Test SGX
 
 You can check if SGX is enabled on you system with the test_sgx.c. Just compile and run it.
-If the output is something like:
+
+### SGX is available for your CPU but not enabled in BIOS
 ```
+...
 Extended feature bits (EAX=07H, ECX=0H)
 eax: 0 ebx: 29c6fbf ecx: 0 edx: 0
 sgx available: 1
@@ -78,8 +80,35 @@ sgx 1 supported: 0
 sgx 2 supported: 0
 MaxEnclaveSize_Not64: 0
 MaxEnclaveSize_64: 0
+...
 ```
-SGX is available for your CPU but not enabled in BIOS.
+### SGX is available for your CPU and enabled in BIOS
+```
+...
+Extended feature bits (EAX=07H, ECX=0H)
+eax: 0 ebx: 29c6fbf ecx: 0 edx: 0
+sgx available: 1
+
+CPUID Leaf 12H, Sub-Leaf 0 of Intel SGX Capabilities (EAX=12H,ECX=0)
+eax: 1 ebx: 0 ecx: 0 edx: 241f
+sgx 1 supported: 1
+sgx 2 supported: 0
+MaxEnclaveSize_Not64: 1f
+MaxEnclaveSize_64: 24
+
+CPUID Leaf 12H, Sub-Leaf 1 of Intel SGX Capabilities (EAX=12H,ECX=1)
+eax: 36 ebx: 0 ecx: 1f edx: 0
+
+CPUID Leaf 12H, Sub-Leaf 2 of Intel SGX Capabilities (EAX=12H,ECX=2)
+eax: 70200001 ebx: 0 ecx: 2d80001 edx: 0
+
+CPUID Leaf 12H, Sub-Leaf 3 of Intel SGX Capabilities (EAX=12H,ECX=3)
+eax: 0 ebx: 0 ecx: 0 edx: 0
+
+CPUID Leaf 12H, Sub-Leaf 4 of Intel SGX Capabilities (EAX=12H,ECX=4)
+eax: 0 ebx: 0 ecx: 0 edx: 0
+...
+```
 
 ## Contribution
 
