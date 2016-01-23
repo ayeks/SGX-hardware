@@ -46,7 +46,6 @@ The following devices should support SGX according to available drivers. Check t
 
 | Vendor | Model | Driver Type | Version | Supported OS | Source | Release Date |
 |--------------|-------|-------------|---------|--------------|--------|----|
-| Dell  |  OptiPlex, Latitude, Tablet, Precision | Dell System Inventory Agent |  1.4.2.0, A60  | VISTA (32/64-bit), Windows 7 (32/64-bit) ,Windows 8 (32/64-bit),Windows 8.1 (32/64-bit), Windows 10(32/64 -bit) | [dell.com](http://www.dell.com/support/home/us/en/19/Drivers/DriversDetails?driverId=433D7) | 27 Jul 2015 |
 | Dell  | Inspiron 11 i3153, Inspiron 11 i3158, Inspiron 13 i7353, Inspiron 13 i7359, Inspiron 15 i7568 | Chipset Driver   | 1.0.26920. 1393, A00  | Windows 8.1 64-bit, Windows 10 64-bit | [dell.com](http://www.dell.com/support/home/us/en/19/Drivers/DriversDetails?driverId=F84XC) | 10 Sep 2015 |
 | Dell | Inspiron 15 7000 Series 7559 | BIOS | 1.0.3 | Windows/DOS | [dell.com](http://www.dell.com/support/home/us/en/19/Drivers/DriversDetails?driverId=3FWTM) | 09 Oct 2015 |
 | HP | HP 240 G4 Notebook PC, HP 246 G4 Notebook PC, HP Notebook 14g, HP Notebook 14q  | Chipset | 1.0.26448. 1348 REV: A PASS: 5 | Microsoft Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72357.html) | 07 Aug 2015 |
