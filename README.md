@@ -60,7 +60,6 @@ There are currently no SGX drivers known to the following devices but SGX is men
 | Device | Vendor | Model | Mentioned in | Source | Date |
 |--------|--------|-------|--------------|--------|------|
 | Desktop PC | Dell  | Optiplex 5040 | Spec Sheet | [dell.com](http://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/ecemea-optiplex-5040-technical-spec-sheet.pdf) | 3 Dez 2015 |
-| Motherboard | Asus | Q170M-C Q170M-C/CSM | Manual | [asus.com](http://dlcdnet.asus.com/pub/ASUS/mb/LGA1151/Q170M-C/E10374_Q170M-C_Guide_web_only.pdf) | 3 Dez 2015 |
 
 ## Test SGX
 
