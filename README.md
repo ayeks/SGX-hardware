@@ -53,12 +53,14 @@ The following devices should support SGX according to available drivers. Check t
 | HP | HP ENVY x360 Convertible | Chipset | 1.0.26805.1389 REV: A PASS: 5 | Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72316.html) | 04 Sep 2015 |
 | HP | HP Spectre x2 Detachable Ultrabook PC | Chipset | 1.0.26805. 1389 REV: A PASS: 9 | Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72501-73000/sp72989.html) | 02 Oct 2015 |
 
-## SGX Hardware without available drivers yet
+## Hardware with out of the box SGX support
 
-There are currently no SGX drivers known to the following devices but SGX is mentioned in its documentation. If drivers are available the devices will be added the other lists. 
+Newer Dell Computers have out of the box SGX BIOS support. Sometimes it is mentioned in their documentation. Contact the Dell support regarding SGX functionality because it is not mentioned in the product specifications. If you have a newer Dell and see SGX in the BIOS, message me so I can add the device to the list. Thx.
 
 | Device | Vendor | Model | Mentioned in | Source | Date |
 |--------|--------|-------|--------------|--------|------|
+| | Dell  | newer OptiPlex, Latitude, Vostro, Precision  | Manuals|  [see Issue 5](https://github.com/ayeks/SGX-hardware/issues/5) | 20 Apr 2015 |
+| Laptop | Dell | Precision 17 7000 Series (7710) | Email | - | 20 Apr 2015 |
 | Desktop PC | Dell  | Optiplex 5040 | Spec Sheet | [dell.com](http://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/ecemea-optiplex-5040-technical-spec-sheet.pdf) | 3 Dez 2015 |
 
 ## Test SGX
