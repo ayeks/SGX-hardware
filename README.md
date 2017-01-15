@@ -35,7 +35,7 @@ According to the [Product Change Notification](http://qdms.intel.com/dm/i.aspx/5
 
 ### Desktop Mainboards
 
-No desktop BIOS with SGX support known.
+No desktop BIOS with SGX support currently known.
 
 | Vendor | Model | Driver Type | Version | Supported OS | Source | Release Date |
 |--------------|-------|-------------|---------|--------------|--------|----|
@@ -61,8 +61,11 @@ Newer devices have out of the box SGX BIOS support. Sometimes it is mentioned in
 |--------|--------|-------|--------------|--------|------|-----------|
 | Laptop | Lenovo  | ThinkPad P70, P50S, T560, T460p, T460s, T460  | Manuals |  [see Issue 7](https://github.com/ayeks/SGX-hardware/issues/7) | 22 May 2016 | P50, T460s |
 | Server | Supermicro | system [5019-MR](http://www.supermicro.com/products/system/1U/5019/SYS-5019S-MR.cfm), mainboard [X11SSH-F](http://www.supermicro.com/products/motherboard/Xeon/C236_C232/X11SSH-F.cfm) | [Pressrelease](http://www.supermicro.com/newsroom/pressreleases/2015/press150901_Embedded_IoT_Skylake.cfm) | [see Issue 6](https://github.com/ayeks/SGX-hardware/issues/6) | 19 May 2016| X11SSH-F |
-| | Dell  | newer OptiPlex, Latitude, Vostro, Precision  | Manuals|  [see Issue 5](https://github.com/ayeks/SGX-hardware/issues/5) | 20 Apr 2015 | Precision 7710 |
+| PC | Dell  | newer OptiPlex, Latitude, Vostro, Precision  | Manuals|  [see Issue 5](https://github.com/ayeks/SGX-hardware/issues/5) | 20 Apr 2015 | Precision 7710 |
 | Desktop PC | Dell  | Optiplex 5040 | Spec Sheet |  [dell.com](http://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/ecemea-optiplex-5040-technical-spec-sheet.pdf) | 3 Dez 2015 | |
+| Mini PC | Intel NUC Kit | NUC6i3SYK, NUC6i7KYK, NUC6i5SYK, NUC6i3SYH, NUC6i5SYH | Driver Site | [SGX software for NUC](https://downloadcenter.intel.com/download/26137?v=t) | 30 June 2016 | |
+
+
 
 ## Test SGX
 
