@@ -67,7 +67,7 @@ Newer devices have out of the box SGX BIOS support. Sometimes it is mentioned in
 | Laptop | Dell  | Alienware 13 R3  | - | mail | 30 January 2017 | Alienware 13 R3 (Kaby Lake i7-7700HQ) |
 | Desktop PC | Dell  | Optiplex 5040 | Spec Sheet |  [dell.com](http://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/ecemea-optiplex-5040-technical-spec-sheet.pdf) | 3 Dez 2015 | |
 | Mini PC | Intel NUC Kit | NUC6i3SYK, NUC6i7KYK, NUC6i5SYK, NUC6i3SYH, NUC6i5SYH | Driver Site | [SGX software for NUC](https://downloadcenter.intel.com/download/26137?v=t) | 30 June 2016 | |
-
+| Laptop | HP  | Pavilion 15-ab251ur  | - |  [see Issue 14](https://github.com/ayeks/SGX-hardware/issues/14) | 18 February 2017 | HP Pavilion 15-ab251ur, CPU i7-6500U |
 
 
 ## Test SGX
