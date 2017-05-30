@@ -73,6 +73,7 @@ Newer devices have out of the box SGX BIOS support. Sometimes it is mentioned in
 | Laptop | Dell | Inspiron 5378, 5578, 7378, 7579, 7779 | [see Issue 18](https://github.com/ayeks/SGX-hardware/issues/18) | 18 April 2017 | Inspiron 15 5578 2-in-1 with Intel Kabylake 7500U |
 | Mini PC | Intel NUC Kit | NUC6i3SYK, NUC6i7KYK, NUC6i5SYK, NUC6i3SYH, NUC6i5SYH, NUC7i3BNH | [SGX software for NUC](https://downloadcenter.intel.com/download/26137?v=t) | 30 June 2016 | [NUC7i3BNH](https://github.com/ayeks/SGX-hardware/issues/22) |
 | Laptop | HP  | Pavilion 15-ab251ur  | [see Issue 14](https://github.com/ayeks/SGX-hardware/issues/14) | 18 February 2017 | HP Pavilion 15-ab251ur, CPU i7-6500U |
+| Laptop | ASUS | X456UA | [see Issue 18](https://github.com/ayeks/SGX-hardware/issues/18) | 18 April 2017 | 
 
 
 ## Test SGX
