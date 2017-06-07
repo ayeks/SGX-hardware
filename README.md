@@ -75,6 +75,7 @@ Newer devices have out of the box SGX BIOS support. Sometimes it is mentioned in
 | Laptop | HP  | Pavilion 15-ab251ur  | [see Issue 14](https://github.com/ayeks/SGX-hardware/issues/14) | 18 February 2017 | HP Pavilion 15-ab251ur, CPU i7-6500U |
 | Laptop | ASUS | X456UA | [see Issue 18](https://github.com/ayeks/SGX-hardware/issues/18) | 18 April 2017 |  |
 | Workstation | HP  | Z2 Mini G3  | [see Pull request 19](https://github.com/ayeks/SGX-hardware/pull/19) | 21 April 2017 | HP Z2 Mini G3, CPU Xeon E3-1245 v5 |
+| Workstation | HP  | HP Z240 Tower Workstation  | N51 Ver. 01.54 ] | 16 Mar 2017 | HP Z240 Tower Workstation, Intel(R) Xeon(R) CPU E3-1240 v5 @ 3.50GHz|
 
 ## Test SGX
 
