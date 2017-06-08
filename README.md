@@ -46,7 +46,7 @@ According to the [Product Change Notification](http://qdms.intel.com/dm/i.aspx/5
 
 ## Notebooks 
 
-The following devices should support SGX according to available drivers. Check the detailed information about the supported models on the individual driver sites.
+The following laptops should support SGX according to available drivers. Check the detailed information about the supported models on the individual driver sites.
 
 | Vendor | Model | Driver Type | Version | Supported OS | Source | Release Date |
 |--------------|-------|-------------|---------|--------------|--------|----|
@@ -56,6 +56,7 @@ The following devices should support SGX according to available drivers. Check t
 | HP | ENVY 15 Notebook PC | Chipset | 1.0.26805. 1389 REV: A PASS: 4 | Windows 10 64bit, Windows 7 Prof. | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72491.html) | 17 Aug 2015 |
 | HP | HP ENVY x360 Convertible | Chipset | 1.0.26805.1389 REV: A PASS: 5 | Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72316.html) | 04 Sep 2015 |
 | HP | HP Spectre x2 Detachable Ultrabook PC | Chipset | 1.0.26805. 1389 REV: A PASS: 9 | Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72501-73000/sp72989.html) | 02 Oct 2015 |
+| Apple | MacBookPro 13,1 (i5-6360U) | Chipset | Build 16B2657 | Mac OSX 10.2.1 | [apple.com](https://browser.geekbench.com/v4/cpu/901173) | 27 Oct 2016 | 
 
 
 ## Hardware with out of the box SGX support
