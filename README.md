@@ -8,7 +8,7 @@ The CPU and the motherboard BIOS must support SGX. SGX is turned off by default 
 
 ### Desktop CPUs
 
-According to the [Product Change Notification](http://qdms.intel.com/dm/i.aspx/5A160770-FC47-47A0-BF8A-062540456F0A/PCN114074-00.pdf) from October 1, 2015. Only the CPUs with the following S-Spec Numbers are able to execute SGX instructions:
+Use the [ark.intel.com](https://ark.intel.com/Search/FeatureFilter?productType=processors&SoftwareGuardExtensions=true) database to list all Intel CPUs that have the SGX feature. However be cautious with the following i7,i5 and E3 CPUs. According to the [Product Change Notification](http://qdms.intel.com/dm/i.aspx/5A160770-FC47-47A0-BF8A-062540456F0A/PCN114074-00.pdf) from October 1, 2015. Only the CPUs with the following S-Spec Numbers are able to execute SGX instructions:
 
 | Marketing Name | Processor# | Post-Conversion S-Spec |
 |----------------|------------|------------------------|
@@ -60,12 +60,12 @@ The following devices should support SGX according to available drivers. Check t
 
 ## Hardware with out of the box SGX support
 
-Newer devices have out of the box SGX BIOS support. Sometimes it is mentioned in their documentation. If you have a newer device and see SGX in the BIOS, message me so I can add the device to the list. Thx.
+Newer devices have out of the box SGX BIOS support. Sometimes it is mentioned in their documentation. If you have a newer device and see SGX in the BIOS, message me so I can add the device to the list.
+If you need a SGX capable server have a look at the [Intel SGX server block](https://www-ssl.intel.com/content/www/us/en/data-center-blocks/business/sgx-server-blocks.html). It consists of a complete server with Xeon processor, ram, mainboard and drives. Driver issues should't be a problem.
 
 | Device | Vendor | Model |  Source | Date | Confirmed |
 |--------|--------|-------|---------|------|-----------|
 | Laptop | Lenovo  | ThinkPad P70, P50S, T560, T460p, T460s, T460, X260  | [see Issue 7](https://github.com/ayeks/SGX-hardware/issues/7) | 22 May 2016 | P50, T460s, [X260](http://pastebin.com/c4SP3mNr) |
-| Server | Supermicro | system [5019-MR](http://www.supermicro.com/products/system/1U/5019/SYS-5019S-MR.cfm), mainboard [X11SSH-F Bios 1.0b](http://www.supermicro.com/products/motherboard/Xeon/C236_C232/X11SSH-F.cfm) | [Pressrelease](http://www.supermicro.com/newsroom/pressreleases/2015/press150901_Embedded_IoT_Skylake.cfm) [see Issue 6](https://github.com/ayeks/SGX-hardware/issues/6) | 19 May 2016| X11SSH-F |
 | PC | Dell  | newer OptiPlex, Latitude, Vostro, Precision  | [see Issue 5](https://github.com/ayeks/SGX-hardware/issues/5) | 20 Apr 2015 | Precision 7710 |
 | Desktop PC | Dell  | Optiplex 5040 | [dell.com](http://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/ecemea-optiplex-5040-technical-spec-sheet.pdf) | 3 Dez 2015 | |
 | Laptop | Dell | 2016 XPS 13 |  [see Issue 12](https://github.com/ayeks/SGX-hardware/issues/12) [see Issue 16](https://github.com/ayeks/SGX-hardware/issues/16) | 20 January 2017 | 2016 XPS 13 9560, 9360 |
@@ -76,6 +76,14 @@ Newer devices have out of the box SGX BIOS support. Sometimes it is mentioned in
 | Laptop | ASUS | X456UA | [see Issue 18](https://github.com/ayeks/SGX-hardware/issues/18) | 18 April 2017 |  |
 | Workstation | HP  | Z2 Mini G3  | [see Pull request 19](https://github.com/ayeks/SGX-hardware/pull/19) | 21 April 2017 | HP Z2 Mini G3, CPU Xeon E3-1245 v5 |
 | Workstation | HP  | HP Z240 Tower Workstation  | N51 Ver. 01.54 ] | 16 Mar 2017 | HP Z240 Tower Workstation, Intel(R) Xeon(R) CPU E3-1240 v5 @ 3.50GHz|
+
+## Hardware with no/difficult SGX support
+
+In course of the last years it became clear that some devices are SGX capable in theory, but are sometimes missing some essential software components to run SGX enclaves. 
+
+| Device | Vendor | Model |  Source | Date | Problem |
+|--------|--------|-------|---------|------|-----------|
+| Server | Supermicro | system [5019-MR](http://www.supermicro.com/products/system/1U/5019/SYS-5019S-MR.cfm), mainboard [X11SSH-F Bios 1.0b](http://www.supermicro.com/products/motherboard/Xeon/C236_C232/X11SSH-F.cfm) | [Pressrelease](http://www.supermicro.com/newsroom/pressreleases/2015/press150901_Embedded_IoT_Skylake.cfm) [see Issue 6](https://github.com/ayeks/SGX-hardware/issues/6) | 19 May 2016| [no trusted services](https://github.com/ayeks/SGX-hardware/issues/24) |
 
 ## Test SGX
 
