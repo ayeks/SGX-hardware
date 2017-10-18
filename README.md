@@ -67,7 +67,7 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 
 | Device | Vendor | Model |  Source | Date | Confirmed |
 |--------|--------|-------|---------|------|-----------|
-| Laptop | Lenovo  | ThinkPad P70, P50S, T560, T460p, T460s, T460, X260  | [see Issue 7](https://github.com/ayeks/SGX-hardware/issues/7) | 22 May 2016 | P50, T460s, [X260](http://pastebin.com/c4SP3mNr) |
+| Laptop | Lenovo  | ThinkPad P70, P50S, T560, T460p, T460s, T460, X260, X230  | [see Issue 7](https://github.com/ayeks/SGX-hardware/issues/7) | 22 May 2016 | P50, T460s, [X260](http://pastebin.com/c4SP3mNr), [X230](https://github.com/ayeks/SGX-hardware/issues/29) |
 | PC | Dell  | newer OptiPlex, Latitude, Vostro, Precision  | [see Issue 5](https://github.com/ayeks/SGX-hardware/issues/5) | 20 Apr 2015 | Precision 7710 |
 | Desktop PC | Dell  | Optiplex 5040 | [dell.com](http://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/ecemea-optiplex-5040-technical-spec-sheet.pdf) | 3 Dez 2015 | |
 | Laptop | Dell | 2016 XPS 13 |  [see Issue 12](https://github.com/ayeks/SGX-hardware/issues/12) [see Issue 16](https://github.com/ayeks/SGX-hardware/issues/16) | 20 January 2017 | 2016 XPS 13 9560, 9360 |
