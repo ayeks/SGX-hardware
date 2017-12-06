@@ -85,7 +85,11 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 
 ## Test SGX
 
-You can check if SGX is enabled on you system with the test_sgx.c. Just compile and run it.
+You can check if SGX is enabled on you system with the test_sgx.c. Just compile and run it:
+```
+$ gcc test_sgx.c -o test_sgx
+$ ./test_sgx
+```
 
 ### SGX is available for your CPU but not enabled in BIOS
 ```
