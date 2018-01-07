@@ -1,15 +1,32 @@
 #include <stdio.h>
+#if defined(_MSC_VER)
+#include <intrin.h>
+#endif
 
 static inline void native_cpuid(unsigned int *eax, unsigned int *ebx,
-                                unsigned int *ecx, unsigned int *edx)
+	unsigned int *ecx, unsigned int *edx)
 {
-        /* ecx is often an input as well as an output. */
-        asm volatile("cpuid"
-            : "=a" (*eax),
-              "=b" (*ebx),
-              "=c" (*ecx),
-              "=d" (*edx)
-            : "0" (*eax), "2" (*ecx));
+	/* ecx is often an input as well as an output. */
+	
+#if !defined(_MSC_VER)
+	
+	asm volatile("cpuid"
+		: "=a" (*eax),
+		"=b" (*ebx),
+		"=c" (*ecx),
+		"=d" (*edx)
+		: "0" (*eax), "2" (*ecx));
+
+#else 
+	int registers[4] = {0,0,0,0};
+	
+	__cpuidex(registers, *eax, *ecx);
+	*eax = registers[0];
+	*ebx = registers[1];
+	*ecx = registers[2];
+	*edx = registers[3];
+
+#endif
 }
 
 int main(int argc, char **argv)
