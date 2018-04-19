@@ -1,10 +1,11 @@
 # SGX-hardware list
 This is a list of hardware which supports Intel SGX - Software Guard Extensions. 
 
+[![Build Status](https://travis-ci.org/ayeks/SGX-hardware.svg?branch=master)](https://travis-ci.org/ayeks/SGX-hardware)
 
 ## Desktop
 
-The CPU and the motherboard BIOS must support SGX. SGX is turned off by default and must enabled via MSR.IA32\_Feature\_Control.SGX\_Enable. Only the BIOS can make changes to the IA32\_Feature\_Control.
+The CPU and the motherboard BIOS must support SGX. SGX is turned off by default and must be enabled via MSR.IA32\_Feature\_Control.SGX\_Enable. Only the BIOS can make changes to the IA32\_Feature\_Control.
 
 ### Desktop CPUs affected by the product change notification from 2015
 
@@ -38,7 +39,7 @@ Be cautious with the following 2015 i7,i5 and E3 CPUs. According to the [Product
 
 ### CPUs without Platform Service Enclave functionality
 
-As per the last comment on this [thread](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/737881), Intel Xeon E3 processors as of today (Jul. 2017) do not have an Intel Manageability Engine. Therefore, the kernel will never be able to expose the device `/dev/mei0`.  What this means in terms of SGX is that [Trusted Platform Service Functions](https://software.intel.com/en-us/node/709050) (monotonic counters, trusted time) are not available on Xeon E3.
+As per the last comment on this [thread](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/737881), Intel Xeon E3 processors as of today (Jul. 2017) do not have an Intel Management Engine. Therefore, the kernel will never be able to expose the device `/dev/mei0`.  What this means in terms of SGX is that [Trusted Platform Service Functions](https://software.intel.com/en-us/node/709050) (monotonic counters, trusted time) are not available on Xeon E3.
 
 ### Desktop Mainboards
 
@@ -78,7 +79,7 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 | Desktop PC | Dell  | Optiplex 5040 | dell.com technical-spec-sheet.pdf | 3 Dez 2015 | |
 | Laptop | Dell | 2016 XPS 13 |  [see Issue 12](https://github.com/ayeks/SGX-hardware/issues/12) [see Issue 16](https://github.com/ayeks/SGX-hardware/issues/16) | 20 January 2017 | 2016 XPS 13 9560, 9360 |
 | Laptop | Dell | Alienware 13 R3  | mail | 30 January 2017 | Alienware 13 R3 (Kaby Lake i7-7700HQ) |
-| Laptop | Dell | Alienware 15 R3  | [Riebart](https://www.github.com/Riebart) | 05 September 2017 | Alienware 15 R3 (Skylake i7-6820HK) |
+| Laptop | Dell | Alienware 15 R3  | [see PR 30](https://github.com/ayeks/SGX-hardware/pull/30) | 05 September 2017 | Alienware 15 R3 (Skylake i7-6820HK) |
 | Laptop | Dell | Inspiron 5378, 5578, 7378, 7579, 7779 | [see Issue 18](https://github.com/ayeks/SGX-hardware/issues/18) | 18 April 2017 | Inspiron 15 5578 2-in-1 with Intel Kabylake 7500U |
 | Mini PC | Intel NUC Kit | NUC6i3SYK, NUC6i7KYK, NUC6i5SYK, NUC6i3SYH, NUC6i5SYH, NUC7i3BNH | [SGX software for NUC](https://downloadcenter.intel.com/download/26137?v=t) | 30 June 2016 | [NUC7i3BNH](https://github.com/ayeks/SGX-hardware/issues/22) |
 | Compute Stick | Intel Compute Stick | [STK2m364CC](https://ark.intel.com/products/91981/Intel-Compute-Stick-STK2m364CC) | [see Issue 31](https://github.com/ayeks/SGX-hardware/issues/31) | 12 Nov 2017 | STK2m364CC |
@@ -102,6 +103,8 @@ You can check if SGX is enabled on you system with the test_sgx.c. Just compile 
 $ gcc test_sgx.c -o test_sgx
 $ ./test_sgx
 ```
+
+See [Issue 17](https://github.com/ayeks/SGX-hardware/issues/17) for the execution in Visual Studio.
 
 ### SGX is available for your CPU but not enabled in BIOS
 ```
@@ -145,6 +148,8 @@ CPUID Leaf 12H, Sub-Leaf 4 of Intel SGX Capabilities (EAX=12H,ECX=4)
 eax: 0 ebx: 0 ecx: 0 edx: 0
 ...
 ```
+
+That means that you are now able to call the special SGX calls of your CPU.  However you will always need the official Intel SGX Drivers including their Launch Enclave to initiate your own enclaves. It is also possible that the test_sgx results in a positive result but the access to the SGX functions is somehow blocked. That is the case on AWS (see [issue 37](https://github.com/ayeks/SGX-hardware/issues/37)). If you see such behavior please open an issue and describe your situation. Thanks!
 
 ## Contribution
 
