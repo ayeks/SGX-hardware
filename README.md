@@ -100,8 +100,8 @@ The last hope for SGX in the cloud is the [IBM Bluemix Cloud Data Guard](https:/
 
 You can check if SGX is enabled on you system with the test_sgx.c. Just compile and run it:
 ```
-$ gcc test_sgx.c -o test_sgx
-$ ./test_sgx
+$ gcc test-sgx.c -o test-sgx
+$ ./test-sgx
 ```
 
 See [Issue 17](https://github.com/ayeks/SGX-hardware/issues/17) for the execution in Visual Studio.
