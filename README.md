@@ -129,6 +129,7 @@ $ ./test-sgx
 See [Issue 17](https://github.com/ayeks/SGX-hardware/issues/17) for the execution in Visual Studio.
 
 ### SGX is available for your CPU but not enabled in BIOS
+eg. on [2017 MacBook Pro's](https://github.com/ayeks/SGX-hardware/issues/26)
 ```
 ...
 Extended feature bits (EAX=07H, ECX=0H)
@@ -144,7 +145,9 @@ MaxEnclaveSize_64: 0
 ...
 ```
 
-### Your CPU is SGX capable but SGX functions are deactivated (eg. on [public clouds](https://github.com/ayeks/SGX-hardware/issues/37))
+### CPU SGX functions are deactivated or SGX is not supported
+Eg. on [public clouds](https://github.com/ayeks/SGX-hardware/issues/37) or [2015 MacBooks Pro's](https://github.com/ayeks/SGX-hardware/issues/25))
+
 ```
 ...
 Extended feature bits (EAX=07H, ECX=0H)
