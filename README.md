@@ -41,6 +41,19 @@ Be cautious with the following 2015 i7,i5 and E3 CPUs. According to the [Product
 
 As per the last comment on this [thread](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/737881), Intel Xeon E3 processors as of today (Jul. 2017) do not have an Intel Management Engine. Therefore, the kernel will never be able to expose the device `/dev/mei0`.  What this means in terms of SGX is that [Trusted Platform Service Functions](https://software.intel.com/en-us/node/709050) (monotonic counters, trusted time) are not available on Xeon E3.
 
+The following sgx_tservice functions are not available:
+```
+    sgx_create_pse_session
+    sgx_close_pse_session
+    sgx_get_ps_sec_prop
+    sgx_get_trusted_time
+    sgx_create_monotonic_counter_ex
+    sgx_create_monotonic_counter
+    sgx_destroy_monotonic_counter
+    sgx_increment_monotonic_counter
+    sgx_read_monotonic_counter
+```
+
 ### Desktop Mainboards
 
 | Vendor | Model | Driver Type | Version | Source | Release Date |
@@ -95,6 +108,15 @@ Today there is no cloud vendor that allows the execution of Intel SGX enclaves i
 
 The last hope for SGX in the cloud is the [IBM Bluemix Cloud Data Guard](https://www.ibm.com/blogs/bluemix/2017/12/data-use-protection-ibm-cloud-ibm-intel-fortanix-partner-keep-enterprises-secure-core/). Feel free to sign up [here](https://www.ibmdataguard.com/request.html) and please report back to us if you are able to execute SGX in their environment.
 
+| Vendor | Servicename | CPU SGX capable | SGX available | Date | Source |
+|--------|-------------|-----------------|-----------------------|------|-----------|
+| AWS | EC2 C5 instances | YES, SGX1 and SGX2 | NO, SGX not activated in BIOS | April 2018 | [Issue 37](https://github.com/ayeks/SGX-hardware/issues/37) |
+| Azure | [Azure Confidential Computing](https://azure.microsoft.com/en-us/blog/introducing-azure-confidential-computing/) | - | NO, program has been disabled | Feb. 2018 | [Intel Forum](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/755636) |
+| Google | N1 instances | YES, SGX1 and SGX2 | NO, SGX not activated in BIOS | April 2018 | [Issue 38](https://github.com/ayeks/SGX-hardware/issues/37) |
+| IBM | [IBM Cloud Data Guard](https://www.ibmdataguard.com/) | YES, SGX1 | YES | May 2018 | [Issue 43](https://github.com/ayeks/SGX-hardware/issues/43) |
+
+
+
 
 ## Test SGX
 
@@ -121,6 +143,23 @@ MaxEnclaveSize_Not64: 0
 MaxEnclaveSize_64: 0
 ...
 ```
+
+### Your CPU is SGX capable but SGX functions are deactivated (eg. on [public clouds](https://github.com/ayeks/SGX-hardware/issues/37))
+```
+...
+Extended feature bits (EAX=07H, ECX=0H)
+eax: 0 ebx: d19f4fbb ecx: 8 edx: 0
+sgx available: 0
+
+CPUID Leaf 12H, Sub-Leaf 0 of Intel SGX Capabilities (EAX=12H,ECX=0)
+eax: 2ff ebx: a80 ecx: a88 edx: 0
+sgx 1 supported: 1
+sgx 2 supported: 1
+MaxEnclaveSize_Not64: 0
+MaxEnclaveSize_64: 0
+...
+```
+
 ### SGX is available for your CPU and enabled in BIOS
 ```
 ...
@@ -134,22 +173,10 @@ sgx 1 supported: 1
 sgx 2 supported: 0
 MaxEnclaveSize_Not64: 1f
 MaxEnclaveSize_64: 24
-
-CPUID Leaf 12H, Sub-Leaf 1 of Intel SGX Capabilities (EAX=12H,ECX=1)
-eax: 36 ebx: 0 ecx: 1f edx: 0
-
-CPUID Leaf 12H, Sub-Leaf 2 of Intel SGX Capabilities (EAX=12H,ECX=2)
-eax: 70200001 ebx: 0 ecx: 2d80001 edx: 0
-
-CPUID Leaf 12H, Sub-Leaf 3 of Intel SGX Capabilities (EAX=12H,ECX=3)
-eax: 0 ebx: 0 ecx: 0 edx: 0
-
-CPUID Leaf 12H, Sub-Leaf 4 of Intel SGX Capabilities (EAX=12H,ECX=4)
-eax: 0 ebx: 0 ecx: 0 edx: 0
 ...
 ```
 
-That means that you are now able to call the special SGX calls of your CPU.  However you will always need the official Intel SGX Drivers including their Launch Enclave to initiate your own enclaves. It is also possible that the test_sgx results in a positive result but the access to the SGX functions is somehow blocked. That is the case on AWS (see [issue 37](https://github.com/ayeks/SGX-hardware/issues/37)). If you see such behavior please open an issue and describe your situation. Thanks!
+That means that you are now able to call the special SGX calls of your CPU.  However you will always need the official Intel SGX Drivers including their Launch Enclave to initiate your own enclaves. To be able to execute SGX functions you need both `sgx available: 1` and `sgx [1|2] supported: 1`. Another hint that SGX functions are working is the output of an enclave size eg. `MaxEnclaveSize_64`. 
 
 ## Contribution
 
