@@ -108,9 +108,9 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 
 ## Cloud Vendors
 
-Today there is no cloud vendor that allows the execution of Intel SGX enclaves in their environment. Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https://github.com/ayeks/SGX-hardware/issues/38) have CPUs that capable of SGX but the execution is disabled. We discussed that into detail [here](https://github.com/ayeks/SGX-hardware/issues/37). According to a [Intel forum post](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/755636) Azure discontinued their SGX program also.
+The single cloud provider that seems to allow the execution of SGX is IBM. You can use [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) and the service [IBM Bluemix Cloud Data Guard](https://www.ibm.com/blogs/bluemix/2017/12/data-use-protection-ibm-cloud-ibm-intel-fortanix-partner-keep-enterprises-secure-core/) for executing trusted enclaves. If you were able to experiment with SGX on IBM, please let us know!
 
-The last hope for SGX in the cloud is the [IBM Bluemix Cloud Data Guard](https://www.ibm.com/blogs/bluemix/2017/12/data-use-protection-ibm-cloud-ibm-intel-fortanix-partner-keep-enterprises-secure-core/). Feel free to sign up [here](https://www.ibmdataguard.com/request.html) and please report back to us if you are able to execute SGX in their environment.
+Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https://github.com/ayeks/SGX-hardware/issues/38) have CPUs that capable of SGX but the execution is disabled. We discussed that into detail [here](https://github.com/ayeks/SGX-hardware/issues/37). According to a [Intel forum post](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/755636) Azure discontinued their SGX program also.
 
 | Vendor | Servicename | CPU SGX capable | SGX available | Date | Source |
 |--------|-------------|-----------------|-----------------------|------|-----------|
@@ -120,8 +120,6 @@ The last hope for SGX in the cloud is the [IBM Bluemix Cloud Data Guard](https:/
 | IBM | [IBM Cloud Data Guard](https://www.ibmdataguard.com/) | YES, SGX1 | YES | May 2018 | [Issue 43](https://github.com/ayeks/SGX-hardware/issues/43) |
 | IBM | [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) | YES, unknown version | YES | May 2018 | [Issue 46](https://github.com/ayeks/SGX-hardware/issues/46) |
 | packet.net | [Trusted Compute](https://www.packet.net/bare-metal/services/trusted-computing/) | YES, SGX1 | NO, SGX not activated in BIOS | April 2018 | [Issue 44](https://github.com/ayeks/SGX-hardware/issues/44) |
-
-
 
 
 ## Test SGX
