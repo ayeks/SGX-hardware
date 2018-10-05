@@ -68,6 +68,7 @@ The following sgx_tservice functions are not available:
 | MSI | H170 Gaming M3 Board | BIOS | - | [see Issue 21](https://github.com/ayeks/SGX-hardware/issues/21) | 4 May 2017 |
 | Gigabyte | GA-Z270MX-Gaming 5 | BIOS | F3 | [see Issue 20](https://github.com/ayeks/SGX-hardware/issues/20) | 4 May 2017 |
 | Gigabyte | Z370 AORUS Ultra Gaming (rev. 1.0) | BIOS | - | [see Issue 33](https://github.com/ayeks/SGX-hardware/issues/20) | 30 Nov 2017 |
+| Gigabyte | Z370 AORUS Ultra Gaming (rev. 2.0) | BIOS | F4 | [see Issue 53](https://github.com/ayeks/SGX-hardware/issues/53) | 1 Oct 2018 |
 
 
 ## Notebooks 
