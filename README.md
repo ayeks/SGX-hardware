@@ -85,7 +85,7 @@ The following devices should support SGX according to available drivers. Check t
 | HP | HP Spectre x2 Detachable Ultrabook PC | Chipset | 1.0.26805. 1389 REV: A PASS: 9 | Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72501-73000/sp72989.html) | 02 Oct 2015 |
 
 
-## Hardware with out of the box SGX support
+## Hardware with out-of-the-box SGX support
 
 Newer devices have out of the box SGX BIOS support. Sometimes it is mentioned in their documentation. If you have a newer device and see SGX in the BIOS, message me so I can add the device to the list.
 If you need a SGX capable server have a look at the [Intel SGX server block](https://www-ssl.intel.com/content/www/us/en/data-center-blocks/business/sgx-server-blocks.html). It consists of a complete server with Xeon processor, ram, mainboard and drives. Driver issues should't be a problem.
@@ -98,8 +98,9 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 | Desktop PC | Dell  | Optiplex 5040 | dell.com technical-spec-sheet.pdf | 3 Dez 2015 | |
 | Laptop | Dell | 2016 XPS 13 |  [see Issue 12](https://github.com/ayeks/SGX-hardware/issues/12) [see Issue 16](https://github.com/ayeks/SGX-hardware/issues/16) | 20 January 2017 | 2016 XPS 13 9560, 9360 |
 | Laptop | Dell | Alienware 13 R3  | mail | 30 January 2017 | Alienware 13 R3 (Kaby Lake i7-7700HQ) |
-| Laptop | Dell | Alienware 15 R3  | [see PR 30](https://github.com/ayeks/SGX-hardware/pull/30) | 05 September 2017 | Alienware 15 R3 (Skylake i7-6820HK) |
+| Laptop | Dell | Alienware 15 R3  | [see PR 30](https://github.com/ayeks/SGX-hardware/pull/30) | 05 Sep 2017 | Alienware 15 R3 (Skylake i7-6820HK) |
 | Laptop | Dell | Inspiron 5378, 5578, 7378, 7579, 7779 | [see Issue 18](https://github.com/ayeks/SGX-hardware/issues/18) | 18 April 2017 | Inspiron 15 5578 2-in-1 with Intel Kabylake 7500U |
+| Laptop | Dell | Latitude 7280 | [see Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 | Dell Latitude 7280 |
 | Mini PC | Intel NUC Kit | NUC6i3SYK, NUC6i7KYK, NUC6i5SYK, NUC6i3SYH, NUC6i5SYH, NUC7i3BNH | [SGX software for NUC](https://downloadcenter.intel.com/download/26137?v=t) | 30 June 2016 | [NUC7i3BNH](https://github.com/ayeks/SGX-hardware/issues/22) |
 | Compute Stick | Intel Compute Stick | [STK2m364CC](https://ark.intel.com/products/91981/Intel-Compute-Stick-STK2m364CC) | [see Issue 31](https://github.com/ayeks/SGX-hardware/issues/31) | 12 Nov 2017 | STK2m364CC |
 | Laptop | HP  | Pavilion 15-ab251ur  | [see Issue 14](https://github.com/ayeks/SGX-hardware/issues/14) | 18 February 2017 | HP Pavilion 15-ab251ur, CPU i7-6500U |
@@ -124,6 +125,14 @@ Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https:/
 | IBM | [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) | YES, unknown version | YES | May 2018 | [Issue 46](https://github.com/ayeks/SGX-hardware/issues/46) |
 | packet.net | [Trusted Compute](https://www.packet.net/bare-metal/services/trusted-computing/) | YES, SGX1 | NO, SGX not activated in BIOS | April 2018 | [Issue 44](https://github.com/ayeks/SGX-hardware/issues/44) |
 
+
+## Device with a SGX CPU, but no BIOS support:
+
+The following devices have a SGX capable CPU included, but don't have the required BIOS settings. So you cannot execute SGX instructions on those devices. **Do NOT buy for SGX development:**
+
+| Device | Vendor | Model |  Source | Date |
+|--------|--------|-------|---------|------|
+| Laptop | Microsoft | Surface Book 2 | [Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 |
 
 ## Test SGX
 
