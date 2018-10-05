@@ -126,12 +126,13 @@ Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https:/
 | packet.net | [Trusted Compute Feature](https://www.packet.com/cloud/all-features/) | YES, SGX1 | NO, SGX not activated in BIOS | April 2018 | [Issue 44](https://github.com/ayeks/SGX-hardware/issues/44) |
 | Alibaba Cloud | [ECS Bare Metal Instance](https://www.alibabacloud.com/product/ebm) | YES, unknown version | YES | Sept 2018 | [Docs](https://www.alibabacloud.com/help/doc-detail/60576.html), [Issue 50](https://github.com/ayeks/SGX-hardware/issues/50) |
 
-## Device with a SGX CPU, but no BIOS support:
+## Device with a SGX CPU, but no BIOS support
 
 The following devices have a SGX capable CPU included, but don't have the required BIOS settings. So you cannot execute SGX instructions on those devices. **Do NOT buy for SGX development:**
 
 | Device | Vendor | Model |  Source | Date |
 |--------|--------|-------|---------|------|
+| Laptop | Apple  | MacBook Pro (15-inch, 2017) | [Issue 26](https://github.com/ayeks/SGX-hardware/issues/26) | 24 Jul 2017 |
 | Laptop | Microsoft | Surface Book 2 | [Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 |
 
 ## Test SGX
