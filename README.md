@@ -112,11 +112,11 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 
 ## Cloud Vendors
 
-The single cloud provider that seems to allow the execution of SGX is IBM. You can use [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) and the service [IBM Bluemix Cloud Data Guard](https://www.ibm.com/blogs/bluemix/2017/12/data-use-protection-ibm-cloud-ibm-intel-fortanix-partner-keep-enterprises-secure-core/) for executing trusted enclaves. If you were able to experiment with SGX on IBM, please let us know!
+IBM and Alibaba have Bare Metal Instances available that allow the execution of SGX instructions to create secure enclaves in the cloud. See [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) and [Alibaba ECS Bare Metal Instance](https://www.alibabacloud.com/product/ebm). If you were able to experiment with SGX in the Cloud, please let us know!
 
 Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https://github.com/ayeks/SGX-hardware/issues/38) have CPUs that capable of SGX but the execution is disabled. We discussed that into detail [here](https://github.com/ayeks/SGX-hardware/issues/37). According to a [Intel forum post](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/755636) Azure discontinued their SGX program also.
 
-| Vendor | Servicename | CPU SGX capable | SGX available | Date | Source |
+| Vendor | Servicename | CPU SGX capable | SGX activated in BIOS | Date | Source |
 |--------|-------------|-----------------|-----------------------|------|-----------|
 | AWS | EC2 C5 instances | YES, SGX1 and SGX2 | NO, SGX not activated in BIOS | April 2018 | [Issue 37](https://github.com/ayeks/SGX-hardware/issues/37) |
 | Azure | [Azure Confidential Computing](https://azure.microsoft.com/en-us/blog/introducing-azure-confidential-computing/) | - | NO, program has been disabled | Feb. 2018 | [Intel Forum](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/755636) |
@@ -124,7 +124,7 @@ Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https:/
 | IBM | [IBM Cloud Data Guard](https://www.ibmdataguard.com/) | YES, SGX1 | YES | May 2018 | [Issue 43](https://github.com/ayeks/SGX-hardware/issues/43) |
 | IBM | [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) | YES, unknown version | YES | May 2018 | [Issue 46](https://github.com/ayeks/SGX-hardware/issues/46) |
 | packet.net | [Trusted Compute Feature](https://www.packet.com/cloud/all-features/) | YES, SGX1 | NO, SGX not activated in BIOS | April 2018 | [Issue 44](https://github.com/ayeks/SGX-hardware/issues/44) |
-
+| Alibaba Cloud | [ECS Bare Metal Instance](https://www.alibabacloud.com/product/ebm) | YES, unknown version | YES | Sept 2018 | [Docs](https://www.alibabacloud.com/help/doc-detail/60576.html), [Issue 50](https://github.com/ayeks/SGX-hardware/issues/50) |
 
 ## Device with a SGX CPU, but no BIOS support:
 
