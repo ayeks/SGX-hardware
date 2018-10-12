@@ -62,13 +62,14 @@ The following sgx_tservice functions are not available:
 
 | Vendor | Model | Driver Type | Version | Source | Release Date |
 |--------|-------|-------------|---------|--------|--------------|
-| ASRock | E3V5 WS | BIOS | 7.10 | [see Issue 13](https://github.com/ayeks/SGX-hardware/issues/13) | 03 February 2017 |
+| ASRock | E3V5 WS | BIOS | 7.10 | [see Issue 13](https://github.com/ayeks/SGX-hardware/issues/13) | 03 Feb 2017 |
 | ASRock | Z270 Extreme 4 | - | - | [see Issue 15](https://github.com/ayeks/SGX-hardware/issues/15) | 2017 |
 | ASRock | Z370 Gaming ITX | BIOS | 1.4 | [see Issue 36](https://github.com/ayeks/SGX-hardware/issues/36) | 2017 |
 | MSI | H170 Gaming M3 Board | BIOS | - | [see Issue 21](https://github.com/ayeks/SGX-hardware/issues/21) | 4 May 2017 |
 | Gigabyte | GA-Z270MX-Gaming 5 | BIOS | F3 | [see Issue 20](https://github.com/ayeks/SGX-hardware/issues/20) | 4 May 2017 |
 | Gigabyte | Z370 AORUS Ultra Gaming (rev. 1.0) | BIOS | - | [see Issue 33](https://github.com/ayeks/SGX-hardware/issues/20) | 30 Nov 2017 |
 | Gigabyte | Z370 AORUS Ultra Gaming (rev. 2.0) | BIOS | F4 | [see Issue 53](https://github.com/ayeks/SGX-hardware/issues/53) | 1 Oct 2018 |
+| MAXSUN | MS-EARTHSHAKER H310M-VH | - | - | [see Issue 54](https://github.com/ayeks/SGX-hardware/issues/54) | 10 Oct 2018 |
 
 
 ## Notebooks 
