@@ -136,6 +136,10 @@ The following devices have a SGX capable CPU included, but don't have the requir
 | Laptop | Apple  | MacBook Pro (15-inch, 2018) | [Issue 57](https://github.com/ayeks/SGX-hardware/issues/57) | 15 Feb 2019 |
 | Laptop | Microsoft | Surface Book 2 | [Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 |
 
+## Hardware with SGX2 support
+
+It seems that Intel [Gemini Lake](https://ark.intel.com/content/www/us/en/ark/products/codename/83915/gemini-lake.html) processors support SGX2. We will list the confirmed devices here as soon as the get reported. See [issue 48](https://github.com/ayeks/SGX-hardware/issues/48) for more information.
+
 ## Test SGX
 
 You can check if SGX is enabled on you system with the test_sgx.c. Just compile and run it:
