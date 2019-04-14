@@ -111,6 +111,14 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 | Server | Supermicro | system [5019-MR](http://www.supermicro.com/products/system/1U/5019/SYS-5019S-MR.cfm), mainboard [X11SSH-F BIOS 1.0b or 2.0b](http://www.supermicro.com/products/motherboard/Xeon/C236_C232/X11SSH-F.cfm) | [Pressrelease](http://www.supermicro.com/newsroom/pressreleases/2015/press150901_Embedded_IoT_Skylake.cfm) [see Issue 6](https://github.com/ayeks/SGX-hardware/issues/6) | 19 May 2016| [platform services only on specific ME versions](https://github.com/ayeks/SGX-hardware/issues/24) |
 | Server | Dell | PowerEdge R230, BIOS [2.4.3](https://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=WDY2P) or later | mail | 23 Feb 2018 | Dell R230, CPU Xeon 1270 v6, BIOS v2.4.3 and BIOS v2.5.0 |
 
+## Hardware with SGX2 support
+
+It seems that Intel [Gemini Lake](https://ark.intel.com/content/www/us/en/ark/products/codename/83915/gemini-lake.html) processors support SGX2. We will list the confirmed devices here as soon as they get reported.
+
+| Device | Vendor | Model |  Source | Date | Confirmed |
+|--------|--------|-------|---------|------|-----------|
+| Mini PC | Intel NUC Kit | NUC7CJYH, NUC7PJYH | [Issue 48](https://github.com/ayeks/SGX-hardware/issues/48) | 4 Apr 2019 | [NUC7CJYH](https://github.com/ayeks/SGX-hardware/issues/48) |
+
 ## Cloud Vendors
 
 Packet.net, IBM and Alibaba have Bare Metal Instances available that allow the execution of SGX instructions to create secure enclaves in the cloud. See [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) and [Alibaba ECS Bare Metal Instance](https://www.alibabacloud.com/product/ebm). If you were able to experiment with SGX in the Cloud, please let us know!
@@ -136,10 +144,6 @@ The following devices have a SGX capable CPU included, but don't have the requir
 | Laptop | Apple  | MacBook Pro (15-inch, 2018) | [Issue 57](https://github.com/ayeks/SGX-hardware/issues/57) | 15 Feb 2019 |
 | Laptop | Apple  | MacBook Pro (13-inch, 2018) | [Issue 58](https://github.com/ayeks/SGX-hardware/issues/58) | 25 Feb 2019 |
 | Laptop | Microsoft | Surface Book 2 | [Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 |
-
-## Hardware with SGX2 support
-
-It seems that Intel [Gemini Lake](https://ark.intel.com/content/www/us/en/ark/products/codename/83915/gemini-lake.html) processors support SGX2. We will list the confirmed devices here as soon as the get reported. See [issue 48](https://github.com/ayeks/SGX-hardware/issues/48) for more information.
 
 ## Test SGX
 
