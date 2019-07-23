@@ -59,6 +59,9 @@ int main(int argc, char **argv)
   //CPUID.(EAX=07H, ECX=0H):EBX.SGX = 1,
   printf("sgx available: %d\n", (ebx >> 2) & 0x1);
 
+  //CPUID.(EAX=07H, ECX=0H):ECX.SGX_LC = 1
+  printf("sgx launch control: %d\n", (ecx >> 30) & 0x01);
+
   /* SGX has to be enabled in MSR.IA32_Feature_Control.SGX_Enable
 	check with msr-tools: rdmsr -ax 0x3a
 	SGX_Enable is Bit 18

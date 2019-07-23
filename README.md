@@ -62,13 +62,15 @@ The following sgx_tservice functions are not available:
 
 | Vendor | Model | Driver Type | Version | Source | Release Date |
 |--------|-------|-------------|---------|--------|--------------|
-| ASRock | E3V5 WS | BIOS | 7.10 | [see Issue 13](https://github.com/ayeks/SGX-hardware/issues/13) | 03 February 2017 |
+| ASRock | E3V5 WS | BIOS | 7.10 | [see Issue 13](https://github.com/ayeks/SGX-hardware/issues/13) | 03 Feb 2017 |
 | ASRock | Z270 Extreme 4 | - | - | [see Issue 15](https://github.com/ayeks/SGX-hardware/issues/15) | 2017 |
 | ASRock | Z370 Gaming ITX | BIOS | 1.4 | [see Issue 36](https://github.com/ayeks/SGX-hardware/issues/36) | 2017 |
 | MSI | H170 Gaming M3 Board | BIOS | - | [see Issue 21](https://github.com/ayeks/SGX-hardware/issues/21) | 4 May 2017 |
 | Gigabyte | GA-Z270MX-Gaming 5 | BIOS | F3 | [see Issue 20](https://github.com/ayeks/SGX-hardware/issues/20) | 4 May 2017 |
 | Gigabyte | Z370 AORUS Ultra Gaming (rev. 1.0) | BIOS | - | [see Issue 33](https://github.com/ayeks/SGX-hardware/issues/20) | 30 Nov 2017 |
-
+| Gigabyte | Z370 AORUS Ultra Gaming (rev. 2.0) | BIOS | F4 | [see Issue 53](https://github.com/ayeks/SGX-hardware/issues/53) | 1 Oct 2018 |
+| MAXSUN | MS-EARTHSHAKER H310M-VH | - | - | [see Issue 54 about the outdated BIOS!](https://github.com/ayeks/SGX-hardware/issues/54) | 10 Oct 2018 |
+| MSI | Z370-A PRO | Bios update required | - | [see Issue 56](https://github.com/ayeks/SGX-hardware/issues/56) | 28 Dec 2018 |
 
 ## Notebooks 
 
@@ -84,7 +86,7 @@ The following devices should support SGX according to available drivers. Check t
 | HP | HP Spectre x2 Detachable Ultrabook PC | Chipset | 1.0.26805. 1389 REV: A PASS: 9 | Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72501-73000/sp72989.html) | 02 Oct 2015 |
 
 
-## Hardware with out of the box SGX support
+## Hardware with out-of-the-box SGX support
 
 Newer devices have out of the box SGX BIOS support. Sometimes it is mentioned in their documentation. If you have a newer device and see SGX in the BIOS, message me so I can add the device to the list.
 If you need a SGX capable server have a look at the [Intel SGX server block](https://www-ssl.intel.com/content/www/us/en/data-center-blocks/business/sgx-server-blocks.html). It consists of a complete server with Xeon processor, ram, mainboard and drives. Driver issues should't be a problem.
@@ -97,9 +99,10 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 | Desktop PC | Dell  | Optiplex 5040 | dell.com technical-spec-sheet.pdf | 3 Dez 2015 | |
 | Laptop | Dell | 2016 XPS 13 |  [see Issue 12](https://github.com/ayeks/SGX-hardware/issues/12) [see Issue 16](https://github.com/ayeks/SGX-hardware/issues/16) | 20 January 2017 | 2016 XPS 13 9560, 9360 |
 | Laptop | Dell | Alienware 13 R3  | mail | 30 January 2017 | Alienware 13 R3 (Kaby Lake i7-7700HQ) |
-| Laptop | Dell | Alienware 15 R3  | [see PR 30](https://github.com/ayeks/SGX-hardware/pull/30) | 05 September 2017 | Alienware 15 R3 (Skylake i7-6820HK) |
+| Laptop | Dell | Alienware 15 R3  | [see PR 30](https://github.com/ayeks/SGX-hardware/pull/30) | 05 Sep 2017 | Alienware 15 R3 (Skylake i7-6820HK) |
 | Laptop | Dell | Inspiron 5378, 5578, 7378, 7579, 7779 | [see Issue 18](https://github.com/ayeks/SGX-hardware/issues/18) | 18 April 2017 | Inspiron 15 5578 2-in-1 with Intel Kabylake 7500U |
-| Mini PC | Intel NUC Kit | NUC6i3SYK, NUC6i7KYK, NUC6i5SYK, NUC6i3SYH, NUC6i5SYH, NUC7i3BNH | [SGX software for NUC](https://downloadcenter.intel.com/download/26137?v=t) | 30 June 2016 | [NUC7i3BNH](https://github.com/ayeks/SGX-hardware/issues/22) |
+| Laptop | Dell | Latitude 7280 | [see Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 | Dell Latitude 7280 |
+| Mini PC | Intel NUC Kit | NUC6i3SYK, NUC6i7KYK, NUC6i5SYK, NUC6i3SYH, NUC6i5SYH, NUC7i3BNH | SGX software for NUC | 30 June 2016 | [NUC7i3BNH](https://github.com/ayeks/SGX-hardware/issues/22) |
 | Compute Stick | Intel Compute Stick | [STK2m364CC](https://ark.intel.com/products/91981/Intel-Compute-Stick-STK2m364CC) | [see Issue 31](https://github.com/ayeks/SGX-hardware/issues/31) | 12 Nov 2017 | STK2m364CC |
 | Laptop | HP  | Pavilion 15-ab251ur  | [see Issue 14](https://github.com/ayeks/SGX-hardware/issues/14) | 18 February 2017 | HP Pavilion 15-ab251ur, CPU i7-6500U |
 | Laptop | ASUS | X456UA | [see Issue 18](https://github.com/ayeks/SGX-hardware/issues/18) | 18 April 2017 |  |
@@ -108,21 +111,39 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 | Server | Supermicro | system [5019-MR](http://www.supermicro.com/products/system/1U/5019/SYS-5019S-MR.cfm), mainboard [X11SSH-F BIOS 1.0b or 2.0b](http://www.supermicro.com/products/motherboard/Xeon/C236_C232/X11SSH-F.cfm) | [Pressrelease](http://www.supermicro.com/newsroom/pressreleases/2015/press150901_Embedded_IoT_Skylake.cfm) [see Issue 6](https://github.com/ayeks/SGX-hardware/issues/6) | 19 May 2016| [platform services only on specific ME versions](https://github.com/ayeks/SGX-hardware/issues/24) |
 | Server | Dell | PowerEdge R230, BIOS [2.4.3](https://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=WDY2P) or later | mail | 23 Feb 2018 | Dell R230, CPU Xeon 1270 v6, BIOS v2.4.3 and BIOS v2.5.0 |
 
+## Hardware with SGX2 support
+
+It seems that Intel [Gemini Lake](https://ark.intel.com/content/www/us/en/ark/products/codename/83915/gemini-lake.html) processors support SGX2. We will list the confirmed devices here as soon as they get reported.
+
+| Device | Vendor | Model |  Source | Date | Confirmed |
+|--------|--------|-------|---------|------|-----------|
+| Mini PC | Intel NUC Kit | NUC7CJYH, NUC7PJYH | [Issue 48](https://github.com/ayeks/SGX-hardware/issues/48) | 4 Apr 2019 | [NUC7CJYH](https://github.com/ayeks/SGX-hardware/issues/48) |
+
 ## Cloud Vendors
 
-The single cloud provider that seems to allow the execution of SGX is IBM. You can use [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) and the service [IBM Bluemix Cloud Data Guard](https://www.ibm.com/blogs/bluemix/2017/12/data-use-protection-ibm-cloud-ibm-intel-fortanix-partner-keep-enterprises-secure-core/) for executing trusted enclaves. If you were able to experiment with SGX on IBM, please let us know!
+Packet.net, IBM and Alibaba have Bare Metal Instances available that allow the execution of SGX instructions to create secure enclaves in the cloud. See [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) and [Alibaba ECS Bare Metal Instance](https://www.alibabacloud.com/product/ebm). If you were able to experiment with SGX in the Cloud, please let us know!
 
-Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https://github.com/ayeks/SGX-hardware/issues/38) have CPUs that capable of SGX but the execution is disabled. We discussed that into detail [here](https://github.com/ayeks/SGX-hardware/issues/37). According to a [Intel forum post](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/755636) Azure discontinued their SGX program also.
+Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https://github.com/ayeks/SGX-hardware/issues/38) have CPUs that capable of SGX but the execution is disabled. We discussed that into detail [here](https://github.com/ayeks/SGX-hardware/issues/37). According to a [Intel forum post](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/755636).
 
-| Vendor | Servicename | CPU SGX capable | SGX available | Date | Source |
+| Vendor | Servicename | CPU SGX capable | SGX activated in BIOS | Date | Source |
 |--------|-------------|-----------------|-----------------------|------|-----------|
 | AWS | EC2 C5 instances | YES, SGX1 and SGX2 | NO, SGX not activated in BIOS | April 2018 | [Issue 37](https://github.com/ayeks/SGX-hardware/issues/37) |
-| Azure | [Azure Confidential Computing](https://azure.microsoft.com/en-us/blog/introducing-azure-confidential-computing/) | - | NO, program has been disabled | Feb. 2018 | [Intel Forum](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/755636) |
+| Azure | [Azure Confidential Computing Public Preview](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) | YES, SGX1 | YES, SGX1 | Oct. 2018 | [Blog](https://azure.microsoft.com/en-us/blog/protect-data-in-use-with-the-public-preview-of-azure-confidential-computing/) |
 | Google | N1 instances | YES, SGX1 and SGX2 | NO, SGX not activated in BIOS | April 2018 | [Issue 38](https://github.com/ayeks/SGX-hardware/issues/37) |
-| IBM | [IBM Cloud Data Guard](https://www.ibmdataguard.com/) | YES, SGX1 | YES | May 2018 | [Issue 43](https://github.com/ayeks/SGX-hardware/issues/43) |
 | IBM | [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) | YES, unknown version | YES | May 2018 | [Issue 46](https://github.com/ayeks/SGX-hardware/issues/46) |
-| packet.net | [Trusted Compute](https://www.packet.net/bare-metal/services/trusted-computing/) | YES, SGX1 | NO, SGX not activated in BIOS | April 2018 | [Issue 44](https://github.com/ayeks/SGX-hardware/issues/44) |
+| packet.net | [Reserved Hardware](https://www.packet.com/cloud/all-features/) | YES, SGX1 | YES | April 2018 | [Issue 44](https://github.com/ayeks/SGX-hardware/issues/44) |
+| Alibaba Cloud | [ECS Bare Metal Instance](https://www.alibabacloud.com/product/ebm) | YES, unknown version | YES | Sept 2018 | [Docs](https://www.alibabacloud.com/help/doc-detail/60576.html), [Issue 50](https://github.com/ayeks/SGX-hardware/issues/50) |
 
+## Device with a SGX CPU, but no BIOS support
+
+The following devices have a SGX capable CPU included, but don't have the required BIOS settings. So you cannot execute SGX instructions on those devices. **Do NOT buy for SGX development:**
+
+| Device | Vendor | Model |  Source | Date |
+|--------|--------|-------|---------|------|
+| Laptop | Apple  | MacBook Pro (15-inch, 2017) | [Issue 26](https://github.com/ayeks/SGX-hardware/issues/26) | 24 Jul 2017 |
+| Laptop | Apple  | MacBook Pro (15-inch, 2018) | [Issue 57](https://github.com/ayeks/SGX-hardware/issues/57) | 15 Feb 2019 |
+| Laptop | Apple  | MacBook Pro (13-inch, 2018) | [Issue 58](https://github.com/ayeks/SGX-hardware/issues/58) | 25 Feb 2019 |
+| Laptop | Microsoft | Surface Book 2 | [Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 |
 
 ## Test SGX
 
