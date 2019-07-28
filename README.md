@@ -37,6 +37,8 @@ Be cautious with the following 2015 i7,i5 and E3 CPUs. According to the [Product
 | Intel® Xeon®   | E3-1235L v5   | SR2LM  |
 | Intel® Xeon®   | E3-1240L v5   | SR2LN  |
 
+Checkout [Intel ARK specifications](https://ark.intel.com/content/www/us/en/ark.html) for newer CPU models wit hSGX support.
+
 ### CPUs without Platform Service Enclave functionality
 
 As per the last comment on this [thread](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/737881), Intel Xeon E3 processors as of today (Jul. 2017) do not have an Intel Management Engine. Therefore, the kernel will never be able to expose the device `/dev/mei0`.  What this means in terms of SGX is that Trusted Platform Service Functions (monotonic counters, trusted time) are not available on Xeon E3.
