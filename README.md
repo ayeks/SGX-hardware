@@ -36,16 +36,6 @@ Be cautious with the following 2015 i7,i5 and E3 CPUs. According to the [Product
 | Intel® Xeon®   | E3-1245 v5    | SR2LL  |
 | Intel® Xeon®   | E3-1235L v5   | SR2LM  |
 | Intel® Xeon®   | E3-1240L v5   | SR2LN  |
-| Intel® Xeon®   | E-2186G    | SR3WR     |
-| Intel® Xeon®   | E-2176G    | SR3WS     |
-| Intel® Xeon®   | E-2174G    | SR3WN     |
-| Intel® Xeon®   | E-2146G    | SR3WT     |
-| Intel® Xeon®   | E-2144G    | SR3WM     |
-| Intel® Xeon®   | E-2136     | SR3WW     |
-| Intel® Xeon®   | E-2134     | SR3WP     |
-| Intel® Xeon®   | E-2126G    | SR3WU     |
-| Intel® Xeon®   | E-2124     | SR3WQ     |
-| Intel® Xeon®   | E-2124G    | SR3WL     |
 
 ### CPUs without Platform Service Enclave functionality
 
