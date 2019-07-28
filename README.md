@@ -146,6 +146,7 @@ The following devices have a SGX capable CPU included, but don't have the requir
 | Laptop | Apple  | MacBook Pro (15-inch, 2018) | [Issue 57](https://github.com/ayeks/SGX-hardware/issues/57) | 15 Feb 2019 |
 | Laptop | Apple  | MacBook Pro (13-inch, 2018) | [Issue 58](https://github.com/ayeks/SGX-hardware/issues/58) | 25 Feb 2019 |
 | Laptop | Microsoft | Surface Book 2 | [Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 |
+| Laptop | Razer | Blade (2016) | [Issue 60](https://github.com/ayeks/SGX-hardware/issues/60) | 6 Jul 2019 |
 
 ## Test SGX
 
