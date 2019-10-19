@@ -73,6 +73,7 @@ The following sgx_tservice functions are not available:
 | Gigabyte | Z370 AORUS Ultra Gaming (rev. 2.0) | BIOS | F4 | [see Issue 53](https://github.com/ayeks/SGX-hardware/issues/53) | 1 Oct 2018 |
 | MAXSUN | MS-EARTHSHAKER H310M-VH | - | - | [see Issue 54 about the outdated BIOS!](https://github.com/ayeks/SGX-hardware/issues/54) | 10 Oct 2018 |
 | MSI | Z370-A PRO | Bios update required | - | [see Issue 56](https://github.com/ayeks/SGX-hardware/issues/56) | 28 Dec 2018 |
+| ASRock | Z390 Pro 4 | BIOS | 4.3 | [see Issue 64](https://github.com/ayeks/SGX-hardware/issues/64) | 16 Sep 2019 |
 
 ## Notebooks 
 
