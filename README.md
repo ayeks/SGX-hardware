@@ -121,7 +121,7 @@ It seems that Intel [Gemini Lake](https://ark.intel.com/content/www/us/en/ark/pr
 
 | Device | Vendor | Model |  Source | Date | Confirmed |
 |--------|--------|-------|---------|------|-----------|
-| Mini PC | Intel NUC Kit | NUC7CJYH, NUC7PJYH | [Issue 48](https://github.com/ayeks/SGX-hardware/issues/48) | 4 Apr 2019 | [NUC7CJYH](https://github.com/ayeks/SGX-hardware/issues/48) |
+| Mini PC | Intel NUC Kit | NUC7CJYH, NUC7PJYH | [Issue 48](https://github.com/ayeks/SGX-hardware/issues/48), [Pull Request 68](https://github.com/ayeks/SGX-hardware/pull/68) | 4 Apr 2019 | [NUC7CJYH](https://github.com/ayeks/SGX-hardware/issues/48), [NUC7PJYH](https://github.com/ayeks/SGX-hardware/pull/68) |
 
 ## Cloud Vendors
 
