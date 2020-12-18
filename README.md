@@ -116,6 +116,8 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 | Server | Dell | PowerEdge R230, BIOS [2.4.3](https://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=WDY2P) or later | mail | 23 Feb 2018 | Dell R230, CPU Xeon 1270 v6, BIOS v2.4.3 and BIOS v2.5.0 |
 | Server | Dell | PowerEdge R340, BIOS 2.2.3 | [see Issue 70](https://github.com/ayeks/SGX-hardware/issues/70) | 16 May 2020 | Dell PowerEdge R340 |
 | Mini PC | Intel NUC Kit | NUC7i5BNH | [see Issue 67](https://github.com/ayeks/SGX-hardware/issues/67) | 9 Oct 2019 | NUC7i5BNH with I5-7260U |
+| Server | Dell | PowerEdge R330 | Simply Staking's Testing (only works baremetal) | Dec 2020 | Dell PowerEdge R330 |
+| Server | Dell | PowerEdge R340 | Simply Staking's Testing (works baremetal and with vSphere 7 vSGX) | Dec 2020 | Dell PowerEdge R340 (Intel Xeon E-2288G) |
 
 ## Hardware with SGX2 support
 
