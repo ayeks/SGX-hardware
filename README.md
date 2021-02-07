@@ -82,7 +82,7 @@ The following devices should support SGX according to available drivers. Check t
 | Vendor | Model | Driver Type | Version | Supported OS | Source | Release Date |
 |--------------|-------|-------------|---------|--------------|--------|----|
 | Dell  | Inspiron 11 i3153, Inspiron 11 i3158, Inspiron 13 i7353, Inspiron 13 i7359, Inspiron 15 i7568 | Chipset Driver   | 1.0.26920. 1393, A00  | Windows 8.1 64-bit, Windows 10 64-bit | dell.com | 10 Sep 2015 |
-| Dell | Inspiron 15 7000 Series 7559 | BIOS | 1.0.3 | Windows/DOS | [dell.com](http://www.dell.com/support/home/us/en/19/Drivers/DriversDetails?driverId=3FWTM) | 09 Oct 2015 |
+| Dell | Inspiron 15 7000 Series 7559 | BIOS | 1.0.3 | Windows/DOS | [dell.com](https://www.dell.com/support/home/de-de/drivers/DriversDetails?driverId=3FWTM) | 09 Oct 2015 |
 | Dell | XPS 13 9380 | - | - | - | [Issue 69](https://github.com/ayeks/SGX-hardware/issues/69) | 13 May 2020 |
 | HP | HP 240 G4 Notebook PC, HP 246 G4 Notebook PC, HP Notebook 14g, HP Notebook 14q  | Chipset | 1.0.26448. 1348 REV: A PASS: 5 | Microsoft Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72357.html) | 07 Aug 2015 |
 | HP | ENVY 15 Notebook PC | Chipset | 1.0.26805. 1389 REV: A PASS: 4 | Windows 10 64bit, Windows 7 Prof. | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72491.html) | 17 Aug 2015 |
@@ -113,7 +113,7 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 | Workstation | HP  | Z2 Mini G3  | [see Pull request 19](https://github.com/ayeks/SGX-hardware/pull/19) | 21 Apr 2017 | HP Z2 Mini G3, CPU Xeon E3-1245 v5 |
 | Workstation | HP  | HP Z240 Tower Workstation  | [see Pull request 23](https://github.com/ayeks/SGX-hardware/pull/23) | 16 Mar 2017 | HP Z240 Tower Workstation, Intel(R) Xeon(R) CPU E3-1240 v5 @ 3.50GHz|
 | Server | Supermicro | system [5019-MR](http://www.supermicro.com/products/system/1U/5019/SYS-5019S-MR.cfm), mainboard [X11SSH-F BIOS 1.0b or 2.0b](http://www.supermicro.com/products/motherboard/Xeon/C236_C232/X11SSH-F.cfm) | [Pressrelease](http://www.supermicro.com/newsroom/pressreleases/2015/press150901_Embedded_IoT_Skylake.cfm) [see Issue 6](https://github.com/ayeks/SGX-hardware/issues/6) | 19 May 2016| [platform services only on specific ME versions](https://github.com/ayeks/SGX-hardware/issues/24) |
-| Server | Dell | PowerEdge R230, BIOS [2.4.3](https://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=WDY2P) or later | mail | 23 Feb 2018 | Dell R230, CPU Xeon 1270 v6, BIOS v2.4.3 and BIOS v2.5.0 |
+| Server | Dell | PowerEdge R230, BIOS [2.4.3](https://www.dell.com/support/home/de-de/drivers/driversdetails?driverId=WDY2P) or later | mail | 23 Feb 2018 | Dell R230, CPU Xeon 1270 v6, BIOS v2.4.3 and BIOS v2.5.0 |
 | Server | Dell | PowerEdge R340, BIOS 2.2.3 | [see Issue 70](https://github.com/ayeks/SGX-hardware/issues/70) | 16 May 2020 | Dell PowerEdge R340 |
 | Mini PC | Intel NUC Kit | NUC7i5BNH | [see Issue 67](https://github.com/ayeks/SGX-hardware/issues/67) | 9 Oct 2019 | NUC7i5BNH with I5-7260U |
 | Server | Dell | PowerEdge R330 | Simply Staking's Testing (only works baremetal) | Dec 2020 | Dell PowerEdge R330 |
