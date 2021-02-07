@@ -27,7 +27,9 @@ task :validate_markdown do
   options = {
     :url_ignore => [
       "http://ftpw.supermicro.com.tw/products/motherboard/Xeon/C236_C232/X11SSH-F.cfm",
-      "http://ftpw.supermicro.com.tw/products/system/1U/5019/SYS-5019S-MR.cfm "
+      "http://ftpw.supermicro.com.tw/products/system/1U/5019/SYS-5019S-MR.cfm",
+      "https://www.dell.com/support/home/de-de/drivers/DriversDetails?driverId=3FWTM",
+      "https://www.dell.com/support/home/de-de/drivers/driversdetails?driverId=WDY2P"
     ],
     :http_status_ignore => [429]
   }
