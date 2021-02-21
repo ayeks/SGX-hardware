@@ -88,7 +88,7 @@ int main(int argc, char **argv)
   native_cpuid(&eax, &ebx, &ecx, &edx);
   printf("eax: %x ebx: %x ecx: %x edx: %x\n", eax, ebx, ecx, edx);
 
-	int i;
+  int i;
   for (i=2; i<10; i++) {
 	  /* CPUID Leaf 12H, Sub-Leaf i Enumeration of Intel SGX Capabilities (EAX=12H,ECX=i) */
 	  printf("\nCPUID Leaf 12H, Sub-Leaf %d of Intel SGX Capabilities (EAX=12H,ECX=%d)\n",i,i);
@@ -96,8 +96,7 @@ int main(int argc, char **argv)
 	  ecx = i;
 	  native_cpuid(&eax, &ebx, &ecx, &edx);
 	  printf("eax: %x ebx: %x ecx: %x edx: %x\n", eax, ebx, ecx, edx);
+	  printf("size of EPC section in Processor Reserved Memory, %d M\n",
+                      (eax & 0xF) == 1? (((edx&0xFFFFF) << 12) + (ecx >> 20)): 0);
   }
-
-
-
 }
