@@ -83,12 +83,10 @@ The following devices should support SGX according to available drivers. Check t
 |--------------|-------|-------------|---------|--------------|--------|----|
 | Dell  | Inspiron 11 i3153, Inspiron 11 i3158, Inspiron 13 i7353, Inspiron 13 i7359, Inspiron 15 i7568 | Chipset Driver   | 1.0.26920. 1393, A00  | Windows 8.1 64-bit, Windows 10 64-bit | dell.com | 10 Sep 2015 |
 | Dell | Inspiron 15 7000 Series 7559 | BIOS | 1.0.3 | Windows/DOS | [dell.com](https://www.dell.com/support/home/de-de/drivers/DriversDetails?driverId=3FWTM) | 09 Oct 2015 |
-| Dell | XPS 13 9380 | - | - | - | [Issue 69](https://github.com/ayeks/SGX-hardware/issues/69) | 13 May 2020 |
 | HP | HP 240 G4 Notebook PC, HP 246 G4 Notebook PC, HP Notebook 14g, HP Notebook 14q  | Chipset | 1.0.26448. 1348 REV: A PASS: 5 | Microsoft Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72357.html) | 07 Aug 2015 |
 | HP | ENVY 15 Notebook PC | Chipset | 1.0.26805. 1389 REV: A PASS: 4 | Windows 10 64bit, Windows 7 Prof. | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72491.html) | 17 Aug 2015 |
 | HP | HP ENVY x360 Convertible | Chipset | 1.0.26805.1389 REV: A PASS: 5 | Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72316.html) | 04 Sep 2015 |
 | HP | HP Spectre x2 Detachable Ultrabook PC | Chipset | 1.0.26805. 1389 REV: A PASS: 9 | Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72501-73000/sp72989.html) | 02 Oct 2015 |
-
 
 ## Hardware with out-of-the-box SGX support
 
@@ -99,9 +97,10 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 |--------|--------|-------|---------|------|-----------|
 | Laptop | Lenovo  | ThinkPad P70, P50S, T560, T460p, T460s, T460, X260, X230  | [see Issue 7](https://github.com/ayeks/SGX-hardware/issues/7) | 22 May 2016 | P50, T460s, [X260](http://pastebin.com/c4SP3mNr), [X230](https://github.com/ayeks/SGX-hardware/issues/29) |
 | Laptop | Lenovo | YOGA 720, Carbon X1 | [see Issue 49](https://github.com/ayeks/SGX-hardware/issues/49) | 2 Jul 2018 | YOGA 720, Carbon X1 |
+| Laptop | Lenovo | Ideapad Yoga C940 | [see issue 77](https://github.com/ayeks/SGX-hardware/issues/77) | 13 Mar 2021 | Ideapad Yoga C940 |
 | PC | Dell  | newer OptiPlex, Latitude, Vostro, Precision  | [see Issue 5](https://github.com/ayeks/SGX-hardware/issues/5) | 20 Apr 2015 | Precision 7710 |
 | Desktop PC | Dell  | Optiplex 5040 | dell.com technical-spec-sheet.pdf | 3 Dec 2015 | |
-| Laptop | Dell | 2016 XPS 13 |  [see Issue 12](https://github.com/ayeks/SGX-hardware/issues/12) [see Issue 16](https://github.com/ayeks/SGX-hardware/issues/16) | 20 Jan 2017 | 2016 XPS 13 9560, 9360 |
+| Laptop | Dell | XPS 13 |  [see Issue 12](https://github.com/ayeks/SGX-hardware/issues/12), [see Issue 16](https://github.com/ayeks/SGX-hardware/issues/16), [Issue 69](https://github.com/ayeks/SGX-hardware/issues/69), [Issue 75](https://github.com/ayeks/SGX-hardware/issues/75) | 20 Jan 2017 | XPS 13 9560, 9360, [9380](https://github.com/ayeks/SGX-hardware/issues/75) |
 | Laptop | Dell | Alienware 13 R3  | mail | 30 Jan 2017 | Alienware 13 R3 (Kaby Lake i7-7700HQ) |
 | Laptop | Dell | Alienware 15 R3  | [see PR 30](https://github.com/ayeks/SGX-hardware/pull/30) | 05 Sep 2017 | Alienware 15 R3 (Skylake i7-6820HK) |
 | Laptop | Dell | Inspiron 5378, 5578, 7378, 7579, 7779 | [see Issue 18](https://github.com/ayeks/SGX-hardware/issues/18) | 18 Apr 2017 | Inspiron 15 5578 2-in-1 with Intel Kabylake 7500U |
@@ -126,6 +125,8 @@ It seems that Intel [Gemini Lake](https://ark.intel.com/content/www/us/en/ark/pr
 | Device | Vendor | Model |  Source | Date | Confirmed |
 |--------|--------|-------|---------|------|-----------|
 | Mini PC | Intel NUC Kit | NUC7CJYH, NUC7PJYH | [Issue 48](https://github.com/ayeks/SGX-hardware/issues/48), [Pull Request 68](https://github.com/ayeks/SGX-hardware/pull/68) | 4 Apr 2019 | [NUC7CJYH](https://github.com/ayeks/SGX-hardware/issues/48), [NUC7PJYH](https://github.com/ayeks/SGX-hardware/pull/68) |
+| Laptop | Dell | XPS 13 9300 | [Issue 75](https://github.com/ayeks/SGX-hardware/issues/75) | 24 Feb 2021 | [XPS 13 9300](https://github.com/ayeks/SGX-hardware/issues/75) |
+| Laptop | Lenovo |  Ideapad Yoga C940 | [Issue 77](https://github.com/ayeks/SGX-hardware/issues/77) | 13 Mar 2021 | [Ideapad Yoga C940](https://github.com/ayeks/SGX-hardware/issues/77) |
 
 ## Cloud Vendors
 
