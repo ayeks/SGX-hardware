@@ -83,7 +83,7 @@ The following devices should support SGX according to available drivers. Check t
 |--------------|-------|-------------|---------|--------------|--------|----|
 | Dell  | Inspiron 11 i3153, Inspiron 11 i3158, Inspiron 13 i7353, Inspiron 13 i7359, Inspiron 15 i7568 | Chipset Driver   | 1.0.26920. 1393, A00  | Windows 8.1 64-bit, Windows 10 64-bit | dell.com | 10 Sep 2015 |
 | Dell | Inspiron 15 7000 Series 7559 | BIOS | 1.0.3 | Windows/DOS | [dell.com](https://www.dell.com/support/home/de-de/drivers/DriversDetails?driverId=3FWTM) | 09 Oct 2015 |
-| Dell | XPS 13 9380 | - | - | - | [Issue 69](https://github.com/ayeks/SGX-hardware/issues/69) | 13 May 2020 |
+| Dell | XPS 13 9380 | - | - | - | [Issue 69](https://github.com/ayeks/SGX-hardware/issues/69) [Issue 75](https://github.com/ayeks/SGX-hardware/issues/75) | 13 May 2020 |
 | HP | HP 240 G4 Notebook PC, HP 246 G4 Notebook PC, HP Notebook 14g, HP Notebook 14q  | Chipset | 1.0.26448. 1348 REV: A PASS: 5 | Microsoft Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72357.html) | 07 Aug 2015 |
 | HP | ENVY 15 Notebook PC | Chipset | 1.0.26805. 1389 REV: A PASS: 4 | Windows 10 64bit, Windows 7 Prof. | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72491.html) | 17 Aug 2015 |
 | HP | HP ENVY x360 Convertible | Chipset | 1.0.26805.1389 REV: A PASS: 5 | Windows 10 64 | [ftp.hp.com](http://ftp.hp.com/pub/softpaq/sp72001-72500/sp72316.html) | 04 Sep 2015 |
@@ -126,6 +126,7 @@ It seems that Intel [Gemini Lake](https://ark.intel.com/content/www/us/en/ark/pr
 | Device | Vendor | Model |  Source | Date | Confirmed |
 |--------|--------|-------|---------|------|-----------|
 | Mini PC | Intel NUC Kit | NUC7CJYH, NUC7PJYH | [Issue 48](https://github.com/ayeks/SGX-hardware/issues/48), [Pull Request 68](https://github.com/ayeks/SGX-hardware/pull/68) | 4 Apr 2019 | [NUC7CJYH](https://github.com/ayeks/SGX-hardware/issues/48), [NUC7PJYH](https://github.com/ayeks/SGX-hardware/pull/68) |
+| Laptop | Dell | XPS 19 9300 | [Issue 75](https://github.com/ayeks/SGX-hardware/issues/75) | 24 Feb 2021 | [Issue 75](https://github.com/ayeks/SGX-hardware/issues/75) |
 
 ## Cloud Vendors
 
