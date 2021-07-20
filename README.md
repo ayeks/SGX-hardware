@@ -143,7 +143,7 @@ Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https:/
 | packet.net | [Reserved Hardware](https://www.packet.com/cloud/all-features/) | YES, SGX1 | YES | Apr 2018 | [Issue 44](https://github.com/ayeks/SGX-hardware/issues/44) |
 | Alibaba Cloud | [ECS Bare Metal Instance](https://www.alibabacloud.com/product/ebm) | YES, unknown version | YES | Sep 2018 | [Docs](https://www.alibabacloud.com/help/doc-detail/60576.html), [Issue 50](https://github.com/ayeks/SGX-hardware/issues/50) |
 | OVHcloud  | [Infrastructure Dedicated Servers](https://www.ovh.com/ca/en/dedicated-servers/infra/) | YES, unknown version | YES | Sep 2019 | [Docs](https://www.ovh.ie/dedicated_servers/software-guard-extensions/), [Issue 66](https://github.com/ayeks/SGX-hardware/issues/66) |
-| Alibaba Cloud | ECS Security-enhanced family (invitational preview) | YES, SGX2 | YES | May 2021 | [Docs](https://www.alibabacloud.com/help/doc-detail/25378.htm#d11e373) |
+| Alibaba Cloud | ECS Security-enhanced family (public preview) | YES, SGX2 | YES | July 2021 | [Docs](https://www.alibabacloud.com/help/en/doc-detail/207734.htm) |
 
 ## Device with a SGX CPU, but no BIOS support
 
