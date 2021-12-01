@@ -37,7 +37,7 @@ Be cautious with the following 2015 i7,i5 and E3 CPUs. According to the [Product
 | Intel® Xeon®   | E3-1235L v5   | SR2LM  |
 | Intel® Xeon®   | E3-1240L v5   | SR2LN  |
 
-Checkout [Intel ARK specifications](https://ark.intel.com/content/www/us/en/ark.html) for newer CPU models wit hSGX support.
+Checkout [Intel ARK specifications](https://ark.intel.com/content/www/us/en/ark.html) for newer CPU models with SGX support.
 
 ### CPUs without Platform Service Enclave functionality
 
