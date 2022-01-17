@@ -105,7 +105,7 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 | Laptop | Dell | Alienware 15 R3  | [see PR 30](https://github.com/ayeks/SGX-hardware/pull/30) | 05 Sep 2017 | Alienware 15 R3 (Skylake i7-6820HK) |
 | Laptop | Dell | Inspiron 5378, 5578, 7378, 7579, 7779 | [see Issue 18](https://github.com/ayeks/SGX-hardware/issues/18) | 18 Apr 2017 | Inspiron 15 5578 2-in-1 with Intel Kabylake 7500U |
 | Laptop | Dell | Latitude 7280 | [see Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 | Dell Latitude 7280 |
-| Mini PC | Intel NUC Kit | NUC6i3SYK, NUC6i7KYK, NUC6i5SYK, NUC6i3SYH, NUC6i5SYH, NUC7i3BNH | SGX software for NUC | 30 Jun 2016 | [NUC7i3BNH](https://github.com/ayeks/SGX-hardware/issues/22) |
+| Mini PC | Intel NUC Kit | NUC6i3SYK, NUC6i7KYK, NUC6i5SYK, NUC6i3SYH, NUC6i5SYH, NUC7i3BNH, NUC8i5BEK | SGX software for NUC | 30 Jun 2016 | [NUC7i3BNH](https://github.com/ayeks/SGX-hardware/issues/22), [NUC8i5BEK](https://github.com/ayeks/SGX-hardware/pull/85) |
 | Compute Stick | Intel Compute Stick | [STK2m364CC](https://ark.intel.com/products/91981/Intel-Compute-Stick-STK2m364CC) | [see Issue 31](https://github.com/ayeks/SGX-hardware/issues/31) | 12 Nov 2017 | STK2m364CC |
 | Laptop | HP  | Pavilion 15-ab251ur  | [see Issue 14](https://github.com/ayeks/SGX-hardware/issues/14) | 18 Feb 2017 | HP Pavilion 15-ab251ur, CPU i7-6500U |
 | Laptop | ASUS | X456UA | [see Issue 18](https://github.com/ayeks/SGX-hardware/issues/18) | 18 Apr 2017 |  |
@@ -154,6 +154,7 @@ The following devices have a SGX capable CPU included, but don't have the requir
 | Laptop | Apple  | MacBook Pro (15-inch, 2017) | [Issue 26](https://github.com/ayeks/SGX-hardware/issues/26) | 24 Jul 2017 |
 | Laptop | Apple  | MacBook Pro (15-inch, 2018) | [Issue 57](https://github.com/ayeks/SGX-hardware/issues/57) | 15 Feb 2019 |
 | Laptop | Apple  | MacBook Pro (13-inch, 2018) | [Issue 58](https://github.com/ayeks/SGX-hardware/issues/58) | 25 Feb 2019 |
+| Laptop | Apple  | MacBook Pro (16-inch, 2019) | [PR 85](https://github.com/ayeks/SGX-hardware/pull/85) | 22 Dec 2021 |
 | Laptop | Microsoft | Surface Book 2 | [Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 |
 | Laptop | Razer | Blade (2016) | [Issue 60](https://github.com/ayeks/SGX-hardware/issues/60) | 6 Jul 2019 |
 
