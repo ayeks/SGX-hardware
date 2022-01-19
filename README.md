@@ -128,6 +128,7 @@ It seems that Intel [Gemini Lake](https://ark.intel.com/content/www/us/en/ark/pr
 | Mini PC | Intel NUC Kit | NUC7CJYH, NUC7PJYH | [Issue 48](https://github.com/ayeks/SGX-hardware/issues/48), [Pull Request 68](https://github.com/ayeks/SGX-hardware/pull/68) | 4 Apr 2019 | [NUC7CJYH](https://github.com/ayeks/SGX-hardware/issues/48), [NUC7PJYH](https://github.com/ayeks/SGX-hardware/pull/68) |
 | Laptop | Dell | XPS 13 9300 | [Issue 75](https://github.com/ayeks/SGX-hardware/issues/75) | 24 Feb 2021 | [XPS 13 9300](https://github.com/ayeks/SGX-hardware/issues/75) |
 | Laptop | Lenovo |  Ideapad Yoga C940 | [Issue 77](https://github.com/ayeks/SGX-hardware/issues/77) | 13 Mar 2021 | [Ideapad Yoga C940](https://github.com/ayeks/SGX-hardware/issues/77) |
+| Server | SuperMicro | X12SPM-TF | [PR 87](https://github.com/ayeks/SGX-hardware/pull/87) | 18 Jan 2022 | SuperMicro X12SPM-TF with Xeon Gold 5315Y |
 
 ## Cloud Vendors
 
