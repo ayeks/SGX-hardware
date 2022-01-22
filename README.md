@@ -115,6 +115,7 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 | Server | Supermicro | system [5019-MR](http://www.supermicro.com/products/system/1U/5019/SYS-5019S-MR.cfm), mainboard [X11SSH-F BIOS 1.0b or 2.0b](http://www.supermicro.com/products/motherboard/Xeon/C236_C232/X11SSH-F.cfm) | [Pressrelease](http://www.supermicro.com/newsroom/pressreleases/2015/press150901_Embedded_IoT_Skylake.cfm) [see Issue 6](https://github.com/ayeks/SGX-hardware/issues/6) | 19 May 2016| [platform services only on specific ME versions](https://github.com/ayeks/SGX-hardware/issues/24) |
 | Server | Dell | PowerEdge R230, BIOS [2.4.3](https://www.dell.com/support/home/de-de/drivers/driversdetails?driverId=WDY2P) or later | mail | 23 Feb 2018 | Dell R230, CPU Xeon 1270 v6, BIOS v2.4.3 and BIOS v2.5.0 |
 | Server | Dell | PowerEdge R340, BIOS 2.2.3 | [see Issue 70](https://github.com/ayeks/SGX-hardware/issues/70) | 16 May 2020 | Dell PowerEdge R340 |
+| Server | HPE | ProLiant DL20 Gen10 | [PR 88](https://github.com/ayeks/SGX-hardware/pull/88) | 22 Jan 2022 | HPE ProLiant DL20 Gen10 with Xeon E-2276G |
 | Mini PC | Intel NUC Kit | NUC7i5BNH | [see Issue 67](https://github.com/ayeks/SGX-hardware/issues/67) | 9 Oct 2019 | NUC7i5BNH with I5-7260U |
 | Server | Dell | PowerEdge R330 | Simply Staking's Testing (only works baremetal) | Dec 2020 | Dell PowerEdge R330 |
 | Server | Dell | PowerEdge R340 | Simply Staking's Testing (works baremetal and with vSphere 7 vSGX) | Dec 2020 | Dell PowerEdge R340 (Intel Xeon E-2288G) |
