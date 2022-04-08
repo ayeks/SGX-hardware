@@ -119,6 +119,8 @@ If you need a SGX capable server have a look at the [Intel SGX server block](htt
 | Mini PC | Intel NUC Kit | NUC7i5BNH | [see Issue 67](https://github.com/ayeks/SGX-hardware/issues/67) | 9 Oct 2019 | NUC7i5BNH with I5-7260U |
 | Server | Dell | PowerEdge R330 | Simply Staking's Testing (only works baremetal) | Dec 2020 | Dell PowerEdge R330 |
 | Server | Dell | PowerEdge R340 | Simply Staking's Testing (works baremetal and with vSphere 7 vSGX) | Dec 2020 | Dell PowerEdge R340 (Intel Xeon E-2288G) |
+| Mini PC | Intel NUC Kit | NUC10i3FNKN | PR #XXX | Apr 2022 | [NUC10i3FNKN](https://www.intel.com/content/www/us/en/products/sku/195503/intel-nuc-10-performance-kit-nuc10i3fnk/specifications.html), Intel Core i3-10110U |
+| Desktop PC | Dell | Optiplex 7070 SFF | PR #XXX | Apr 2022 | [Optiplex 7070](https://www.dell.com/ae/business/p/optiplex-7070-desktop/pd), Intel Core i5-9500 CPU |
 
 ## Hardware with SGX2 support
 
