@@ -166,19 +166,19 @@ The following devices have a SGX capable CPU included, but don't have the requir
 
 ## Compile `test-sgx`
 
-You can check if SGX is enabled on you system with the test_sgx.c. Just compile and run it:
+You can check if SGX is enabled on you system with `test_sgx.c`. Just compile and run it:
 
-Linux / gcc 13.1
+- Linux / gcc 13.1
 ```
 gcc -Wall -Wextra -Wpedantic -masm=intel -std=c2x -o test-sgx test-sgx.c
 ```
 
-Windows 11 / Visual Studio 2022 (x64 Native Tools)
+- Windows 11 / Visual Studio 2022 (x64 Native Tools)
 ```
 cl test-sgx.c
 ```
 
-MacOS / Clang 15
+- MacOS / Clang 15
 ```
 clang -Wall -Wextra -Wpedantic -masm=intel -std=c2x -Wno-gnu-binary-literal -o test-sgx test-sgx.c
 ```
@@ -238,7 +238,7 @@ EPC[0]: Protection: ci  Base phys addr: 00000001c0000000  size: 0000000001c00000
 End test-sgx
 ```
 
-That means that you are now able to call the special SGX calls of your CPU.  However you will always need the official Intel SGX Drivers including their Launch Enclave to initiate your own enclaves. To be able to execute SGX functions you need both `sgx available: 1` and `sgx [1|2] supported: 1`. Another hint that SGX functions are working is the output of an enclave size eg. `MaxEnclaveSize_64`. 
+That means that you are now able to call the special SGX calls of your CPU.  However you will always need the official Intel SGX Drivers including their Launch Enclave to initiate your own enclaves. To be able to execute SGX functions you need both `Supports SGX` and `SGX[1|2] leaf instructions (SGX[1|2]): 1`. Another hint that SGX functions are working is the output of an enclave size eg. `The maximum supported enclave size` is set. 
 
 ## Contribution
 
