@@ -164,30 +164,37 @@ The following devices have a SGX capable CPU included, but don't have the requir
 | Laptop | Microsoft | Surface Book 2 | [Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 |
 | Laptop | Razer | Blade (2016) | [Issue 60](https://github.com/ayeks/SGX-hardware/issues/60) | 6 Jul 2019 |
 
-## Test SGX
+## Compile `test-sgx`
 
 You can check if SGX is enabled on you system with the test_sgx.c. Just compile and run it:
+
+Linux / gcc 13.1
 ```
-$ gcc test-sgx.c -o test-sgx
-$ ./test-sgx
+gcc -Wall -Wextra -Wpedantic -masm=intel -std=c2x -o test-sgx test-sgx.c
+```
+
+Windows 11 / Visual Studio 2022 (x64 Native Tools)
+```
+cl test-sgx.c
+```
+
+MacOS / Clang 15
+```
+clang -Wall -Wextra -Wpedantic -masm=intel -std=c2x -Wno-gnu-binary-literal -o test-sgx test-sgx.c
 ```
 
 See [Issue 17](https://github.com/ayeks/SGX-hardware/issues/17) for the execution in Visual Studio.
+
 
 ### SGX is available for your CPU but not enabled in BIOS
 eg. on [2017 MacBook Pro's](https://github.com/ayeks/SGX-hardware/issues/26)
 ```
 ...
-Extended feature bits (EAX=07H, ECX=0H)
-eax: 0 ebx: 29c6fbf ecx: 0 edx: 0
-sgx available: 1
-
-CPUID Leaf 12H, Sub-Leaf 0 of Intel SGX Capabilities (EAX=12H,ECX=0)
-eax: 0 ebx: 0 ecx: 0 edx: 0
-sgx 1 supported: 0
-sgx 2 supported: 0
-MaxEnclaveSize_Not64: 0
-MaxEnclaveSize_64: 0
+Supports SGX
+SGX Launch Configuration (SGX_LC): 1
+SGX Attestation Services (SGX_KEYS): 0
+SGX1 leaf instructions (SGX1): 0
+SGX2 leaf instructions (SGX2): 0
 ...
 ```
 
@@ -196,17 +203,7 @@ Eg. on [public clouds](https://github.com/ayeks/SGX-hardware/issues/37) or [2015
 
 ```
 ...
-Extended feature bits (EAX=07H, ECX=0H)
-eax: 0 ebx: d19f4fbb ecx: 8 edx: 0
-sgx available: 0
-
-CPUID Leaf 12H, Sub-Leaf 0 of Intel SGX Capabilities (EAX=12H,ECX=0)
-eax: 2ff ebx: a80 ecx: a88 edx: 0
-sgx 1 supported: 1
-sgx 2 supported: 1
-MaxEnclaveSize_Not64: 0
-MaxEnclaveSize_64: 0
-...
+Does not support SGX
 ```
 
 ### SGX is available for your CPU and enabled in BIOS
