@@ -416,11 +416,11 @@ void enumerateEPCsections( void ) {
             char integrity = ' ';
 
             switch( ecx & 0x0F ) {
-               case 0b0001:
+               case 0x1:
                    confidentiality = 'c';
                    integrity = 'i';
                    break;
-               case 0b0010:
+               case 0x2:
                    confidentiality = 'c';
                    break;
                default:
