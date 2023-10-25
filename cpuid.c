@@ -15,8 +15,9 @@
 #include <ctype.h>     // For isprint()
 #include <stdbool.h>   // For true & false
 
-#include "cpuid.h"     // Obviously...
+#include "cpuid.h"     // For obvious reasons
 #include "test-sgx.h"  // For EXIT_ON_FAILURE
+#include "rdmsr.h"     // For TBD
 
 
 // This number is kinda arbitrary.  Let us know if you ever find a situation

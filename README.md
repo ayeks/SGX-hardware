@@ -170,17 +170,17 @@ You can check if SGX is enabled on you system with `test_sgx.c`. Just compile an
 
 - Linux / gcc 13.1
 ```
-gcc -Wall -Wextra -Wpedantic -masm=intel -std=c2x -o test-sgx cpuid.c test-sgx.c
+gcc -Wall -Wextra -Wpedantic -masm=intel -std=c2x -o test-sgx -lcap cpuid.c rdmsr.c test-sgx.c
 ```
 
 - Windows 11 / Visual Studio 2022 (x64 Native Tools)
 ```
-cl test-sgx.c cpuid.c
+cl test-sgx.c cpuid.c rdmsr.c
 ```
 
 - MacOS / Clang 15
 ```
-clang -Wall -Wextra -Wpedantic -masm=intel -std=c2x -Wno-gnu-binary-literal -o test-sgx cpuid.c test-sgx.c
+clang -Wall -Wextra -Wpedantic -masm=intel -std=c2x -Wno-gnu-binary-literal -o test-sgx cpuid.c rdmsr.c test-sgx.c
 ```
 
 See [Issue 17](https://github.com/ayeks/SGX-hardware/issues/17) for the execution in Visual Studio.

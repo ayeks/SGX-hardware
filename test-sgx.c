@@ -71,6 +71,7 @@
 
 #include "test-sgx.h"  // For obvious reasons
 #include "cpuid.h"     // For native_cpuid32()
+#include "rdmsr.h"     // For checkCapabilities()
 
 
 // Prove the compiler regognizes SGX instructions
@@ -92,6 +93,11 @@ int main( void ) {
    printCPUBrandString();
    supportsSGXInstructions();
    enumerateEPCsections();
+   
+   if( checkCapabilities() ) {
+      printf( "Running as root\n" );
+   }
+
 
    printf( "End " PROGRAM_NAME "\n" );
    return EXIT_SUCCESS;
