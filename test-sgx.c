@@ -32,8 +32,8 @@
 ///     The CPU is Genuine Intel
 ///     CPUID is capable of examining SGX capabilities
 ///     CPU: Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz
-///       Stepping 13        Model 14           Family 6 
-///       Processor type 0   Extended model 9   Extended family 0 
+///       Stepping 13        Model 14           Family 6
+///       Processor type 0   Extended model 9   Extended family 0
 ///     Safer Mode Extensions (SMX): 0
 ///     Extended feature bits (EAX=7, ECX=0): eax: 00000000  ebx: 009c6fbd  ecx: 40000000  edx: 20000400
 ///     Supports SGX
@@ -73,6 +73,8 @@
 #include <ctype.h>     // For isprint()
 #include <stdbool.h>   // For true & false
 
+#include "cpuid.h"     // For native_cpuid32()
+
 
 #define PROGRAM_NAME "test-sgx"
 
@@ -95,48 +97,6 @@ static inline void print_registers32( uint32_t eax
    printf("ecx: %08" PRIx32 "  ", ecx );
    printf("edx: %08" PRIx32 "\n", edx );
 
-}
-
-
-/// Call `CPUID`, passing `eax`, `ebx`, `ecx` and `eax` in & out.
-static inline void native_cpuid32( uint32_t* eax
-                                  ,uint32_t* ebx
-                                  ,uint32_t* ecx
-                                  ,uint32_t* edx ) {
-#if !defined(_MSC_VER)
-   __asm volatile (
-       "mov eax, %0;"
-       "mov ebx, %1;"
-       "mov ecx, %2;"
-       "mov edx, %3;"
-       "cpuid;"
-       "mov %0, eax;"
-       "mov %1, ebx;"
-       "mov %2, ecx;"
-       "mov %3, edx;"
-
-      :"=rm" (*eax)    // Output
-      ,"=rm" (*ebx)
-      ,"=rm" (*ecx)
-      ,"=rm" (*edx)
-      :"0"   (*eax)    // Input
-      ,"1"   (*ebx)
-      ,"2"   (*ecx)
-      ,"3"   (*edx)
-      : "rax", "rbx", "rcx", "rdx" );  // Clobbers
-
-#else
-   // Visual Studio (still!) doesn't support inline Assembly Language, so we
-   // have to depend on the `__cpuidex` intrinsic.
-   int registers[4] = {0,0,0,0};
-
-   __cpuidex( registers, *eax, *ecx );
-   *eax = registers[0];
-   *ebx = registers[1];
-   *ecx = registers[2];
-   *edx = registers[3];
-
-#endif
 }
 
 
