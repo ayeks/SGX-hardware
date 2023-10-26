@@ -41,7 +41,7 @@ void isIntelCPU( void );
 
 // Print the CPU Brand String.  This will look like this:
 //     CPU: Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz
-void printCPUBrandString();
+void printCPUBrandString( void );
 
 
 void supportsSGXInstructions( void );

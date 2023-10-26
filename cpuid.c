@@ -30,7 +30,7 @@ static inline void native_cpuid32( uint32_t* eax
                                   ,uint32_t* ebx
                                   ,uint32_t* ecx
                                   ,uint32_t* edx ) {
-#if !defined(_MSC_VER)
+#if !defined( _MSC_VER )
    __asm volatile (
        "mov eax, %0;"
        "mov ebx, %1;"
@@ -94,7 +94,7 @@ void doesCPUIDwork( void ) {
 
    /// @see https://wiki.osdev.org/CPUID#Checking_CPUID_availability
 
-   #if !defined(_MSC_VER)
+   #if !defined( _MSC_VER )
 
    __asm volatile (
       "pushfq;"         // Save RFLAGS
@@ -182,7 +182,7 @@ bool printRegisterAsASCII( uint32_t exx ) {
 
 // Print the CPU Brand String.  This will look like this:
 //     CPU: Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz
-void printCPUBrandString() {
+void printCPUBrandString( void ) {
    uint32_t eax = 0x80000000;  // Check Processor Brand
    uint32_t ebx = 0;
    uint32_t edx = 0;

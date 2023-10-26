@@ -53,7 +53,7 @@
 
 /// On Linux, return true if we are running as root (with CAP_SYS_ADMIN).  In
 /// all other situations, return false.
-bool checkCapabilities() {
+bool checkCapabilities( void ) {
    #ifdef __linux__
 
       cap_t myCapabilities ;
@@ -143,7 +143,7 @@ bool rdmsr( uint32_t reg, int cpu, uint64_t* pData ) {
 
 
 /// Read and print SGX-specific MSRs on a CPU
-void read_SGX_MSRs() {
+void read_SGX_MSRs( void ) {
    uint64_t feature_control_msr;
 
    if( rdmsr( IA32_FEATURE_CONTROL, 0, &feature_control_msr ) ) {
