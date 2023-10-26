@@ -15,6 +15,9 @@
 ///   - Windows 11 / Visual Studio 2022 (x64 Native Tools):  cl test-sgx.c
 ///   - MacOS / Clang 15:  clang -Wall -Wextra -Wpedantic -masm=intel -std=c2x -Wno-gnu-binary-literal -o test-sgx test-sgx.c
 ///
+/// If you receive this message during compiling:  fatal error: sys/capability.h: No such file or directory
+/// ... then run this:  sudo apt-get install libcap-dev
+///
 /// The output of this program needs to be treated with some skepticism... here
 /// are some scenarios that it may mislead you:
 ///   - You are running in a VM.  The host's CPU (and BIOS) may actually support
@@ -95,7 +98,6 @@ int main( void ) {
    enumerateEPCsections();
    
    if( checkCapabilities() ) {
-      printf( "Running as root\n" );  // @todo:  Consider removing this line
       read_SGX_MSRs();
    }
 

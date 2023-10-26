@@ -122,7 +122,7 @@ bool rdmsr( uint32_t reg, int cpu, uint64_t* pData ) {
    // pread:  Upon successful completion, pread shall return a non-negative
    //         integer indicating  the  number of bytes actually read.
    if( pread( fd, pData, sizeof *pData, reg ) != sizeof *pData ) {
-      fprintf( stderr, "rdmsr: CPU %d did not read MSR 0x%08" PRIx32 "\n", cpu, reg );
+      // fprintf( stderr, "rdmsr: CPU %d did not read MSR 0x%08" PRIx32 "\n", cpu, reg );
       return false;
    }
 
@@ -136,46 +136,58 @@ bool rdmsr( uint32_t reg, int cpu, uint64_t* pData ) {
 void read_SGX_MSRs() {
    uint64_t feature_control_msr;
 
-   rdmsr( IA32_FEATURE_CONTROL, 0, &feature_control_msr );
-
-   printf( "Raw IA32_FEATURE_CONTROL: %016" PRIx64 "\n", feature_control_msr );
-
-   printf( "    IA32_FEATURE_CONTROL.LOCK_BIT[bit 0]: %d\n", (int)((feature_control_msr >> 0) & 1 ));
-   printf( "    IA32_FEATURE_CONTROL.SGX_LAUNCH_CONTROL[bit 17] (is the SGX LE PubKey writable?): %d\n", (int)((feature_control_msr >> 17) & 1 ));
-   
-   if( (feature_control_msr & 1 ) && ( (feature_control_msr >> 17) & 1 ) ) {
-      printf( "The SGX Launch Enclave Public Key Hash can be changed\n" );
+   if( rdmsr( IA32_FEATURE_CONTROL, 0, &feature_control_msr ) ) {
+      printf( "Raw IA32_FEATURE_CONTROL: %016" PRIx64 "\n", feature_control_msr );
+      
+      printf( "    IA32_FEATURE_CONTROL.LOCK_BIT[bit 0]: %d\n", (int)((feature_control_msr >> 0) & 1 ));
+      printf( "    IA32_FEATURE_CONTROL.SGX_LAUNCH_CONTROL[bit 17] (Is the SGX LE PubKey writable?): %d\n", (int)((feature_control_msr >> 17) & 1 ));
+      printf( "    IA32_FEATURE_CONTROL.SGX_GLOBAL_ENABLE[bit 18]: %d\n", (int)((feature_control_msr >> 18) & 1 ));
+      
+      if( (feature_control_msr & 1 ) && ( (feature_control_msr >> 17) & 1 ) ) {
+         printf( "The SGX Launch Enclave Public Key Hash can be changed\n" );
+      } else {
+         printf( "The SGX Launch Enclave Public Key Hash can NOT be changed\n" );
+      }
+      
    } else {
-      printf( "The SGX Launch Enclave Public Key Hash can NOT be changed\n" );
+      printf( "IA32_FEATURE_CONTROL not readable\n" );
    }
-   
-   printf( "    IA32_FEATURE_CONTROL.SGX_GLOBAL_ENABLE[bit 18]: %d\n", (int)((feature_control_msr >> 18) & 1 ));
+
 
    uint64_t sgx_lePubKeyHash0_msr;
    uint64_t sgx_lePubKeyHash1_msr;
    uint64_t sgx_lePubKeyHash2_msr;
    uint64_t sgx_lePubKeyHash3_msr;
 
-   rdmsr( IA32_SGXLEPUBKEYHASH0    , 0, &sgx_lePubKeyHash0_msr );
-   rdmsr( IA32_SGXLEPUBKEYHASH0 + 1, 0, &sgx_lePubKeyHash1_msr );
-   rdmsr( IA32_SGXLEPUBKEYHASH0 + 2, 0, &sgx_lePubKeyHash2_msr );
-   rdmsr( IA32_SGXLEPUBKEYHASH0 + 3, 0, &sgx_lePubKeyHash3_msr );
-
-   printf( "Raw IA32_SGXLEPUBKEYHASH0: %016" PRIx64 "\n", sgx_lePubKeyHash0_msr );
-   printf( "Raw IA32_SGXLEPUBKEYHASH1: %016" PRIx64 "\n", sgx_lePubKeyHash1_msr );
-   printf( "Raw IA32_SGXLEPUBKEYHASH2: %016" PRIx64 "\n", sgx_lePubKeyHash2_msr );
-   printf( "Raw IA32_SGXLEPUBKEYHASH3: %016" PRIx64 "\n", sgx_lePubKeyHash3_msr );
+   if(    rdmsr( IA32_SGXLEPUBKEYHASH0    , 0, &sgx_lePubKeyHash0_msr )
+       && rdmsr( IA32_SGXLEPUBKEYHASH0 + 1, 0, &sgx_lePubKeyHash1_msr ) 
+       && rdmsr( IA32_SGXLEPUBKEYHASH0 + 2, 0, &sgx_lePubKeyHash2_msr )
+       && rdmsr( IA32_SGXLEPUBKEYHASH0 + 3, 0, &sgx_lePubKeyHash3_msr )
+     ) {
+      printf( "IA32_SGXLEPUBKEYHASH: %016" PRIx64 "%016" PRIx64 "%016" PRIx64 "%016" PRIx64 "\n"
+         ,sgx_lePubKeyHash0_msr
+         ,sgx_lePubKeyHash1_msr
+         ,sgx_lePubKeyHash2_msr
+         ,sgx_lePubKeyHash3_msr );
+      } else {
+         printf( "IA32_SGXLEPUBKEYHASH[0-3] not readable\n" );
+      }
 
    uint64_t sgx_sgx_svn_status_msr;
-   rdmsr( IA32_SGX_SVN_STATUS    , 0, &sgx_sgx_svn_status_msr );
-   printf( "Raw IA32_SGX_SVN_STATUS: %016" PRIx64 "\n", sgx_sgx_svn_status_msr );
+   if( rdmsr( IA32_SGX_SVN_STATUS    , 0, &sgx_sgx_svn_status_msr ) ) {
+      printf( "Raw IA32_SGX_SVN_STATUS: %016" PRIx64 "\n", sgx_sgx_svn_status_msr );
+   } else {
+      printf( "IA32_SGX_SVN_STATUS not readable\n" );
+   }
 
    // This may not be available on all CPUs
    uint64_t sgx_OwnerEpoch0_msr;
    uint64_t sgx_OwnerEpoch1_msr;
 
-   rdmsr( MSR_SGXOWNEREPOCH0    , 0, &sgx_OwnerEpoch0_msr );
-   rdmsr( MSR_SGXOWNEREPOCH0 + 1, 0, &sgx_OwnerEpoch1_msr );
-
-   printf( "Raw MSR_SGXOWNEREPOCH: %016" PRIx64 " %016" PRIx64 "\n", sgx_OwnerEpoch1_msr, sgx_OwnerEpoch0_msr );
+   if(    rdmsr( MSR_SGXOWNEREPOCH0    , 0, &sgx_OwnerEpoch0_msr )
+       && rdmsr( MSR_SGXOWNEREPOCH0 + 1, 0, &sgx_OwnerEpoch1_msr ) ) {
+      printf( "Raw MSR_SGXOWNEREPOCH: %016" PRIx64 " %016" PRIx64 "\n", sgx_OwnerEpoch1_msr, sgx_OwnerEpoch0_msr );
+   } else {
+      printf( "MSR_SGXOWNEREPOCH not readable\n" );
+   }
 }

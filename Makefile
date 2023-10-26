@@ -12,7 +12,7 @@
 TARGET=test-sgx
 
 test-sgx: cpuid.c test-sgx.c rdmsr.c
-	gcc -Wall -Wextra -Wpedantic -masm=intel -std=c2x -o ${TARGET} -lcap cpuid.c rdmsr.c test-sgx.c
+	gcc -Wl,--no-as-needed -Wall -Wextra -Wpedantic -masm=intel -std=c2x -o ${TARGET} -lcap cpuid.c rdmsr.c test-sgx.c
 
 test: ${TARGET}
 	./${TARGET}

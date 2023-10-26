@@ -16,6 +16,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
+#include <stdbool.h>  // For bool
 
 /// On Linux, return true if we are running as root (with CAP_SYS_ADMIN).  In
 /// all other situations, return false.
