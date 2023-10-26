@@ -9,7 +9,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include <stdlib.h>    // For exit() EXIT_FAILURE
+#include <stdlib.h>  // For exit() EXIT_FAILURE
 
 #define PROGRAM_NAME "test-sgx"
 

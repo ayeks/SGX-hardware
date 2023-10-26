@@ -1,5 +1,5 @@
 # SGX-hardware list
-This is a list of hardware which supports Intel SGX - Software Guard Extensions. 
+This is a list of hardware which supports Intel SGX - Software Guard Extensions.
 
 [![Build Status](https://travis-ci.org/ayeks/SGX-hardware.svg?branch=master)](https://travis-ci.org/ayeks/SGX-hardware)
 
@@ -75,7 +75,7 @@ The following sgx_tservice functions are not available:
 | MSI | Z370-A PRO | Bios update required | - | [see Issue 56](https://github.com/ayeks/SGX-hardware/issues/56) | 28 Dec 2018 |
 | ASRock | Z390 Pro 4 | BIOS | 4.3 | [see Issue 64](https://github.com/ayeks/SGX-hardware/issues/64) | 16 Sep 2019 |
 
-## Notebooks 
+## Notebooks
 
 The following devices should support SGX according to available drivers. Check the detailed information about the supported models on the individual driver sites.
 
@@ -217,8 +217,8 @@ CPUID is available
 The CPU is Genuine Intel
 CPUID is capable of examining SGX capabilities
 CPU: Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz
-  Stepping 13        Model 14           Family 6 
-  Processor type 0   Extended model 9   Extended family 0 
+  Stepping 13        Model 14           Family 6
+  Processor type 0   Extended model 9   Extended family 0
 Safer Mode Extensions (SMX): 0
 Extended feature bits (EAX=7, ECX=0): eax: 00000000  ebx: 009c6fbd  ecx: 40000000  edx: 20000400
 Supports SGX
@@ -244,11 +244,25 @@ Raw ECREATE SECS.ATTRIBUTES[63:0]: 00000000 00000436
     ECREATE SECS.ATTRIBUTES[AEXNOTIFY] (Threads may receive AEX notifications): 1
 Raw ECREATE SECS.ATTRIBUTES[127:64] (XFRM: Copy of XCR0): 00000000 0000001f
 EPC[0]: Protection: ci  Base phys addr: 00000001c0000000  size: 0000000001c00000
+Raw IA32_FEATURE_CONTROL: 0000000000060001
+    IA32_FEATURE_CONTROL.LOCK_BIT[bit 0]: 1
+    IA32_FEATURE_CONTROL.SGX_LAUNCH_CONTROL[bit 17] (Is the SGX LE PubKey writable?): 1
+    IA32_FEATURE_CONTROL.SGX_GLOBAL_ENABLE[bit 18]: 1
+The SGX Launch Enclave Public Key Hash can be changed
+IA32_SGXLEPUBKEYHASH: a6053e051270b7ac 6cfbe8ba8b3b413d c4916d99f2b3735d d4f8c05909f9bb3b
+Raw IA32_SGX_SVN_STATUS: 0000000000000000
+MSR_SGXOWNEREPOCH not readable
 End test-sgx
 ```
 
-That means that you are now able to call the special SGX calls of your CPU.  However you will always need the official Intel SGX Drivers including their Launch Enclave to initiate your own enclaves. To be able to execute SGX functions you need both `Supports SGX` and `SGX[1|2] leaf instructions (SGX[1|2]): 1`. Another hint that SGX functions are working is the output of an enclave size eg. `The maximum supported enclave size` is set. 
+That means that you are now able to call the special SGX calls of your CPU.
+However you will always need the official Intel SGX Drivers including their
+Launch Enclave to initiate your own enclaves.  To be able to execute SGX
+functions you need both `Supports SGX` and `SGX[1|2] leaf instructions (SGX[1|2]): 1`.
+
+Another hint that SGX functions are working is the output of an enclave size
+eg. `The maximum supported enclave size` is set.
 
 ## Contribution
 
-Add more hardware to this list via pull requests or simply via issues. 
+Add more hardware to this list via pull requests or simply via issues.

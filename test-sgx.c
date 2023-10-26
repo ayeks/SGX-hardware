@@ -21,10 +21,10 @@
 /// The output of this program needs to be treated with some skepticism... here
 /// are some scenarios that it may mislead you:
 ///   - You are running in a VM.  The host's CPU (and BIOS) may actually support
-///     SGX, but the hupervisor may not.  In this case, test-sgx will report that
+///     SGX, but the hypervisor may not.  In this case, test-sgx will report that
 ///     the CPU does not support SGX when it actually does.
 ///   - You are running on a Mac.  The CPU may actually support SGX, but the
-///     BIOS never set it up.
+///     BIOS does not enable it.
 ///
 /// Test CPU is really intended to inform you of the capabilities of the system
 /// you are on right now... not an entire class of CPUs or motherboards.
@@ -35,8 +35,8 @@
 ///     The CPU is Genuine Intel
 ///     CPUID is capable of examining SGX capabilities
 ///     CPU: Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz
-///       Stepping 13        Model 14           Family 6
-///       Processor type 0   Extended model 9   Extended family 0
+///       Stepping 13        Model 14           Family 6 
+///       Processor type 0   Extended model 9   Extended family 0 
 ///     Safer Mode Extensions (SMX): 0
 ///     Extended feature bits (EAX=7, ECX=0): eax: 00000000  ebx: 009c6fbd  ecx: 40000000  edx: 20000400
 ///     Supports SGX
@@ -62,6 +62,14 @@
 ///         ECREATE SECS.ATTRIBUTES[AEXNOTIFY] (Threads may receive AEX notifications): 1
 ///     Raw ECREATE SECS.ATTRIBUTES[127:64] (XFRM: Copy of XCR0): 00000000 0000001f
 ///     EPC[0]: Protection: ci  Base phys addr: 00000001c0000000  size: 0000000001c00000
+///     Raw IA32_FEATURE_CONTROL: 0000000000060001
+///         IA32_FEATURE_CONTROL.LOCK_BIT[bit 0]: 1
+///         IA32_FEATURE_CONTROL.SGX_LAUNCH_CONTROL[bit 17] (Is the SGX LE PubKey writable?): 1
+///         IA32_FEATURE_CONTROL.SGX_GLOBAL_ENABLE[bit 18]: 1
+///     The SGX Launch Enclave Public Key Hash can be changed
+///     IA32_SGXLEPUBKEYHASH: a6053e051270b7ac 6cfbe8ba8b3b413d c4916d99f2b3735d d4f8c05909f9bb3b
+///     Raw IA32_SGX_SVN_STATUS: 0000000000000000
+///     MSR_SGXOWNEREPOCH not readable
 ///     End test-sgx
 ///
 /// @file   test-sgx.c

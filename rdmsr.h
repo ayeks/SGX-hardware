@@ -5,12 +5,6 @@
 /// that utilizes the RDMSR instruction by reading from /dev/cpu/0/msr to 
 /// discover & report SGX additional capabilities.
 ///
-/// Important design note:  We are always reading from cpu 0.  It's possible
-/// that different CPUs may have different SGX values, so beware that what
-/// this program reports may not be what is actually executing.  If you discover
-/// that this happens, please eMail marknels@hawaii.edu and we'll enhance this
-/// module to look at multiple CPU settings more carefully.
-///
 /// @file   rdmsr.h
 /// @author Mark Nelson <marknels@hawaii.edu>
 ///////////////////////////////////////////////////////////////////////////////

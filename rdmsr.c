@@ -36,7 +36,7 @@
 #include <inttypes.h>   // For PRIx64 uint64_t
 
 #ifdef __linux__
-   #include <fcntl.h>      // For open() O_RDONLY
+   #include <fcntl.h>   // For open() O_RDONLY
    #include <unistd.h>  // For pread() close()
    #include <sys/capability.h>  // For CAP_SYS_ADMIN cap_get_proc() cap_set_flag() cap_set_proc() cap_free()
 #endif
