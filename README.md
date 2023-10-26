@@ -151,6 +151,11 @@ Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https:/
 | OVHcloud  | [Infrastructure Dedicated Servers](https://www.ovh.com/ca/en/dedicated-servers/infra/) | YES, unknown version | YES | Sep 2019 | [Docs](https://www.ovh.ie/dedicated_servers/software-guard-extensions/), [Issue 66](https://github.com/ayeks/SGX-hardware/issues/66) |
 | Alibaba Cloud | ECS Security-enhanced family (public preview) | YES, SGX2 | YES | July 2021 | [Docs](https://www.alibabacloud.com/help/en/doc-detail/207734.htm) |
 
+Notes:
+- [As of 10 November 2022, the IBM Cloud Data Shield service is deprecated](https://www.ibm.com/blog/announcement/ibm-cloud-data-shield-deprecation/)
+- [As of 10 Jan 2023, IBM Bare Metal still supports SGX (but I haven't tested it yet)](https://cloud.ibm.com/docs/bare-metal?topic=bare-metal-bm-server-provision-sgx)
+- [IBM](https://www.ibm.com/products/bare-metal-servers/classic)
+
 ## Device with a SGX CPU, but no BIOS support
 
 The following devices have a SGX capable CPU included, but don't have the required BIOS settings. So you cannot execute SGX instructions on those devices. **Do NOT buy for SGX development:**

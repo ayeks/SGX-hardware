@@ -95,7 +95,8 @@ int main( void ) {
    enumerateEPCsections();
    
    if( checkCapabilities() ) {
-      printf( "Running as root\n" );
+      printf( "Running as root\n" );  // @todo:  Consider removing this line
+      read_SGX_MSRs();
    }
 
 
