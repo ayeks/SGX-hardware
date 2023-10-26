@@ -13,4 +13,4 @@
 
 #define PROGRAM_NAME "test-sgx"
 
-#define EXIT_ON_FAILURE // exit( EXIT_FAILURE );
+#define EXIT_ON_FAILURE  exit( EXIT_FAILURE );

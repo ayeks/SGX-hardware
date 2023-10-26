@@ -32,12 +32,14 @@
 /// @NOLINTNEXTLINE(bugprone-reserved-identifier, cert-dcl37-c, cert-dcl51-cpp): This is a legitimate use of a reserved identifier
 #define _XOPEN_SOURCE 700
 
+#include <stdio.h>      // For printf()
+#include <inttypes.h>   // For PRIx64 uint64_t
 
-#include <stdio.h>           // For printf()
-#include <sys/capability.h>  // For CAP_SYS_ADMIN cap_get_proc() cap_set_flag() cap_set_proc() cap_free()
-#include <fcntl.h>      // For open() O_RDONLY
-#include <unistd.h>     // For pread() close()
-#include <inttypes.h>  // For PRIx64 uint64_t
+#ifdef __linux__
+   #include <fcntl.h>      // For open() O_RDONLY
+   #include <unistd.h>  // For pread() close()
+   #include <sys/capability.h>  // For CAP_SYS_ADMIN cap_get_proc() cap_set_flag() cap_set_proc() cap_free()
+#endif
 
 #include "rdmsr.h"           // For obvious reasons
 #include "test-sgx.h"        // For EXIT_ON_FAILURE
@@ -88,7 +90,7 @@ bool checkCapabilities() {
 
       return true;
 
-   #elif
+   #else
       return false;  // In all other operating systems, return false
    #endif
 }
@@ -104,29 +106,37 @@ bool checkCapabilities() {
 ///
 /// @returns true if successful, false if not successful
 bool rdmsr( uint32_t reg, int cpu, uint64_t* pData ) {
-   char     msr_file_name[64];
-   int      fd;  // File descriptor to /dev/cpu/%d/msr
+   #ifdef __linux__
 
-   if( reg >= 0x40000000 && reg <= 0x4000FFFF ) {
-      fprintf( stderr, "rdmsr: Attempting to read from reserved range\n" );
-      return false;
-   }
+      char     msr_file_name[64];
+      int      fd;  // File descriptor to /dev/cpu/%d/msr
 
-   sprintf( msr_file_name, "/dev/cpu/%d/msr", cpu );
-   fd = open( msr_file_name, O_RDONLY );
-   if (fd < 0) {
-      fprintf( stderr, "rdmsr: CPU %d doesn't support MSRs\n", cpu );
-      return false;
-   }
+      if( reg >= 0x40000000 && reg <= 0x4000FFFF ) {
+         fprintf( stderr, "rdmsr: Attempting to read from reserved range\n" );
+         return false;
+      }
 
-   // pread:  Upon successful completion, pread shall return a non-negative
-   //         integer indicating  the  number of bytes actually read.
-   if( pread( fd, pData, sizeof *pData, reg ) != sizeof *pData ) {
-      // fprintf( stderr, "rdmsr: CPU %d did not read MSR 0x%08" PRIx32 "\n", cpu, reg );
-      return false;
-   }
+      sprintf( msr_file_name, "/dev/cpu/%d/msr", cpu );
+      fd = open( msr_file_name, O_RDONLY );
+      if (fd < 0) {
+         fprintf( stderr, "rdmsr: CPU %d doesn't support MSRs\n", cpu );
+         return false;
+      }
 
-   close(fd);
+      // pread:  Upon successful completion, pread shall return a non-negative
+      //         integer indicating  the  number of bytes actually read.
+      if( pread( fd, pData, sizeof *pData, reg ) != sizeof *pData ) {
+         // fprintf( stderr, "rdmsr: CPU %d did not read MSR 0x%08" PRIx32 "\n", cpu, reg );
+         return false;
+      }
+
+      close(fd);
+
+   #else
+      (void) reg;    // Squelch unused parameter warnings
+      (void) cpu;
+      (void) pData;
+   #endif
 
    return true;
 }
@@ -138,17 +148,17 @@ void read_SGX_MSRs() {
 
    if( rdmsr( IA32_FEATURE_CONTROL, 0, &feature_control_msr ) ) {
       printf( "Raw IA32_FEATURE_CONTROL: %016" PRIx64 "\n", feature_control_msr );
-      
+
       printf( "    IA32_FEATURE_CONTROL.LOCK_BIT[bit 0]: %d\n", (int)((feature_control_msr >> 0) & 1 ));
       printf( "    IA32_FEATURE_CONTROL.SGX_LAUNCH_CONTROL[bit 17] (Is the SGX LE PubKey writable?): %d\n", (int)((feature_control_msr >> 17) & 1 ));
       printf( "    IA32_FEATURE_CONTROL.SGX_GLOBAL_ENABLE[bit 18]: %d\n", (int)((feature_control_msr >> 18) & 1 ));
-      
+
       if( (feature_control_msr & 1 ) && ( (feature_control_msr >> 17) & 1 ) ) {
          printf( "The SGX Launch Enclave Public Key Hash can be changed\n" );
       } else {
          printf( "The SGX Launch Enclave Public Key Hash can NOT be changed\n" );
       }
-      
+
    } else {
       printf( "IA32_FEATURE_CONTROL not readable\n" );
    }
@@ -160,11 +170,11 @@ void read_SGX_MSRs() {
    uint64_t sgx_lePubKeyHash3_msr;
 
    if(    rdmsr( IA32_SGXLEPUBKEYHASH0    , 0, &sgx_lePubKeyHash0_msr )
-       && rdmsr( IA32_SGXLEPUBKEYHASH0 + 1, 0, &sgx_lePubKeyHash1_msr ) 
+       && rdmsr( IA32_SGXLEPUBKEYHASH0 + 1, 0, &sgx_lePubKeyHash1_msr )
        && rdmsr( IA32_SGXLEPUBKEYHASH0 + 2, 0, &sgx_lePubKeyHash2_msr )
        && rdmsr( IA32_SGXLEPUBKEYHASH0 + 3, 0, &sgx_lePubKeyHash3_msr )
      ) {
-      printf( "IA32_SGXLEPUBKEYHASH: %016" PRIx64 "%016" PRIx64 "%016" PRIx64 "%016" PRIx64 "\n"
+      printf( "IA32_SGXLEPUBKEYHASH: %016" PRIx64 " %016" PRIx64 " %016" PRIx64 " %016" PRIx64 "\n"
          ,sgx_lePubKeyHash0_msr
          ,sgx_lePubKeyHash1_msr
          ,sgx_lePubKeyHash2_msr

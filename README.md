@@ -175,8 +175,7 @@ You can check if SGX is enabled on you system with `test_sgx.c`. Just compile an
 
 - Linux / gcc 13.1
 ```
-gcc -Wall -Wextra -Wpedantic -masm=intel -std=c2x -o test-sgx -lcap cpuid.c rdmsr.c test-sgx.c
-```
+gcc -Wl,--no-as-needed -Wall -Wextra -Wpedantic -masm=intel -o test-sgx -lcap cpuid.c rdmsr.c test-sgx.c```
 
 - Windows 11 / Visual Studio 2022 (x64 Native Tools)
 ```

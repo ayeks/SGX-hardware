@@ -11,9 +11,9 @@
 /// that it's on an somewhat modern platform platform.
 ///
 /// This has been tested with:
-///   - Linux / gcc 13.1:  gcc -Wall -Wextra -Wpedantic -masm=intel -std=c2x -o test-sgx test-sgx.c
-///   - Windows 11 / Visual Studio 2022 (x64 Native Tools):  cl test-sgx.c
-///   - MacOS / Clang 15:  clang -Wall -Wextra -Wpedantic -masm=intel -std=c2x -Wno-gnu-binary-literal -o test-sgx test-sgx.c
+///   - Linux / gcc 13.1:  gcc -Wl,--no-as-needed -Wall -Wextra -Wpedantic -masm=intel -o test-sgx -lcap cpuid.c rdmsr.c test-sgx.c
+///   - Windows 11 / Visual Studio 2022 (x64 Native Tools):  cl test-sgx.c cpuid.c rdmsr.c
+///   - MacOS / Clang 15:  clang -Wall -Wextra -Wpedantic -masm=intel -std=c2x -Wno-gnu-binary-literal -o test-sgx cpuid.c rdmsr.c test-sgx.c
 ///
 /// If you receive this message during compiling:  fatal error: sys/capability.h: No such file or directory
 /// ... then run this:  sudo apt-get install libcap-dev
