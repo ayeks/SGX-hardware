@@ -44,6 +44,7 @@ Checkout [Intel ARK specifications](https://ark.intel.com/content/www/us/en/ark.
 As per the last comment on this [thread](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/737881), Intel Xeon E3 processors as of today (Jul. 2017) do not have an Intel Management Engine. Therefore, the kernel will never be able to expose the device `/dev/mei0`.  What this means in terms of SGX is that Trusted Platform Service Functions (monotonic counters, trusted time) are not available on Xeon E3.
 
 The following sgx_tservice functions are not available:
+
 ```
     sgx_create_pse_session
     sgx_close_pse_session
@@ -174,16 +175,20 @@ The following devices have a SGX capable CPU included, but don't have the requir
 You can check if SGX is enabled on you system with `test_sgx.c`. Just compile and run it:
 
 - Linux / gcc 13.1
+
+```bash
+gcc -Wl,--no-as-needed -Wall -Wextra -Wpedantic -masm=intel -o test-sgx -lcap cpuid.c rdmsr.c test-sgx.c
 ```
-gcc -Wl,--no-as-needed -Wall -Wextra -Wpedantic -masm=intel -o test-sgx -lcap cpuid.c rdmsr.c test-sgx.c```
 
 - Windows 11 / Visual Studio 2022 (x64 Native Tools)
-```
+
+```bash
 cl test-sgx.c cpuid.c rdmsr.c
 ```
 
 - MacOS / Clang 15
-```
+
+```bash
 clang -Wall -Wextra -Wpedantic -masm=intel -std=c2x -Wno-gnu-binary-literal -o test-sgx cpuid.c rdmsr.c test-sgx.c
 ```
 
@@ -191,8 +196,10 @@ See [Issue 17](https://github.com/ayeks/SGX-hardware/issues/17) for the executio
 
 
 ### SGX is available for your CPU but not enabled in BIOS
+
 eg. on [2017 MacBook Pro's](https://github.com/ayeks/SGX-hardware/issues/26)
-```
+
+```bash
 ...
 Supports SGX
 SGX Launch Configuration (SGX_LC): 1
@@ -203,15 +210,17 @@ SGX2 leaf instructions (SGX2): 0
 ```
 
 ### CPU SGX functions are deactivated or SGX is not supported
+
 Eg. on [public clouds](https://github.com/ayeks/SGX-hardware/issues/37) or [2015 MacBooks Pro's](https://github.com/ayeks/SGX-hardware/issues/25))
 
-```
+```bash
 ...
 Does not support SGX
 ```
 
 ### SGX1 is available for your CPU and enabled in BIOS
-```
+
+```bash
 Start test-sgx
 CPUID is available
 The CPU is Genuine Intel
