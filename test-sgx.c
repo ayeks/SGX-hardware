@@ -20,40 +20,45 @@
 ///   - You are running in a VM.  The host's CPU (and BIOS) may actually support
 ///     SGX, but the hupervisor may not.  In this case, test-sgx will report that
 ///     the CPU does not support SGX when it actually does.
-///   - You are running on a Mac.  The CPU may actually support SGX, but the 
+///   - You are running on a Mac.  The CPU may actually support SGX, but the
 ///     BIOS never set it up.
 ///
 /// Test CPU is really intended to inform you of the capabilities of the system
 /// you are on right now... not an entire class of CPUs or motherboards.
-///  
-/// Sample Output (from a NUC:
+///
+/// Sample Output (from an Azure VM):
 ///     Start test-sgx
 ///     CPUID is available
 ///     The CPU is Genuine Intel
 ///     CPUID is capable of examining SGX capabilities
-///     CPU: Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz
-///       Stepping 9         Model 14           Family 6
-///       Processor type 0   Extended model 8   Extended family 0
+///     CPU: Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz
+///       Stepping 13        Model 14           Family 6 
+///       Processor type 0   Extended model 9   Extended family 0 
 ///     Safer Mode Extensions (SMX): 0
-///     Extended feature bits (EAX=7, ECX=0): eax: 00000000  ebx: 029c67af  ecx: 00000000  edx: bc002e00
+///     Extended feature bits (EAX=7, ECX=0): eax: 00000000  ebx: 009c6fbd  ecx: 40000000  edx: 20000400
 ///     Supports SGX
-///     SGX Launch Configuration (SGX_LC): 0
+///     SGX Launch Configuration (SGX_LC): 1
 ///     SGX Attestation Services (SGX_KEYS): 0
 ///     SGX1 leaf instructions (SGX1): 1
 ///     SGX2 leaf instructions (SGX2): 0
-///     EINCVIRTCHILD, EDECVIRTCHILD, and ESETCONTEXT: 0
-///     ETRACKC, ERDINFO, ELDBC, and ELDUC: 0
+///     EINCVIRTCHILD, EDECVIRTCHILD, and ESETCONTEXT (OVERSUB-VMX): 0
+///     ETRACKC, ERDINFO, ELDBC, and ELDUC (OVERSUB-Supervisor): 0
 ///     EVERIFYREPORT2: 0
-///     EUPDATESVN: 0
-///     EDECCSSA: 0
-///     Supported Extended SGX features (as a bit vector) 0x00000000
+///     Allow attestation w/ updated microcode (EUPDATESVN): 0
+///     Allow enclave thread to decrement TCS.CSSA (EDECCSSA): 1
+///     Supported Extended features for MISC region of SSA (MISCSELECT) 0x00000000
 ///     The maximum supported enclave size in non-64-bit mode is 2^31
 ///     The maximum supported enclave size in     64-bit mode is 2^36
-///     ECREATE SECS.ATTRIBUTES[31:0]   is 0x00000036
-///     ECREATE SECS.ATTRIBUTES[63:32]  is 0x00000000
-///     ECREATE SECS.ATTRIBUTES[95:64]  is 0x0000001f
-///     ECREATE SECS.ATTRIBUTES[127:96] is 0x00000000
-///     EPC[0]: Protection: ci  Base phys addr: 0000000070200000  size: 0000000005d80000
+///     Raw ECREATE SECS.ATTRIBUTES[63:0]: 00000000 00000436
+///         ECREATE SECS.ATTRIBUTES[DEBUG] (Debugger can read/write enclave data w/ EDBGRD/EDBGWR): 1
+///         ECREATE SECS.ATTRIBUTES[MODE64BIT] (Enclave can run as 64-bit): 1
+///         ECREATE SECS.ATTRIBUTES[PROVISIONKEY] (Provisioning key available from EGETKEY): 1
+///         ECREATE SECS.ATTRIBUTES[EINITTOKEN_KEY] (EINIT token key available from EGETKEY): 1
+///         ECREATE SECS.ATTRIBUTES[CET] (Enable Control-flow Enforcement Technology in enclave): 0
+///         ECREATE SECS.ATTRIBUTES[KSS] (Key Separation and Sharing Enabled): 0
+///         ECREATE SECS.ATTRIBUTES[AEXNOTIFY] (Threads may receive AEX notifications): 1
+///     Raw ECREATE SECS.ATTRIBUTES[127:64] (XFRM: Copy of XCR0): 00000000 0000001f
+///     EPC[0]: Protection: ci  Base phys addr: 00000001c0000000  size: 0000000001c00000
 ///     End test-sgx
 ///
 /// @file   test-sgx.c
@@ -75,7 +80,7 @@
 // where we need to increase this.
 #define NUMBER_OF_EPCs_TO_ENUMERATE 16
 
-#define EXIT_ON_FAILURE exit( EXIT_FAILURE );
+#define EXIT_ON_FAILURE // exit( EXIT_FAILURE );
 
 
 // Print the register set:
@@ -178,10 +183,10 @@ void doesCPUIDwork( void ) {
 }
 
 
-// If this is a genuine Intel CPU, then print that fact.  
+// If this is a genuine Intel CPU, then print that fact.
 // If not, tell the user what it is and exit.
 //
-// If it is a genuine Intel CPU, make sure it's capapble of examining SGX 
+// If it is a genuine Intel CPU, make sure it's capapble of examining SGX
 // features.
 void isIntelCPU( void ) {
    uint32_t eax = 0;
@@ -341,21 +346,21 @@ void supportsSGXInstructions( void ) {
    printf( "SGX2 leaf instructions (SGX2): %d\n", sgx2 );
 
    int sgxOversubscription1 = (eax >> 5) & 1; // (EAX=12H, ECX=0H):EAX[5]
-   printf( "EINCVIRTCHILD, EDECVIRTCHILD, and ESETCONTEXT: %d\n", sgxOversubscription1 );
+   printf( "EINCVIRTCHILD, EDECVIRTCHILD, and ESETCONTEXT (OVERSUB-VMX): %d\n", sgxOversubscription1 );
 
    int sgxOversubscription2 = (eax >> 6) & 1; // (EAX=12H, ECX=0H):EAX[6]
-   printf( "ETRACKC, ERDINFO, ELDBC, and ELDUC: %d\n", sgxOversubscription2 );
+   printf( "ETRACKC, ERDINFO, ELDBC, and ELDUC (OVERSUB-Supervisor): %d\n", sgxOversubscription2 );
 
    int sgxEVERIFYREPORT2 = (eax >> 7) & 1; // (EAX=12H, ECX=0H):EAX[7]
    printf( "EVERIFYREPORT2: %d\n", sgxEVERIFYREPORT2 );
 
    int sgxEUPDATESVN = (eax >> 10) & 1; // (EAX=12H, ECX=0H):EAX[10]
-   printf( "EUPDATESVN: %d\n", sgxEUPDATESVN );
+   printf( "Allow attestation w/ updated microcode (EUPDATESVN): %d\n", sgxEUPDATESVN );
 
    int sgxEDECCSSA = (eax >> 11) & 1; // (EAX=12H, ECX=0H):EAX[11]
-   printf( "EDECCSSA: %d\n", sgxEDECCSSA );
+   printf( "Allow enclave thread to decrement TCS.CSSA (EDECCSSA): %d\n", sgxEDECCSSA );
 
-   printf( "Supported Extended SGX features (as a bit vector) 0x%08" PRIx32 "\n", ebx );
+   printf( "Supported Extended features for MISC region of SSA (MISCSELECT) 0x%08" PRIx32 "\n", ebx );
 
    uint32_t maxNon64bitEnclaveBase= edx & 0xFF;
    printf( "The maximum supported enclave size in non-64-bit mode is 2^%" PRIu32 "\n", maxNon64bitEnclaveBase );
@@ -372,10 +377,18 @@ void supportsSGXInstructions( void ) {
    native_cpuid32( &eax, &ebx, &ecx, &edx );
    // print_registers32( eax, ebx, ecx, edx );
 
-   printf( "ECREATE SECS.ATTRIBUTES[31:0]   is 0x%08" PRIx32 "\n", eax );
-   printf( "ECREATE SECS.ATTRIBUTES[63:32]  is 0x%08" PRIx32 "\n", ebx );
-   printf( "ECREATE SECS.ATTRIBUTES[95:64]  is 0x%08" PRIx32 "\n", ecx );
-   printf( "ECREATE SECS.ATTRIBUTES[127:96] is 0x%08" PRIx32 "\n", edx );
+   printf( "Raw ECREATE SECS.ATTRIBUTES[63:0]: %08" PRIx32 " %08" PRIx32 "\n", ebx, eax );
+
+   printf( "    ECREATE SECS.ATTRIBUTES[DEBUG] (Debugger can read/write enclave data w/ EDBGRD/EDBGWR): %d\n", (eax >> 1) & 1 );
+   printf( "    ECREATE SECS.ATTRIBUTES[MODE64BIT] (Enclave can run as 64-bit): %d\n", (eax >> 2) & 1 );
+   printf( "    ECREATE SECS.ATTRIBUTES[PROVISIONKEY] (Provisioning key available from EGETKEY): %d\n", (eax >> 4) & 1 );
+   printf( "    ECREATE SECS.ATTRIBUTES[EINITTOKEN_KEY] (EINIT token key available from EGETKEY): %d\n",(eax >> 5) & 1 );
+   printf( "    ECREATE SECS.ATTRIBUTES[CET] (Enable Control-flow Enforcement Technology in enclave): %d\n",(eax >> 6) & 1 );
+   printf( "    ECREATE SECS.ATTRIBUTES[KSS] (Key Separation and Sharing Enabled): %d\n",(eax >> 7) & 1 );
+   printf( "    ECREATE SECS.ATTRIBUTES[AEXNOTIFY] (Threads may receive AEX notifications): %d\n",(eax >> 10) & 1 );
+
+   printf( "Raw ECREATE SECS.ATTRIBUTES[127:64] (XFRM: Copy of XCR0): %08" PRIx32 " %08" PRIx32 "\n", edx, ecx );
+
 }
 
 

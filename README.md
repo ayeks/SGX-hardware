@@ -222,18 +222,23 @@ SGX Launch Configuration (SGX_LC): 1
 SGX Attestation Services (SGX_KEYS): 0
 SGX1 leaf instructions (SGX1): 1
 SGX2 leaf instructions (SGX2): 0
-EINCVIRTCHILD, EDECVIRTCHILD, and ESETCONTEXT: 0
-ETRACKC, ERDINFO, ELDBC, and ELDUC: 0
+EINCVIRTCHILD, EDECVIRTCHILD, and ESETCONTEXT (OVERSUB-VMX): 0
+ETRACKC, ERDINFO, ELDBC, and ELDUC (OVERSUB-Supervisor): 0
 EVERIFYREPORT2: 0
-EUPDATESVN: 0
-EDECCSSA: 1
-Supported Extended SGX features (as a bit vector) 0x00000000
+Allow attestation w/ updated microcode (EUPDATESVN): 0
+Allow enclave thread to decrement TCS.CSSA (EDECCSSA): 1
+Supported Extended features for MISC region of SSA (MISCSELECT) 0x00000000
 The maximum supported enclave size in non-64-bit mode is 2^31
 The maximum supported enclave size in     64-bit mode is 2^36
-ECREATE SECS.ATTRIBUTES[31:0]   is 0x00000436
-ECREATE SECS.ATTRIBUTES[63:32]  is 0x00000000
-ECREATE SECS.ATTRIBUTES[95:64]  is 0x0000001f
-ECREATE SECS.ATTRIBUTES[127:96] is 0x00000000
+Raw ECREATE SECS.ATTRIBUTES[63:0]: 00000000 00000436
+    ECREATE SECS.ATTRIBUTES[DEBUG] (Debugger can read/write enclave data w/ EDBGRD/EDBGWR): 1
+    ECREATE SECS.ATTRIBUTES[MODE64BIT] (Enclave can run as 64-bit): 1
+    ECREATE SECS.ATTRIBUTES[PROVISIONKEY] (Provisioning key available from EGETKEY): 1
+    ECREATE SECS.ATTRIBUTES[EINITTOKEN_KEY] (EINIT token key available from EGETKEY): 1
+    ECREATE SECS.ATTRIBUTES[CET] (Enable Control-flow Enforcement Technology in enclave): 0
+    ECREATE SECS.ATTRIBUTES[KSS] (Key Separation and Sharing Enabled): 0
+    ECREATE SECS.ATTRIBUTES[AEXNOTIFY] (Threads may receive AEX notifications): 1
+Raw ECREATE SECS.ATTRIBUTES[127:64] (XFRM: Copy of XCR0): 00000000 0000001f
 EPC[0]: Protection: ci  Base phys addr: 00000001c0000000  size: 0000000001c00000
 End test-sgx
 ```
