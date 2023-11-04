@@ -143,7 +143,7 @@ Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https:/
 | Vendor | Servicename | CPU SGX capable | SGX activated in BIOS | Date | Source |
 |--------|-------------|-----------------|-----------------------|------|-----------|
 | AWS | EC2 C5 instances | YES, SGX1 and SGX2 | NO, SGX not activated in BIOS | Apr 2018 | [Issue 37](https://github.com/ayeks/SGX-hardware/issues/37) |
-| Azure | [Azure Confidential Computing Public Preview](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) | YES, SGX1 | YES, SGX1 | Oct 2018 | [Blog](https://azure.microsoft.com/en-us/blog/protect-data-in-use-with-the-public-preview-of-azure-confidential-computing/) |
+| Azure | [Azure Confidential Computing](https://learn.microsoft.com/en-us/azure/confidential-computing/quick-create-portal) | YES, SGX1 | YES, SGX1 | Oct 2023 | [Blog](https://azure.microsoft.com/en-us/blog/protect-data-in-use-with-the-public-preview-of-azure-confidential-computing/) |
 | Google | N1 instances | YES, SGX1 and SGX2 | NO, SGX not activated in BIOS | Apr 2018 | [Issue 38](https://github.com/ayeks/SGX-hardware/issues/38) |
 | IBM | [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) | YES, unknown version | YES | May 2018 | [Issue 46](https://github.com/ayeks/SGX-hardware/issues/46) |
 | packet.net | [Reserved Hardware](https://www.packet.com/cloud/all-features/) | YES, SGX1 | YES | Apr 2018 | [Issue 44](https://github.com/ayeks/SGX-hardware/issues/44) |
@@ -164,30 +164,37 @@ The following devices have a SGX capable CPU included, but don't have the requir
 | Laptop | Microsoft | Surface Book 2 | [Issue 52](https://github.com/ayeks/SGX-hardware/issues/52) | 26 Sep 2018 |
 | Laptop | Razer | Blade (2016) | [Issue 60](https://github.com/ayeks/SGX-hardware/issues/60) | 6 Jul 2019 |
 
-## Test SGX
+## Compile `test-sgx`
 
-You can check if SGX is enabled on you system with the test_sgx.c. Just compile and run it:
+You can check if SGX is enabled on you system with `test_sgx.c`. Just compile and run it:
+
+- Linux / gcc 13.1
 ```
-$ gcc test-sgx.c -o test-sgx
-$ ./test-sgx
+gcc -Wall -Wextra -Wpedantic -masm=intel -std=c2x -o test-sgx test-sgx.c
+```
+
+- Windows 11 / Visual Studio 2022 (x64 Native Tools)
+```
+cl test-sgx.c
+```
+
+- MacOS / Clang 15
+```
+clang -Wall -Wextra -Wpedantic -masm=intel -std=c2x -Wno-gnu-binary-literal -o test-sgx test-sgx.c
 ```
 
 See [Issue 17](https://github.com/ayeks/SGX-hardware/issues/17) for the execution in Visual Studio.
+
 
 ### SGX is available for your CPU but not enabled in BIOS
 eg. on [2017 MacBook Pro's](https://github.com/ayeks/SGX-hardware/issues/26)
 ```
 ...
-Extended feature bits (EAX=07H, ECX=0H)
-eax: 0 ebx: 29c6fbf ecx: 0 edx: 0
-sgx available: 1
-
-CPUID Leaf 12H, Sub-Leaf 0 of Intel SGX Capabilities (EAX=12H,ECX=0)
-eax: 0 ebx: 0 ecx: 0 edx: 0
-sgx 1 supported: 0
-sgx 2 supported: 0
-MaxEnclaveSize_Not64: 0
-MaxEnclaveSize_64: 0
+Supports SGX
+SGX Launch Configuration (SGX_LC): 1
+SGX Attestation Services (SGX_KEYS): 0
+SGX1 leaf instructions (SGX1): 0
+SGX2 leaf instructions (SGX2): 0
 ...
 ```
 
@@ -196,36 +203,42 @@ Eg. on [public clouds](https://github.com/ayeks/SGX-hardware/issues/37) or [2015
 
 ```
 ...
-Extended feature bits (EAX=07H, ECX=0H)
-eax: 0 ebx: d19f4fbb ecx: 8 edx: 0
-sgx available: 0
-
-CPUID Leaf 12H, Sub-Leaf 0 of Intel SGX Capabilities (EAX=12H,ECX=0)
-eax: 2ff ebx: a80 ecx: a88 edx: 0
-sgx 1 supported: 1
-sgx 2 supported: 1
-MaxEnclaveSize_Not64: 0
-MaxEnclaveSize_64: 0
-...
+Does not support SGX
 ```
 
-### SGX is available for your CPU and enabled in BIOS
+### SGX1 is available for your CPU and enabled in BIOS
 ```
-...
-Extended feature bits (EAX=07H, ECX=0H)
-eax: 0 ebx: 29c6fbf ecx: 0 edx: 0
-sgx available: 1
-
-CPUID Leaf 12H, Sub-Leaf 0 of Intel SGX Capabilities (EAX=12H,ECX=0)
-eax: 1 ebx: 0 ecx: 0 edx: 241f
-sgx 1 supported: 1
-sgx 2 supported: 0
-MaxEnclaveSize_Not64: 1f
-MaxEnclaveSize_64: 24
-...
+Start test-sgx
+CPUID is available
+The CPU is Genuine Intel
+CPUID is capable of examining SGX capabilities
+CPU: Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz
+  Stepping 13        Model 14           Family 6 
+  Processor type 0   Extended model 9   Extended family 0 
+Safer Mode Extensions (SMX): 0
+Extended feature bits (EAX=7, ECX=0): eax: 00000000  ebx: 009c6fbd  ecx: 40000000  edx: 20000400
+Supports SGX
+SGX Launch Configuration (SGX_LC): 1
+SGX Attestation Services (SGX_KEYS): 0
+SGX1 leaf instructions (SGX1): 1
+SGX2 leaf instructions (SGX2): 0
+EINCVIRTCHILD, EDECVIRTCHILD, and ESETCONTEXT: 0
+ETRACKC, ERDINFO, ELDBC, and ELDUC: 0
+EVERIFYREPORT2: 0
+EUPDATESVN: 0
+EDECCSSA: 1
+Supported Extended SGX features (as a bit vector) 0x00000000
+The maximum supported enclave size in non-64-bit mode is 2^31
+The maximum supported enclave size in     64-bit mode is 2^36
+ECREATE SECS.ATTRIBUTES[31:0]   is 0x00000436
+ECREATE SECS.ATTRIBUTES[63:32]  is 0x00000000
+ECREATE SECS.ATTRIBUTES[95:64]  is 0x0000001f
+ECREATE SECS.ATTRIBUTES[127:96] is 0x00000000
+EPC[0]: Protection: ci  Base phys addr: 00000001c0000000  size: 0000000001c00000
+End test-sgx
 ```
 
-That means that you are now able to call the special SGX calls of your CPU.  However you will always need the official Intel SGX Drivers including their Launch Enclave to initiate your own enclaves. To be able to execute SGX functions you need both `sgx available: 1` and `sgx [1|2] supported: 1`. Another hint that SGX functions are working is the output of an enclave size eg. `MaxEnclaveSize_64`. 
+That means that you are now able to call the special SGX calls of your CPU.  However you will always need the official Intel SGX Drivers including their Launch Enclave to initiate your own enclaves. To be able to execute SGX functions you need both `Supports SGX` and `SGX[1|2] leaf instructions (SGX[1|2]): 1`. Another hint that SGX functions are working is the output of an enclave size eg. `The maximum supported enclave size` is set. 
 
 ## Contribution
 
