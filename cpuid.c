@@ -2,7 +2,7 @@
 //  cpuid.c - 2023
 //
 /// This module contains multi-platform, non-privlidged code that utilizes the
-/// CPUID instruction to discover & report SGX capabilities.
+/// CPUID instruction to discover and report SGX capabilities.
 ///
 /// @file   cpuid.c
 /// @author Lars Luhr   <mail@ayeks.de>
