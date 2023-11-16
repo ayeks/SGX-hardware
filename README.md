@@ -1,17 +1,18 @@
 # SGX-hardware list
 This is a list of hardware which supports Intel SGX - Software Guard Extensions.
 
-[![Build Status](https://travis-ci.org/ayeks/SGX-hardware.svg?branch=master)](https://travis-ci.org/ayeks/SGX-hardware)
+Both CPUs and motherboard BIOS/UEFI must support SGX. SGX is disabled by default and is enabled via `MSR.IA32_Feature_Control.SGX_Enable`. Only the BIOS can make changes to the `IA32_Feature_Control` MSR.
 
 ## Desktop
 
-The CPU and the motherboard BIOS must support SGX. SGX is turned off by default and must be enabled via MSR.IA32\_Feature\_Control.SGX\_Enable. Only the BIOS can make changes to the IA32\_Feature\_Control.
-
 ### Desktop CPUs affected by the product change notification from 2015
 
-Use the [ark.intel.com](https://ark.intel.com/Search/FeatureFilter?productType=processors&SoftwareGuardExtensions=true) database to list all Intel CPUs that have the SGX feature.
+Use the [ark.intel.com](https://ark.intel.com) database to list all Intel CPUs that Support SGX:
+  - [With Intel ME (Management Engine)](https://ark.intel.com/content/www/us/en/ark/search/featurefilter.html?productType=873&2_SoftwareGuardExtensions=Yes%20with%20Intel®%20ME)
+  - [With Intel SPS (Server Platform Services)](https://ark.intel.com/content/www/us/en/ark/search/featurefilter.html?productType=873&2_SoftwareGuardExtensions=Yes%20with%20Intel®%20SPS)
+  - [With both Intel SPS and ME](https://ark.intel.com/content/www/us/en/ark/search/featurefilter.html?productType=873&2_SoftwareGuardExtensions=Yes%20with%20both%20Intel®%20SPS%20and%20Intel®%20ME)
 
-Be cautious with the following 2015 i7,i5 and E3 CPUs. According to the [Product Change Notification](http://qdms.intel.com/dm/i.aspx/5A160770-FC47-47A0-BF8A-062540456F0A/PCN114074-00.pdf) from October 1, 2015. Only the listed CPUs with the following S-Spec Numbers are able to execute SGX instructions. For all other CPUs the Intel CPU database should be correct.
+Be cautious with the following 2015 i7,i5 and E3 CPUs. According to the [Product Change Notification](http://qdms.intel.com/dm/i.aspx/5A160770-FC47-47A0-BF8A-062540456F0A/PCN114074-00.pdf) from October 1, 2015. Only the listed CPUs with the following S-Spec Numbers support SGX. For all other CPUs the Intel CPU database should be correct.
 
 | Marketing Name | Processor# | Post-Conversion S-Spec |
 |----------------|------------|------------------------|
@@ -37,14 +38,13 @@ Be cautious with the following 2015 i7,i5 and E3 CPUs. According to the [Product
 | Intel® Xeon®   | E3-1235L v5   | SR2LM  |
 | Intel® Xeon®   | E3-1240L v5   | SR2LN  |
 
-Checkout [Intel ARK specifications](https://ark.intel.com/content/www/us/en/ark.html) for newer CPU models with SGX support.
+Checkout [Intel ARK specifications](https://ark.intel.com/content/www/us/en/ark/search/featurefilter.html?productType=873) for newer CPU models with SGX support.
 
 ### CPUs without Platform Service Enclave functionality
 
 As per the last comment on this [thread](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/737881), Intel Xeon E3 processors as of today (Jul. 2017) do not have an Intel Management Engine. Therefore, the kernel will never be able to expose the device `/dev/mei0`.  What this means in terms of SGX is that Trusted Platform Service Functions (monotonic counters, trusted time) are not available on Xeon E3.
 
 The following sgx_tservice functions are not available:
-
 ```
     sgx_create_pse_session
     sgx_close_pse_session
@@ -137,16 +137,16 @@ It seems that Intel [Gemini Lake](https://ark.intel.com/content/www/us/en/ark/pr
 
 ## Cloud Vendors
 
-Packet.net, IBM and Alibaba have Bare Metal Instances available that allow the execution of SGX instructions to create secure enclaves in the cloud. See [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) and [Alibaba ECS Bare Metal Instance](https://www.alibabacloud.com/product/ebm). If you were able to experiment with SGX in the Cloud, please let us know!
+Packet.net, [IBM](https://cloud.ibm.com) and Alibaba have Bare Metal Instances available that allow the execution of SGX instructions to create secure enclaves in the cloud. See [IBM Cloud Bare Metal Instances](https://cloud.ibm.com/docs/bare-metal?topic=bare-metal-bm-server-provision-sgx) and [Alibaba ECS Bare Metal Instance](https://www.alibabacloud.com/product/ebm). If you were able to experiment with SGX in the Cloud, please let us know!
 
 Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https://github.com/ayeks/SGX-hardware/issues/38) have CPUs that capable of SGX but the execution is disabled. We discussed that into detail [here](https://github.com/ayeks/SGX-hardware/issues/37). According to a [Intel forum post](https://software.intel.com/en-us/forums/intel-software-guard-extensions-intel-sgx/topic/755636).
 
 | Vendor | Servicename | CPU SGX capable | SGX activated in BIOS | Date | Source |
 |--------|-------------|-----------------|-----------------------|------|-----------|
 | AWS | EC2 C5 instances | YES, SGX1 and SGX2 | NO, SGX not activated in BIOS | Apr 2018 | [Issue 37](https://github.com/ayeks/SGX-hardware/issues/37) |
-| Azure | [Azure Confidential Computing](https://learn.microsoft.com/en-us/azure/confidential-computing/quick-create-portal) | YES, SGX1 | YES, SGX1 | Oct 2023 | [Blog](https://azure.microsoft.com/en-us/blog/protect-data-in-use-with-the-public-preview-of-azure-confidential-computing/) |
-| Google | N1 instances | YES, SGX1 and SGX2 | NO, SGX not activated in BIOS | Apr 2018 | [Issue 38](https://github.com/ayeks/SGX-hardware/issues/38) |
-| IBM | [IBM Cloud Bare Metal Instances](https://www.ibm.com/blogs/bluemix/2018/05/data-use-protection-ibm-cloud-using-intel-sgx/) | YES, unknown version | YES | May 2018 | [Issue 46](https://github.com/ayeks/SGX-hardware/issues/46) |
+| Azure | [Azure Confidential Computing](https://learn.microsoft.com/en-us/azure/confidential-computing/quick-create-portal) | YES, SGX1 | YES, SGX1 | Nov 2023 | `Standard_DC2s_v2` |
+| Google | C3, E2, N2 (Ice Lake), N2 (Cascade Lake), N1 (Skylake) | YES, SGX1 and SGX2 | NO, SGX not activated in BIOS | Nov 2023 | [Issue 38](https://github.com/ayeks/SGX-hardware/issues/38) |
+| IBM | [IBM Cloud Bare Metal Instances](https://cloud.ibm.com/docs/bare-metal?topic=bare-metal-bm-server-provision-sgx) | YES, SGX1 | YES | Nov 2023 | [Issue 46](https://github.com/ayeks/SGX-hardware/issues/46) |
 | packet.net | [Reserved Hardware](https://www.packet.com/cloud/all-features/) | YES, SGX1 | YES | Apr 2018 | [Issue 44](https://github.com/ayeks/SGX-hardware/issues/44) |
 | Alibaba Cloud | [ECS Bare Metal Instance](https://www.alibabacloud.com/product/ebm) | YES, unknown version | YES | Sep 2018 | [Docs](https://www.alibabacloud.com/help/doc-detail/60576.html), [Issue 50](https://github.com/ayeks/SGX-hardware/issues/50) |
 | OVHcloud  | [Infrastructure Dedicated Servers](https://www.ovh.com/ca/en/dedicated-servers/infra/) | YES, unknown version | YES | Sep 2019 | [Docs](https://www.ovh.ie/dedicated_servers/software-guard-extensions/), [Issue 66](https://github.com/ayeks/SGX-hardware/issues/66) |
@@ -154,8 +154,7 @@ Both [AWS](https://github.com/ayeks/SGX-hardware/issues/37) and [Google](https:/
 
 Notes:
 - [As of 10 November 2022, the IBM Cloud Data Shield service is deprecated](https://www.ibm.com/blog/announcement/ibm-cloud-data-shield-deprecation/)
-- [As of 10 Jan 2023, IBM Bare Metal still supports SGX (but I haven't tested it yet)](https://cloud.ibm.com/docs/bare-metal?topic=bare-metal-bm-server-provision-sgx)
-- [IBM](https://www.ibm.com/products/bare-metal-servers/classic)
+- Beware: In IBM Cloud, the CPUs that support SGX are only provisioned in monthly tiers, so you'll get billed for 1 full month of service as soon as you turn on the instance.
 
 ## Device with a SGX CPU, but no BIOS support
 
@@ -175,20 +174,17 @@ The following devices have a SGX capable CPU included, but don't have the requir
 You can check if SGX is enabled on you system with `test_sgx.c`. Just compile and run it:
 
 - Linux / gcc 13.1
-
-```bash
+```
 gcc -Wl,--no-as-needed -Wall -Wextra -Wpedantic -masm=intel -o test-sgx -lcap cpuid.c rdmsr.c test-sgx.c
 ```
 
 - Windows 11 / Visual Studio 2022 (x64 Native Tools)
-
-```bash
+```
 cl test-sgx.c cpuid.c rdmsr.c
 ```
 
 - MacOS / Clang 15
-
-```bash
+```
 clang -Wall -Wextra -Wpedantic -masm=intel -std=c2x -Wno-gnu-binary-literal -o test-sgx cpuid.c rdmsr.c test-sgx.c
 ```
 
@@ -196,10 +192,8 @@ See [Issue 17](https://github.com/ayeks/SGX-hardware/issues/17) for the executio
 
 
 ### SGX is available for your CPU but not enabled in BIOS
-
 eg. on [2017 MacBook Pro's](https://github.com/ayeks/SGX-hardware/issues/26)
-
-```bash
+```
 ...
 Supports SGX
 SGX Launch Configuration (SGX_LC): 1
@@ -210,17 +204,15 @@ SGX2 leaf instructions (SGX2): 0
 ```
 
 ### CPU SGX functions are deactivated or SGX is not supported
-
 Eg. on [public clouds](https://github.com/ayeks/SGX-hardware/issues/37) or [2015 MacBooks Pro's](https://github.com/ayeks/SGX-hardware/issues/25))
 
-```bash
+```
 ...
 Does not support SGX
 ```
 
 ### SGX1 is available for your CPU and enabled in BIOS
-
-```bash
+```
 Start test-sgx
 CPUID is available
 The CPU is Genuine Intel
@@ -274,4 +266,4 @@ eg. `The maximum supported enclave size` is set.
 
 ## Contribution
 
-Add more hardware to this list via pull requests or simply via issues.
+Add more hardware to this list via pull requests or add an issue.
