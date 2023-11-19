@@ -79,6 +79,7 @@
 
 #include <stdio.h>     // For printf()
 #include <inttypes.h>  // For PRIx64 uint64_t PRIx32 uint32_t
+#include <time.h>      // For fetching timestamps
 
 #include "test-sgx.h"  // For obvious reasons
 #include "cpuid.h"     // For native_cpuid32()
@@ -97,7 +98,12 @@ void sgxInstruction( void ) {
 
 
 int main( void ) {
-   printf( "Start " PROGRAM_NAME "\n" );
+   // Get current timestamp
+	time_t timestamp;
+	time(&timestamp);
+
+	// Print program info
+	printf( "Start " PROGRAM_NAME " (version " PROGRAM_VERSION ") at %s\n", ctime(&timestamp) );
 
    doesCPUIDwork();
    isIntelCPU();

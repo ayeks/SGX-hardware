@@ -12,5 +12,6 @@
 #include <stdlib.h>  // For exit() EXIT_FAILURE
 
 #define PROGRAM_NAME "test-sgx"
+#define PROGRAM_VERSION "2.0.0"
 
 #define EXIT_ON_FAILURE  exit( EXIT_FAILURE );
