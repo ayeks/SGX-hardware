@@ -83,7 +83,7 @@
 #include "test-sgx.h"  // For obvious reasons
 #include "cpuid.h"     // For native_cpuid32()
 #include "rdmsr.h"     // For checkCapabilities()
-
+#include "vdso.h"      // FOr dump_vDSO()
 
 // Prove the compiler regognizes SGX instructions
 void sgxInstruction( void ) {
@@ -104,6 +104,7 @@ int main( void ) {
    printCPUBrandString();
    supportsSGXInstructions();
    enumerateEPCsections();
+   dump_vDSO();
    
    if( checkCapabilities() ) {
       read_SGX_MSRs();
