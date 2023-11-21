@@ -100,11 +100,11 @@ void sgxInstruction( void ) {
 
 int main( void ) {
    // Get current timestamp
-	time_t timestamp;
-	time(&timestamp);
+   time_t timestamp;
+   time(&timestamp);
 
-	// Print program info
-	printf( "Start " PROGRAM_NAME " (version " PROGRAM_VERSION ") at %s\n", ctime(&timestamp) );
+   // Print program info
+   printf( "Start " PROGRAM_NAME " (version " PROGRAM_VERSION ") at %s\n", ctime(&timestamp) );
 
    doesCPUIDwork();
    isIntelCPU();
