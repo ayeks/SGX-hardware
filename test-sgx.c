@@ -30,7 +30,7 @@
 /// you are on right now... not an entire class of CPUs or motherboards.
 ///
 /// Sample Output (from an Azure VM):
-///     Start test-sgx
+///     Start test-sgx (version 2.0.0) at Mon Nov 20 18:20:43 2023
 ///     CPUID is available
 ///     The CPU is Genuine Intel
 ///     CPUID is capable of examining SGX capabilities
@@ -73,8 +73,9 @@
 ///     End test-sgx
 ///
 /// @file   test-sgx.c
-/// @author Lars Luhr   <mail@ayeks.de>
-/// @author Mark Nelson <marknels@hawaii.edu>
+/// @author Lars Luhr   	<mail@ayeks.de>
+/// @author Mark Nelson 	<marknels@hawaii.edu>
+/// @author Eliya Nakamura	<eliyanak@hawaii.edu>
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>     // For printf()
