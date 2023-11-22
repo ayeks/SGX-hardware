@@ -104,7 +104,7 @@ int main( void ) {
    time(&timestamp);
 
    // Print program info
-   printf( "Start " PROGRAM_NAME " (version " PROGRAM_VERSION ") at %s\n", ctime(&timestamp) );
+   printf( "Start " PROGRAM_NAME " (version %d.%d.%d) at %s\n", PROGRAM_VERSION_MAJOR, PROGRAM_VERSION_MINOR, PROGRAM_VERSION_PATCH, ctime(&timestamp) );
 
    doesCPUIDwork();
    isIntelCPU();
