@@ -75,6 +75,7 @@
 /// @file   test-sgx.c
 /// @author Lars Luhr   <mail@ayeks.de>
 /// @author Mark Nelson <marknels@hawaii.edu>
+/// @author Brooke Maeda <bmhm@hawaii.edu>
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>     // For printf()

@@ -1,15 +1,14 @@
 ///////////////////////////////////////////////////////////////////////////////
-//  vdso.c - 2023
+//  vdso.h - 2023
 //
 /// This module contains code to dump the vDSO symbol table
 ///
-/// @file   vdso.c
+/// @file   vdso.h
 /// @author Mark Nelson <marknels@hawaii.edu>
 /// @author Brooke Maeda <bmhm@hawaii.edu>
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <elf.h>       // For ELF64_
-#include <stdbool.h>   // For bool true false
+#include <elf.h>       // For Elf64_Sym Elf64_Word
 
 /// vDSO symbol table information
 struct vdso_symtab {
@@ -26,5 +25,5 @@ void get_symbol_from_table( struct vdso_symtab* symtab, const char* name );
 /// Get the address of a vDSO symbol
 Elf64_Addr get_vDSO_symbol( const char* symbol );
 
-// print out the symbol table
+// Print out the symbol table
 void dump_vDSO ( void );

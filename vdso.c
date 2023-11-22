@@ -12,8 +12,7 @@
 #include "vdso.h"     // For obvious reasons
 #include <sys/auxv.h>  // For getauxval
 #include <asm/sgx.h>
-
-
+#include <stdbool.h>   // For bool true false
 
 /// Get the vDSO dynamic link table `PT_DYNAMIC`
 ///
@@ -23,11 +22,11 @@
 /// @return A pointer to the table or `NULL` if it's not found
 static Elf64_Dyn* vdso_get_dynamic_link_table( void* addr ) {
 	Elf64_Ehdr* ehdr = addr;
-	Elf64_Phdr* phdrtab = addr + ehdr->e_phoff;
+	Elf64_Phdr* phdrtab = (Elf64_Phdr*)addr + ehdr->e_phoff;
 
 	for( int i = 0 ; i < ehdr->e_phnum ; i++ ) {
 		if( phdrtab[i].p_type == PT_DYNAMIC ) {
-			return addr + phdrtab[i].p_offset;
+			return (Elf64_Dyn*)addr + phdrtab[i].p_offset;
 		}
 	}
 
@@ -64,7 +63,7 @@ static unsigned long hash_elf_symbol( const char* name ) {
 static void* vdso_get_dynamic_section( void* addr, Elf64_Dyn* dyntab, Elf64_Sxword tag ) {
 	for( int i = 0 ; dyntab[i].d_tag != DT_NULL ; i++ )
 		if( dyntab[i].d_tag == tag )
-			return addr + dyntab[i].d_un.d_ptr;
+			return (Elf64_Phdr*)addr + dyntab[i].d_un.d_ptr;
 
 	return NULL;
 }
