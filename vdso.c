@@ -35,26 +35,6 @@ static Elf64_Dyn* vdso_get_dynamic_link_table( void* addr ) {
 	return NULL;
 }
 
-/// Compute the hash of an ELF symbol
-/// 
-/// @param name The name of the symbol to hash
-/// @return the hash of `name`
-// static unsigned long hash_elf_symbol( const char* name ) {
-// 	unsigned long h = 0, high;
-
-// 	while( *name ) {
-// 		h = (h << 4) + *name++;
-// 		high = h & 0xf0000000;
-
-// 		if( high )
-// 			h ^= high >> 24;
-
-// 		h &= ~high;
-// 	}
-
-// 	return h;
-// }
-
 
 /// Get a dynamic section from a vDSO file
 ///
@@ -96,27 +76,10 @@ static bool vdso_get_symbol_table( void* addr, struct vdso_symtab* symtab ) {
 }
 
 
-/// Get symbol `name` from the symbol table pointed to by `symtab`
+/// Print the symbol table pointed to by `symtab`
 ///
 /// @param symtab Pointer to a vDSO symbol table
-/// @param name   The name of the symbol to retrieve
 /// @return void
-// void get_symbol_from_table( struct vdso_symtab* symtab, const char* name ) {
-// // void get_symbol_from_table( struct vdso_symtab* symtab ) {
-// 	Elf64_Word  bucketnum = symtab->elf_hashtab[0];
-// 	Elf64_Word* buckettab = &symtab->elf_hashtab[2];
-// 	Elf64_Word* chaintab  = &symtab->elf_hashtab[2 + bucketnum];
-// 	Elf64_Sym*  sym;
-
-// 	for( Elf64_Word i = buckettab[ hash_elf_symbol(name) % bucketnum ] ; i != STN_UNDEF ; i = chaintab[i] ) {
-// 		sym = &symtab->elf_symtab[i];
-// 		printf( "vDSO symbol: %s\n", &symtab->elf_symstrtab[ sym->st_name ] );
-// 		//if( !strcmp( name, &symtab->elf_symstrtab[ sym->st_name ] ) )
-// 			//return sym;
-// 	}
-	
-// }
-
 void print_whole_symbol_table(struct vdso_symtab* symtab) {
     Elf64_Word bucketnum = symtab->elf_hashtab[0];
     Elf64_Word* buckettab = &symtab->elf_hashtab[2];
@@ -131,14 +94,8 @@ void print_whole_symbol_table(struct vdso_symtab* symtab) {
     }
 }
 
-
-/// Get the address of a vDSO symbol
-///
-/// @param symbol The name of the symbol to retrieve
-/// @return The vDSO address of the symbol or 0 if it can't be found
-// Elf64_Addr get_vDSO_symbol( const char* symbol ) {
-void get_vDSO_symbol( void ) {
-//    Elf64_Sym*         vdso_symbol_ptr = NULL;
+/// Print out the symbol table
+void dump_vDSO ( void ) {
 	struct vdso_symtab symtab;
 
    // Get vDSO base address
@@ -156,28 +113,7 @@ void get_vDSO_symbol( void ) {
 		return;
 	}
 
-	//vdso_symbol_ptr = get_symbol_from_table( &symtab, symbol );
-	// printf("Doing get_symbol_from_table\n");
-    // get_symbol_from_table( &symtab,  symbol );
-	// printf("Doing print_whole_symbol_table\n");
-	print_whole_symbol_table( &symtab );
-    return;
-    // return 0;
-// 	if( !vdso_symbol_ptr )
-// 		goto err;
-	
-// 	return (Elf64_Addr) (vdso_base_addr + vdso_symbol_ptr->st_value);
-	
-// err:
-// 	// fprintf( stderr, "Failed to find vDSO symbol %s\n", symbol );
-// 	fprintf( stderr, "Failed to find vDSO symbol\n" );
-
-// 	return 0;	
-}
-
-// print out the symbol table
-void dump_vDSO ( void ) {
     printf("Printing Symbol Table:\n");
-	get_vDSO_symbol( );
+	print_whole_symbol_table( &symtab );
 
 }
