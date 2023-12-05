@@ -253,6 +253,20 @@ Raw ECREATE SECS.ATTRIBUTES[63:0]: 00000000 00000436
     ECREATE SECS.ATTRIBUTES[AEXNOTIFY] (Threads may receive AEX notifications): 1
 Raw ECREATE SECS.ATTRIBUTES[127:64] (XFRM: Copy of XCR0): 00000000 0000001f
 EPC[0]: Protection: ci  Base phys addr: 00000001c0000000  size: 0000000001c00000
+vDSO base address: 0x7ffc9dfa0000
+Printing Symbol Table:
+vDSO symbol: __vdso_time
+vDSO symbol: getcpu
+vDSO symbol: __vdso_clock_getres
+vDSO symbol: __vdso_getcpu
+vDSO symbol: clock_getres
+vDSO symbol: __vdso_gettimeofday
+vDSO symbol: LINUX_2.6
+vDSO symbol: gettimeofday
+vDSO symbol: __vdso_clock_gettime
+vDSO symbol: time
+vDSO symbol: __vdso_sgx_enter_enclave
+vDSO symbol: clock_gettime
 Raw IA32_FEATURE_CONTROL: 0000000000060001
     IA32_FEATURE_CONTROL.LOCK_BIT[bit 0]: 1
     IA32_FEATURE_CONTROL.SGX_LAUNCH_CONTROL[bit 17] (Is the SGX LE PubKey writable?): 1
