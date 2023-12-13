@@ -2,7 +2,7 @@
 //  rdmsr.h - 2023
 //
 /// This module contains Linux-specific, privlidged code (wants to run as root)
-/// that utilizes the RDMSR instruction by reading from /dev/cpu/0/msr to 
+/// that utilizes the RDMSR instruction by reading from /dev/cpu/0/msr to
 /// discover & report SGX additional capabilities.
 ///
 /// @file   rdmsr.h
