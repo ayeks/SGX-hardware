@@ -19,11 +19,44 @@
 
 #include <stdio.h>     // For printf()
 #include <inttypes.h>  // For PRIx32
+#include <stdbool.h>   // For bool
 
 
 #include "xsave.h"  // For obvious reasons
 #include "cpuid.h"  // For native_cpuid32()
 
+
+bool is_XGETBV_supported = 0;
+
+
+/// Call `native_XGETBV`, passing `ecx`.
+///
+/// @param xcr Extended control register (XCR) specified in the ECX register
+uint64_t native_XGETBV( uint32_t xcr ) {
+
+   uint32_t edx;
+   uint32_t eax;
+
+#if !defined( _MSC_VER )
+   __asm volatile (
+       "mov ecx, %[xcr];"
+       "xgetbv;"
+       "mov %[edx], edx;"
+       "mov %[eax], eax;"
+      :[edx] "=rm" (edx)    // Output
+      ,[eax] "=rm" (eax)
+      :[xcr] ""    (xcr)    // Input
+      : );  // Clobbers
+
+   // printf( "edx=%d  eax=%d  xcr=%d\n", edx, eax, xcr);
+   return (uint64_t) edx<<32 | eax;
+
+#else
+   // Visual Studio (still!) doesn't support inline Assembly Language, so we
+   // have to depend on the `_xgetbv` intrinsic.
+   return _xgetbv( xcr );  // This is almost certianly broken right now
+#endif
+}
 
 void print_XCR0_state_components( uint64_t xcr0, uint64_t xss ) {
 
@@ -71,18 +104,27 @@ void print_XSAVE_enumeration() {
    uint32_t ecx_1 = 1;     // Get XSAVE extended features
    uint32_t edx_1 = 0;
 
+   uint64_t xcr0 = 0;
+
    native_cpuid32( &eax_0, &ebx_0, &ecx_0, &edx_0 );
    // print_registers32( eax_0, ebx_0, ecx_0, edx_0 );
 
    native_cpuid32( &eax_1, &ebx_1, &ecx_1, &edx_1 );
    // print_registers32( eax_1, ebx_1, ecx_1, edx_1 );
 
+   is_XGETBV_supported = (eax_1 >> 2) & 1;
+
+   if( is_XGETBV_supported ) {
+      xcr0 = native_XGETBV( 0 );  // Get xcr0
+   }
 
    printf("  Maximum size (in bytes) of current XCR0 XSAVE area: %" PRId32 "\n", ebx_0 );
    printf("  Maximum size (in bytes) of all-set XCR0 XSAVE area: %" PRId32 "\n", ecx_0 );
    printf("  Size (in bytes) of current XCR0+IA32_XSS XSAVE area: %" PRId32 "\n", ebx_1 );
 
-   printf("  Supported XCR0     flags: %08" PRIx32 ":%08" PRIx32 "\n", edx_0, eax_0 );
+   printf("  Supported XCR0: %08" PRIx32 "%08" PRIx32 "\n", edx_0, eax_0 );
+   printf("  Actual    XCR0: %016" PRIx64 "\n", xcr0 );
+
    printf("  Supported IA32_XSS flags: %08" PRIx32 ":%08" PRIx32 "\n", edx_1, ecx_1 );
    print_XCR0_state_components( (uint64_t)edx_0 << 32 | eax_0, (uint64_t)edx_1 << 32 | ecx_1 );
    /// @todo Need to get into IA32_XSS flags and print the system state components
