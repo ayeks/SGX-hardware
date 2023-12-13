@@ -84,7 +84,7 @@ void print_detailed_state_component( char* type, char* name, int bit, uint64_t f
 }
 
 
-void print_XCR0_state_components( uint64_t xcr0, uint64_t xss, uint64_t xcr0_actual, uint64_t xss_actual  ) {
+void print_XSAVE_state_components( uint64_t xcr0, uint64_t xss, uint64_t xcr0_actual, uint64_t xss_actual  ) {
 
    printf( "    Register Name    Supported Value Description\n" );
    printf( "    ======== ======= ========= ===== ===========\n" );
@@ -170,7 +170,7 @@ void print_XSAVE_enumeration() {
    printf("  Supported IA32_XSS: %08" PRIx32 "%08" PRIx32 "\n", edx_1, ecx_1 );
    printf("  Actual    IA32_XSS: %016" PRIx64 "\n", ia32_xss );
 
-   print_XCR0_state_components( (uint64_t)edx_0 << 32 | eax_0, (uint64_t)edx_1 << 32 | ecx_1, xcr0, ia32_xss );
+   print_XSAVE_state_components( (uint64_t)edx_0 << 32 | eax_0, (uint64_t)edx_1 << 32 | ecx_1, xcr0, ia32_xss );
    /// @todo Need to get into IA32_XSS flags and print the system state components
 
    printf("  Supported XSAVE feature flags: %08" PRIx32 "\n", eax_1 );
