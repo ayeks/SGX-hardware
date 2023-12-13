@@ -1,17 +1,41 @@
 ///////////////////////////////////////////////////////////////////////////////
 //  xsave.c - 2023
 //
-/// This module documents XSAVE related enumeration.
+/// This module enumerates XSAVE related information.
 ///
-/// SGX interacts with XSAVE (for those processors that support it) and so
-/// it's important to understand what the current CPU's XSAVE capabilities are
-/// so you can correctly configure them in SGX.  For example, SECS.ATTRIBUTES.XFRM
-/// represents the XSAFE Feature Request Mask.
+/// SGX interacts with XSAVE (for those processors that support it).
+/// It's important to understand what the current CPU's XSAVE capabilities are
+/// so you can correctly configure them in SGX.
 ///
-/// ## What do SGX programmers need to know about XSAVE?
+/// ## What SGX programmers need to know about XSAVE
 ///
 /// First, XSAVE uses the XCR0 register.  XCR0 has nothing to do with CR0, so
 /// don't get confused.  They have similar names, but they are not related.
+///
+/// Second, the XSAVE feature set supports the saving and restoring of CPU state
+/// components, each of which is a discrete set of processor registers (or parts
+/// of registers). In general, each such state component corresponds to a
+/// particular CPU feature.
+///
+/// XSAVE saves state in a variable sized region of memory called an XSAVE area.
+///
+/// Third, XSAVE has 2 places where it's configured:  The XCR0 register and
+/// an MSR.  For each configuration, there's a flag that indicates if a
+/// feature is supported and another flag to indicate if it's actually enabled
+/// or not.
+///
+/// `XSAVE` configuration data is a little esoteric, especially for users of
+/// SGX... BUT if you're an SGX systems developer, then it's important to
+/// understand the `XSAVE` state of the system.
+///
+/// For example, the XSAFE Feature Request Mask (`XFRM`) is set in the
+/// following SGX data structures:
+///
+///   - `SECS.ATTRIBUTES.XFRM`
+///   - `REPORT.ATTRIBUTES.XFRM`
+///
+/// ...and these choices will affect the size of the `XSAVE` area which is part
+/// of the `SSAFRAMESIZE` as well as the leftovers from an `AEX`.
 ///
 /// @file   xsave.c
 /// @author Mark Nelson <marknels@hawaii.edu>
