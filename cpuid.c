@@ -26,10 +26,10 @@
 
 
 /// Call `CPUID`, passing `eax`, `ebx`, `ecx` and `eax` in & out.
-static inline void native_cpuid32( uint32_t* eax
-                                  ,uint32_t* ebx
-                                  ,uint32_t* ecx
-                                  ,uint32_t* edx ) {
+void native_cpuid32( uint32_t* eax
+                    ,uint32_t* ebx
+                    ,uint32_t* ecx
+                    ,uint32_t* edx ) {
 #if !defined( _MSC_VER )
    __asm volatile (
        "mov eax, %0;"

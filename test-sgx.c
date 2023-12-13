@@ -35,8 +35,8 @@
 ///     The CPU is Genuine Intel
 ///     CPUID is capable of examining SGX capabilities
 ///     CPU: Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz
-///       Stepping 13        Model 14           Family 6 
-///       Processor type 0   Extended model 9   Extended family 0 
+///       Stepping 13        Model 14           Family 6
+///       Processor type 0   Extended model 9   Extended family 0
 ///     Safer Mode Extensions (SMX): 0
 ///     Extended feature bits (EAX=7, ECX=0): eax: 00000000  ebx: 009c6fbd  ecx: 40000000  edx: 20000400
 ///     Supports SGX
@@ -84,7 +84,8 @@
 #include "test-sgx.h"  // For obvious reasons
 #include "cpuid.h"     // For native_cpuid32()
 #include "rdmsr.h"     // For checkCapabilities()
-#include "vdso.h"      // FOr dump_vDSO()
+#include "vdso.h"      // For dump_vDSO()
+#include "xsave.h"     // For print_XSAVE_enumeration()
 
 // Prove the compiler regognizes SGX instructions
 void sgxInstruction( void ) {
@@ -106,11 +107,12 @@ int main( void ) {
    supportsSGXInstructions();
    enumerateEPCsections();
    dump_vDSO();
-   
+
    if( checkCapabilities() ) {
       read_SGX_MSRs();
    }
 
+   print_XSAVE_enumeration();
 
    printf( "End " PROGRAM_NAME "\n" );
    return EXIT_SUCCESS;

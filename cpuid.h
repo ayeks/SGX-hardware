@@ -13,6 +13,13 @@
 #include <inttypes.h>  // For PRIx64 uint64_t PRIx32 uint32_t
 
 
+/// Call `CPUID`, passing `eax`, `ebx`, `ecx` and `eax` in & out
+void native_cpuid32( uint32_t* eax
+                    ,uint32_t* ebx
+                    ,uint32_t* ecx
+                    ,uint32_t* edx );
+
+
 // Print the register set:
 //     eax: 80000008  ebx: 00000000  ecx: 00000000  edx: 00000000
 void print_registers32( uint32_t eax
