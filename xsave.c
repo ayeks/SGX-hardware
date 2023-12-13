@@ -24,6 +24,7 @@
 
 #include "xsave.h"  // For obvious reasons
 #include "cpuid.h"  // For native_cpuid32()
+#include "rdmsr.h"  // For checkCapabilities()
 
 
 bool is_XGETBV_supported = 0;
@@ -104,7 +105,8 @@ void print_XSAVE_enumeration() {
    uint32_t ecx_1 = 1;     // Get XSAVE extended features
    uint32_t edx_1 = 0;
 
-   uint64_t xcr0 = 0;
+   uint64_t xcr0 = 0;      // The actual value
+   uint64_t ia32_xss = 0;  // The actual value
 
    native_cpuid32( &eax_0, &ebx_0, &ecx_0, &edx_0 );
    // print_registers32( eax_0, ebx_0, ecx_0, edx_0 );
@@ -118,6 +120,14 @@ void print_XSAVE_enumeration() {
       xcr0 = native_XGETBV( 0 );  // Get xcr0
    }
 
+   if( checkCapabilities() ) {
+      if( rdmsr( IA32_XSS, 0, &ia32_xss ) ) {
+         printf( "  Raw IA32_XSS: %016" PRIx64 "\n", ia32_xss );
+      } else {
+         printf( "  IA32_XSS not readable\n" );
+      }
+   }
+
    printf("  Maximum size (in bytes) of current XCR0 XSAVE area: %" PRId32 "\n", ebx_0 );
    printf("  Maximum size (in bytes) of all-set XCR0 XSAVE area: %" PRId32 "\n", ecx_0 );
    printf("  Size (in bytes) of current XCR0+IA32_XSS XSAVE area: %" PRId32 "\n", ebx_1 );
@@ -125,7 +135,9 @@ void print_XSAVE_enumeration() {
    printf("  Supported XCR0: %08" PRIx32 "%08" PRIx32 "\n", edx_0, eax_0 );
    printf("  Actual    XCR0: %016" PRIx64 "\n", xcr0 );
 
-   printf("  Supported IA32_XSS flags: %08" PRIx32 ":%08" PRIx32 "\n", edx_1, ecx_1 );
+   printf("  Supported IA32_XSS: %08" PRIx32 "%08" PRIx32 "\n", edx_1, ecx_1 );
+   printf("  Actual    IA32_XSS: %016" PRIx64 "\n", ia32_xss );
+
    print_XCR0_state_components( (uint64_t)edx_0 << 32 | eax_0, (uint64_t)edx_1 << 32 | ecx_1 );
    /// @todo Need to get into IA32_XSS flags and print the system state components
 
