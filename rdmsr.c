@@ -45,12 +45,6 @@
 #include "test-sgx.h"        // For EXIT_ON_FAILURE
 
 
-#define IA32_FEATURE_CONTROL   0x3A
-#define IA32_SGXLEPUBKEYHASH0  0x8C
-#define IA32_SGX_SVN_STATUS   0x500
-#define MSR_SGXOWNEREPOCH0    0x300
-
-
 /// On Linux, return true if we are running as root (with CAP_SYS_ADMIN).  In
 /// all other situations, return false.
 bool checkCapabilities( void ) {

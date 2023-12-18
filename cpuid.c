@@ -2,7 +2,7 @@
 //  cpuid.c - 2023
 //
 /// This module contains multi-platform, non-privlidged code that utilizes the
-/// CPUID instruction to discover & report SGX capabilities.
+/// CPUID instruction to discover and report SGX capabilities.
 ///
 /// @file   cpuid.c
 /// @author Lars Luhr   <mail@ayeks.de>
@@ -26,10 +26,10 @@
 
 
 /// Call `CPUID`, passing `eax`, `ebx`, `ecx` and `eax` in & out.
-static inline void native_cpuid32( uint32_t* eax
-                                  ,uint32_t* ebx
-                                  ,uint32_t* ecx
-                                  ,uint32_t* edx ) {
+void native_cpuid32( uint32_t* eax
+                    ,uint32_t* ebx
+                    ,uint32_t* ecx
+                    ,uint32_t* edx ) {
 #if !defined( _MSC_VER )
    __asm volatile (
        "mov eax, %0;"
