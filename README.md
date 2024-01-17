@@ -225,11 +225,11 @@ Start test-sgx (version 2.0.0) at Mon Nov 20 18:20:43 2023
 CPUID is available
 The CPU is Genuine Intel
 CPUID is capable of examining SGX capabilities
-CPU: Intel(R) Xeon(R) E-2288G CPU @ 3.70GHz
-  Stepping 13        Model 14           Family 6
-  Processor type 0   Extended model 9   Extended family 0
-Safer Mode Extensions (SMX): 0
-Extended feature bits (EAX=7, ECX=0): eax: 00000000  ebx: 009c6fbd  ecx: 40000000  edx: 20000400
+CPU: Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz
+  Stepping 13        Model 14           Family 6 
+  Processor type 0   Extended model 9   Extended family 0 
+Safer Mode Extensions (SMX): 1
+Extended feature bits (EAX=7, ECX=0): eax: 00000000  ebx: 029c6fbf  ecx: 40000000  edx: bc000e00
 Supports SGX
 SGX Launch Configuration (SGX_LC): 1
 SGX Attestation Services (SGX_KEYS): 0
@@ -252,15 +252,65 @@ Raw ECREATE SECS.ATTRIBUTES[63:0]: 00000000 00000436
     ECREATE SECS.ATTRIBUTES[KSS] (Key Separation and Sharing Enabled): 0
     ECREATE SECS.ATTRIBUTES[AEXNOTIFY] (Threads may receive AEX notifications): 1
 Raw ECREATE SECS.ATTRIBUTES[127:64] (XFRM: Copy of XCR0): 00000000 0000001f
-EPC[0]: Protection: ci  Base phys addr: 00000001c0000000  size: 0000000001c00000
-Raw IA32_FEATURE_CONTROL: 0000000000060001
+EPC[0]: Protection: ci  Base phys addr: 0000000070200000  size: 0000000005d80000
+vDSO base address: 0x7ffddbf41000
+Printing Symbol Table:
+vDSO symbol: __vdso_time
+vDSO symbol: getcpu
+vDSO symbol: __vdso_clock_getres
+vDSO symbol: __vdso_getcpu
+vDSO symbol: clock_getres
+vDSO symbol: __vdso_gettimeofday
+vDSO symbol: LINUX_2.6
+vDSO symbol: gettimeofday
+vDSO symbol: __vdso_clock_gettime
+vDSO symbol: time
+vDSO symbol: __vdso_sgx_enter_enclave
+vDSO symbol: clock_gettime
+Raw IA32_FEATURE_CONTROL: 0000000000060005
     IA32_FEATURE_CONTROL.LOCK_BIT[bit 0]: 1
     IA32_FEATURE_CONTROL.SGX_LAUNCH_CONTROL[bit 17] (Is the SGX LE PubKey writable?): 1
     IA32_FEATURE_CONTROL.SGX_GLOBAL_ENABLE[bit 18]: 1
 The SGX Launch Enclave Public Key Hash can be changed
-IA32_SGXLEPUBKEYHASH: a6053e051270b7ac 6cfbe8ba8b3b413d c4916d99f2b3735d d4f8c05909f9bb3b
-Raw IA32_SGX_SVN_STATUS: 0000000000000000
+IA32_SGXLEPUBKEYHASH: 72d712fed48f9f2f 5282ca7175d8f132 e40577fe4e7127ca c4e8225afdcf2262
+Raw IA32_SGX_SVN_STATUS: 0000000e00020001
 MSR_SGXOWNEREPOCH not readable
+XSAVE features and state-components
+  Maximum size (in bytes) of current XCR0 XSAVE area: 1088
+  Maximum size (in bytes) of all-set XCR0 XSAVE area: 1088
+  Size (in bytes) of current XCR0+IA32_XSS XSAVE area: 960
+  Supported XCR0:     000000000000001f
+  Actual    XCR0:     000000000000001f
+  Supported IA32_XSS: 0000000000000100
+  Actual    IA32_XSS: 0000000000000000
+    Register Name    Supported Value Description
+    ======== ======= ========= ===== ===========
+    XCR0     x87:       yes      set x87 Floating Point Unit & MMX
+    XCR0     SSE:       yes      set MXCSR and XMM registers
+    XCR0     AVX:       yes      set YMM registers
+    XCR0     BNDREG:    yes      set MPX for BND registers
+    XCR0     BNDCSR:    yes      set MPX for BNDCFGU and BNDSTATUS registers
+    XCR0     opmask:     no    clear AVX-512 for AVX opmask and AKA k-mask
+    XCR0     ZMM_hi256:  no    clear AVX-512 for the upper-halves of lower ZMM registers
+    XCR0     Hi16_ZMM:   no    clear AVX-512 for the upper ZMM registers
+    IA32_XSS PT:        yes    clear Processor Trace
+    XCR0     PKRU:       no    clear User Protection Keys
+    IA32_XSS PASID:      no    clear Process Address Space ID
+    IA32_XSS CET_U:      no    clear Control-flow Enforcement Technology: user-mode functionality MSRs
+    IA32_XSS CET_S:      no    clear CET: shadow stack pointers for rings 0,1,2
+    IA32_XSS HDC:        no    clear Hardware Duty Cycling
+    IA32_XSS UINTR:      no    clear User-Mode Interrupts
+    IA32_XSS LBR:        no    clear Last Branch Record
+    IA32_XSS HWP:        no    clear Hardware P-state control
+    XCR0     TILECFG:    no    clear AMX - Advanced Matrix Extensions
+    XCR0     TILEDATA:   no    clear AMX - Advanced Matrix Extensions
+    XCR0     APX:        no    clear Extended General Purpose Registers R16-R31
+  Supported XSAVE feature flags: 0000000f
+    xsaveopt - save state-components that have been modified since last XRSTOR: 1
+    xsavec - save/restore state with compaction: 1
+    xgetbv_ecx1 - XGETBV with ECX=1 support: 1
+    xss - save/restore state with compaction, including supervisor state: 1
+    xfd - Extended Feature Disable supported: 0
 End test-sgx
 ```
 
