@@ -30,7 +30,7 @@
 /// you are on right now... not an entire class of CPUs or motherboards.
 ///
 /// Sample Output (from our development system):
-///     Start test-sgx
+///     Start test-sgx (version 2.0.0) at Mon Nov 20 18:20:43 2023
 ///     CPUID is available
 ///     The CPU is Genuine Intel
 ///     CPUID is capable of examining SGX capabilities
@@ -123,13 +123,15 @@
 ///     End test-sgx
 ///
 /// @file   test-sgx.c
-/// @author Lars Luhr   <mail@ayeks.de>
-/// @author Mark Nelson <marknels@hawaii.edu>
+/// @author Lars Luhr   	<mail@ayeks.de>
+/// @author Mark Nelson 	<marknels@hawaii.edu>
 /// @author Brooke Maeda <bmhm@hawaii.edu>
+/// @author Eliya Nakamura	<eliyanak@hawaii.edu>
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>     // For printf()
 #include <inttypes.h>  // For PRIx64 uint64_t PRIx32 uint32_t
+#include <time.h>      // For fetching timestamps
 
 #include "test-sgx.h"  // For obvious reasons
 #include "cpuid.h"     // For native_cpuid32()
@@ -149,7 +151,12 @@ void sgxInstruction( void ) {
 
 
 int main( void ) {
-   printf( "Start " PROGRAM_NAME "\n" );
+   // Get current timestamp
+   time_t timestamp;
+   time(&timestamp);
+
+   // Print program info
+   printf( "Start " PROGRAM_NAME " (version %d.%d.%d) at %s\n", PROGRAM_VERSION_MAJOR, PROGRAM_VERSION_MINOR, PROGRAM_VERSION_PATCH, ctime(&timestamp) );
 
    doesCPUIDwork();
    isIntelCPU();

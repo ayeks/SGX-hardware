@@ -220,8 +220,8 @@ Does not support SGX
 
 ### SGX1 is available for your CPU and enabled in BIOS
 
-```
-Start test-sgx
+```bash
+Start test-sgx (version 2.0.0) at Mon Nov 20 18:20:43 2023
 CPUID is available
 The CPU is Genuine Intel
 CPUID is capable of examining SGX capabilities
