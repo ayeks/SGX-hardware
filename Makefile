@@ -11,8 +11,8 @@
 
 TARGET=test-sgx
 
-test-sgx: cpuid.c test-sgx.c rdmsr.c vdso.c
-	gcc -Wl,--no-as-needed -Wall -Wextra -Wpedantic -masm=intel -o ${TARGET} -lcap cpuid.c rdmsr.c test-sgx.c vdso.c
+test-sgx: cpuid.c test-sgx.c rdmsr.c vdso.c xsave.c
+	gcc -Wl,--no-as-needed -Wall -Wextra -Wpedantic -masm=intel -o ${TARGET} -lcap $^
 
 test: ${TARGET}
 	./${TARGET}
